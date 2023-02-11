@@ -1,11 +1,28 @@
-"""
-This module takes care of starting the API Server, Loading the DB and Adding the endpoints
-"""
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, Clients, Pets, Services, Contracts, Messages, Images
 from api.utils import generate_sitemap, APIException
+from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 
 api = Blueprint('api', __name__)
+
+
+# LOGIN
+
+
+@api.route("/login", methods=["POST"])
+def login():
+    email = request.json.get("email", None)
+    password = request.json.get("password", None)
+    client = Clients.query.filter(Clients.email == email, Clients.password == password).first()
+    print(client)
+    if client:
+        access_token = create_access_token(identity=email)
+        return jsonify(access_token=access_token)
+        
+    return jsonify({"msg": "Bad email or password"}), 401
+
+
+# TODO: definir que endpoint necesitan token y aplicarlo.
 
 
 #  CLIENTS
