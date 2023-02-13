@@ -10,91 +10,57 @@ export const Registro = () => {
     <div className="text-center mt-5">
       <div className="card-3d-wrap mx-auto">
         <div className="card-3d-wrapper">
-          <header className={styles.heading}> REGÍSTRATE </header>
+          <header className={styles.heading}> Regístrate </header>
           <div className="row ">
-            <div className="col-sm-12">
-              <div className="row">
-                <div className="col-sm-4"></div>
-                <div className="col-sm-4">
+            <div className="col-sm-12 d-flex flex-column gap-2 justify-content-center align-items-center p-0">
                   <input
                     className={styles.fname}
                     type="text"
                     name="fname"
                     id="fname"
                     placeholder="Nombre"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-sm-12">
-              <div className="row">
-                <div className="col-sm-4"></div>
-                <div className="col-sm-4">
+            
                   <input
                     className={styles.lname}
                     type="text"
                     name="lname"
                     id="lname"
                     placeholder="Apellidos"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-sm-12">
-              <div className="row">
-                <div className="col-sm-4"></div>
-                <div className="col-sm-4">
+           
+           
                   <input
                     className={styles.lciudad}
                     type="text"
                     name="lciudad"
                     id="lciudad"
                     placeholder="Ciudad"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-sm-12">
-              <div className="row">
-                <div className="col-sm-4"></div>
-                <div className="col-sm-4">
+             
                   <input
                     className={styles.email}
                     type="email"
                     name="email"
                     id="email"
                     placeholder="Email"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
-                </div>
-              </div>
-            </div>
-
-            <div className="col-sm-12">
-              <div className="row">
-                <div className="col-sm-4"></div>
-                <div className="col-sm-4">
+               
                   <input
                     className={styles.password}
                     type="password"
                     name="password"
                     id="password"
                     placeholder="Contraseña"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
-                </div>
-              </div>
-            </div>
-            <div classNAme="col-sm-12">
+              
                 <div className="btn btn-dark">Regístrate</div>
-              </div>
-            </div>
+            </div></div>
           </div>
           <p className="text-center">
             <Link to="/iniciosesion" className={styles.link}>

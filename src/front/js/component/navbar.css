@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&family=Comfortaa:wght@300&display=swap');
+
+.container-fluid{
+    background-color:white;
+    width: 100%;
+    display: grid;
+    height: auto;
+    min-height: auto;
+    margin:0px;
+    padding: 20px;
+    list-style: none;
+    font-family: 'Comfortaa';
+    font-size: 14px;
+    text-align: center;
+    position:fixed;
+    z-index: 100;
+    padding-top: 80px;
+}
+
+.container-fluid a{
+    color: black;
+    
+}
+
+nav ul li:hover {
+    outline-color: black;
+  }
+
+.nav-link:focus, .nav-link:hover {
+    color: #f4a12e;
+}
+
+.dropdown-item:hover {
+    color: #1e2125;
+    background-color: #f4a12e;
+}

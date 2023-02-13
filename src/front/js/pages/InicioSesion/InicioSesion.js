@@ -28,7 +28,7 @@ export const InicioSesion = () => {
                     name="email"
                     id="email"
                     placeholder="Email"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
               </div>
@@ -44,7 +44,7 @@ export const InicioSesion = () => {
                     name="password"
                     id="password"
                     placeholder="Contraseña"
-                    autocomplete="off"
+                    autoComplete="off"
                   />
                 </div>
               </div>
