@@ -312,10 +312,22 @@ def upload_image():
     if file is None:
         return {"error": "ha ocurrido un error"}, 400
     upload_result = cloudinary.uploader.upload(file)
-    return jsonify(upload_result)
+    image = Images(client_id=request.form['client_id'],
+                   clodu_id=upload_result['public_id'],
+                   url=upload_result['url'],
+                   alt=request.form['alt'],
+                   caption=request.form['caption'])
+    db.session.add(image)
+    db.session.commit()
+
+    return image.serialize(), 200
 
 
 @api.route('/destroy/<string:img_id>', methods=['DELETE'])
 def destroy_image(img_id):
-    result = cloudinary.uploader.destroy(img_id)
-    return result
+    image = Images.query.get(img_id)
+    result = cloudinary.uploader.destroy(image['cloud_id'])
+    db.session.delete(image)
+    db.session.commit()
+    return 'Ok', 200
+
