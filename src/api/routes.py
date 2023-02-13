@@ -313,3 +313,9 @@ def upload_image():
         return {"error": "ha ocurrido un error"}, 400
     upload_result = cloudinary.uploader.upload(file)
     return jsonify(upload_result)
+
+
+@api.route('/destroy/<string:img_id>', methods=['DELETE'])
+def destroy_image(img_id):
+    result = cloudinary.uploader.destroy(img_id)
+    return result
