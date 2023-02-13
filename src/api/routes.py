@@ -2,6 +2,9 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, Clients, Pets, Services, Contracts, Messages, Images
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
+import cloudinary
+import cloudinary.uploader
+
 
 api = Blueprint('api', __name__)
 
@@ -298,3 +301,15 @@ def update_contract(contract_id):
                      'comments': contract.comments}
 
     return jsonify(response_body), 200
+
+
+# IMAGES
+
+
+@api.route('/upload', methods=['POST'])
+def upload_image():
+    file = request.files['file']
+    if file is None:
+        return {"error": "ha ocurrido un error"}, 400
+    upload_result = cloudinary.uploader.upload(file)
+    return jsonify(upload_result)
