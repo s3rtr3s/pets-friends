@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
-import { Context } from "../store/appContext";
-import styles from "./home.module.css"
+import React from "react";
+import styles from "./services.module.css"
 
-export const Home = () => {
+export const Services = () => {
   return (
     <div className="container mt-4">
       <div className="col d-flex justify-content-center">
