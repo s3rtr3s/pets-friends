@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&family=Comfortaa:wght@300&display=swap');
+
+
+.SobrePetFriends{
+    margin:50px;
+    background: white;
+    padding: 100px;
+
+}
+
+#texto{
+    line-height: 1.5em;
+    font-size: 16px;
+    color: rgb(10, 10, 10);
+    position: relative;
+    font-family: 'Comfortaa';
+    line-height: 1.5em;
+    letter-spacing: normal;
+    width: 500px;
+    margin: 0;
+    padding: 0 2rem;
+    
+}
+
+img {
+    width: 459px;
+    height: 280px;
+    object-fit: cover;
+    float: right;
+    margin: 20px;
+    
+}
+
+#titulo{
+    font-family: 'Amatic SC';
+    margin: 20px;
+    font-size: 60px;
+}
