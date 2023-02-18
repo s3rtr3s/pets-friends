@@ -1,7 +1,8 @@
 import React from "react";
+
 import { NombreInicio } from "./component/NombreInicio";
 import { SobrePetFriends } from "./component/SobrePetFriends";
-
+import { Services } from "./component/Services";
 
 export const Home = () => {
     
@@ -9,8 +10,8 @@ export const Home = () => {
         <div>
             <NombreInicio/>
             <SobrePetFriends/>
-            
+            <Services />
         </div>
         
     );
-};
+}
