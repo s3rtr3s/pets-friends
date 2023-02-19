@@ -14,6 +14,8 @@ class Clients(db.Model):
     avatar = db.Column(db.String)
     description = db.Column(db.String)
     city = db.Column(db.String)
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
 
     def __repr__(self):
         return '<Clients %r>' % self.id
@@ -24,7 +26,9 @@ class Clients(db.Model):
                 'surname': self.surname,
                 'avatar': self.avatar,
                 'city': self.city,
-                'description': self.description}
+                'description': self.description,
+                'latitude': self.latitude,
+                'longitude': self.longitude}
 
 
 class Pets(db.Model):
