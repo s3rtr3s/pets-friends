@@ -4,6 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 
 import { Registro } from "./pages/Registro/Registro";
 import { InicioSesion } from "./pages/InicioSesion/InicioSesion";
+
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/Navbar";
@@ -29,6 +30,7 @@ const Layout = () => {
             <Route element={<InicioSesion />} path="/iniciosesion" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
+
         </ScrollToTop>
       </BrowserRouter>
     </div>
