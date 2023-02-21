@@ -6,14 +6,16 @@ db = SQLAlchemy()
 
 class Clients(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    roles = db.Column(db.String)
+    roles = db.Column(db.String, nullable=True)
     name = db.Column(db.String)
     surname = db.Column(db.String)
     email = db.Column(db.String,  unique=True)
     password = db.Column(db.String)
-    avatar = db.Column(db.String)
-    description = db.Column(db.String)
+    avatar = db.Column(db.String, nullable=True)
+    description = db.Column(db.String, nullable=True)
     city = db.Column(db.String)
+    latitude = db.Column(db.Float)
+    longitude = db.Column(db.Float)
 
     def __repr__(self):
         return '<Clients %r>' % self.id
@@ -24,7 +26,9 @@ class Clients(db.Model):
                 'surname': self.surname,
                 'avatar': self.avatar,
                 'city': self.city,
-                'description': self.description}
+                'description': self.description,
+                'latitude': self.latitude,
+                'longitude': self.longitude}
 
 
 class Pets(db.Model):

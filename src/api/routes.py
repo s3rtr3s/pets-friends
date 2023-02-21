@@ -20,7 +20,12 @@ def login():
     print(client)
     if client:
         access_token = create_access_token(identity=email)
-        return jsonify(access_token=access_token)
+        client_info = client.serialize()
+        response_body = {
+            "token": access_token,
+            "client_info": client_info,
+        }
+        return jsonify(response_body)
         
     return jsonify({"msg": "Bad email or password"}), 401
 
@@ -60,7 +65,9 @@ def register_client():
                      password=request_body['password'],
                      avatar=request_body['avatar'],
                      description=request_body['description'],
-                     city=request_body['city'])
+                     city=request_body['city'],
+                     latitude=request_body['latitude'],
+                     longitude=request_body['longitude'])
     db.session.add(client)
     db.session.commit()
     return jsonify(request_body), 200
@@ -88,16 +95,11 @@ def update_client(client_id):
     client.avatar = request.json.get('avatar', client.avatar)
     client.description = request.json.get('description', client.description)
     client.city = request.json.get('city', client.city)
+    client.latitude = request.json.get('latitude', client.latitude)
+    client.longitude = request.json.get('longitude', client.longitude)
     db.session.commit()
 
-    response_body = {'roles': client.roles,
-                     'name': client.name,
-                     'surname': client.surname,
-                     'email': client.email,
-                     'password': client.password,
-                     'avatar': client.avatar,
-                     'description': client.description,
-                     'city': client.city}
+    response_body = {"client" : client.serialize()}
 
     return jsonify(response_body), 200
 
