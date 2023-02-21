@@ -1,13 +1,21 @@
 import React from "react";
 import "./sobre.css"
 import { Link } from "react-router-dom";
-
+import pata from "../../../../../img/pata.png"
+import pelota from "../../../../../img/pelota.png"
+import hueso from "../../../../../img/hueso.png"
 
 
 export const SobrePetFriends = () => {
     
 	return (
-        <div className="SobrePetFriends">
+        <div className="SobrePetFriends" id="sobrePetFriends">
+            <img src={pata} alt="pata" id="pata"/>
+            <img src={pata} alt="pata" id="pataUno"/>
+            <img src={pata} alt="pata" id="pataDos"/>
+            <img src={pelota} alt="pelota" id="pelota"/>
+            <img src={pelota} alt="pelota" id="pelotaDos"/>
+            <img src={hueso} alt="hueso" id="hueso"/>
             <p id="titulo">Sobre Pet Friends</p>
             <div >
             <img src="https://image.europafm.com/clipping/cmsimages01/2021/10/17/062EC2FA-A697-438D-A069-C2D152AB7A29/98.jpg?crop=1920,1080,x0,y102&width=1900&height=1069&optimize=high&format=webply"/>

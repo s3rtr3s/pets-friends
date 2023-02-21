@@ -1,16 +1,30 @@
 import React from "react";
 
-import { NombreInicio } from "./component/NombreInicio";
-import { SobrePetFriends } from "./component/SobrePetFriends";
+import { NombreInicio } from "./component/NombreInicio/NombreInicio";
+import { SobrePetFriends } from "./component/SobrePetFiends/SobrePetFriends";
+
+
+
+
 import { Services } from "./component/Services";
+
 
 export const Home = () => {
     
 	return (
         <div>
-            <NombreInicio/>
-            <SobrePetFriends/>
-            <Services />
+
+            <div id="inicio" class="pt-4">
+                <NombreInicio/>
+            </div>
+            
+            <div id="sobre">
+               <SobrePetFriends/> 
+            </div>
+            
+             <div id="servicios">
+                <Services />
+             </div>
         </div>
         
     );

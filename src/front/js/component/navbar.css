@@ -11,18 +11,16 @@
     list-style: none;
     font-family: 'Comfortaa';
     font-size: 14px;
-    text-align: center;
+    justify-items: center;
     position:fixed;
     z-index: 100;
     padding-top: 80px;
 }
-
-.container-fluid a{
-    color: black;
-    
+.navbar-nav a{
+    color: rgb(0, 0, 0);
 }
 
-nav ul li:hover {
+.nav ul li:hover {
     outline-color: black;
   }
 
@@ -33,4 +31,11 @@ nav ul li:hover {
 .dropdown-item:hover {
     color: #1e2125;
     background-color: #f4a12e;
+}
+.navbar-brand{
+    color: #f4a12e;
+}
+
+a:hover {
+    color: #000000;
 }

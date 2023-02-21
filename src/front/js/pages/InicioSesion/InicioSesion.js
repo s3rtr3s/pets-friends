@@ -9,9 +9,6 @@ export const InicioSesion = () => {
 
   return (
     <div className="text-center mt-5">
-      <div className="logodos">
-       { /*<img src={logodos} alt="Logodos" /> AQUÍ ESTÁ EL LOGO*/} 
-      </div>
       <div className="card-3d-wrap mx-auto">
         <div className="card-3d-wrapper">
           <header className={styles.heading}> Iniciar Sesión </header>
