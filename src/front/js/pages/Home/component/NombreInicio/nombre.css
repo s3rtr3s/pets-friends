@@ -1,48 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&family=Comfortaa:wght@300&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&family=Comfortaa:wght@300&display=swap');
-
-.nombre p{
-    font-size: 200px;
-    text-align: center;
-    font-family: 'Amatic SC';
-    margin-top: 130px;
+.nombre p {
+  font-size: 200px;
+  text-align: center;
+  font-family: "Amatic SC";
+  margin-top: 130px;
 }
 
-.nombre h5{
-    font-size: 25px;
-    font-family: 'Comfortaa';
-    text-align: center;
-    
+.nombre h5 {
+  font-size: 25px;
+  font-family: "Comfortaa";
+  text-align: center;
 }
 
-#Diseño{
-    position: absolute;
-    width: 200px;
-    height: 200px;
-    padding: 20px;
-    justify-content: center;
-    top: 1%;
-    left: 48%;
-    transform: translate(-50%, -50%);
-    margin-top: 40px;
+#Diseño {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  padding: 20px;
+  justify-content: center;
+  top: 1%;
+  left: 48%;
+  transform: translate(-50%, -50%);
+  margin-top: 40px;
 }
 
-
-.nombre{
-    position: relative;
+.nombre {
+  position: relative;
 }
 
 #boton-pasear:hover {
-    box-shadow: #646464;
-    background:#d28923;
-    color:#fff;
-    transition: background-color 0.5s ease-in-out,border-color 0.5s ease-in-out,box-shadow 0.5s ease-in-out;
- }
+  box-shadow: #646464;
+  background: #d28923;
+  color: #fff;
+  transition: background-color 0.5s ease-in-out, border-color 0.5s ease-in-out,
+    box-shadow 0.5s ease-in-out;
+}
 
- .btn-dark{
-    padding: 10px;
-    width: 180px;
-    border-radius: 25px;
-    margin: 40px;
+#boton-pasear {
+  padding: 10px;
+  width: 180px;
+  border-radius: 25px;
+  margin: 40px;
 }

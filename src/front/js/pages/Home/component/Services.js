@@ -1,5 +1,23 @@
 import React from "react";
-import styles from "./services.module.css"
+import styles from "./services.module.css";
+
+const services = [
+  {
+    title: "Paseo de mediodía",
+    description: "Paseo por zonas cercanas a tu hogar",
+    duration: "30 min",
+  },
+  {
+    title: "Energía por una hora",
+    description: "Paseo para los mas traviesos",
+    duration: "1 h",
+  },
+  {
+    title: "Pijamada perruna",
+    description: "Cuidado integral de tu mascota",
+    duration: "8 h",
+  },
+];
 
 export const Services = () => {
   return (
@@ -17,11 +35,13 @@ export const Services = () => {
             <div className="col-md-4 d-flex align-items-center">
               <div className="card-body text-center">
                 <h5 className="card-title">Paseo de mediodía</h5>
-                <p className="card-text">
-                  Paseo por zonas cercanas a tu hogar 
-                </p>
-				<p>30 min</p>
-                <a className={`${"btn"} ${styles.button}`} href="#" role="button">
+                <p className="card-text">Paseo por zonas cercanas a tu hogar</p>
+                <p>30 min</p>
+                <a
+                  className={`${"btn btn-dark"} ${styles.button}`}
+                  href="#"
+                  role="button"
+                >
                   Reserva ahora
                 </a>
               </div>
@@ -29,7 +49,7 @@ export const Services = () => {
           </div>
         </div>
       </div>
-	  <div className="col d-flex justify-content-center">
+      <div className="col d-flex justify-content-center">
         <div className={`${"card mb-3 col-10"} ${styles.cardBody}`}>
           <div className="row g-0">
             <div className="col-md-8">
@@ -42,11 +62,13 @@ export const Services = () => {
             <div className="col-md-4 d-flex align-items-center">
               <div className="card-body text-center">
                 <h5 className="card-title">Energía por una hora</h5>
-                <p className="card-text">
-                  Paseo para los mas traviesos
-                </p>
-				<p>1 h</p>
-                <a className={`${"btn"} ${styles.button}`} href="#" role="button">
+                <p className="card-text">Paseo para los mas traviesos</p>
+                <p>1 h</p>
+                <a
+                  className={`${"btn btn-dark"} ${styles.button}`}
+                  href="#"
+                  role="button"
+                >
                   Reserva ahora
                 </a>
               </div>
@@ -54,7 +76,7 @@ export const Services = () => {
           </div>
         </div>
       </div>
-	  <div className="col d-flex justify-content-center">
+      <div className="col d-flex justify-content-center">
         <div className={`${"card mb-3 col-10"} ${styles.cardBody}`}>
           <div className="row g-0">
             <div className="col-md-8">
@@ -67,13 +89,13 @@ export const Services = () => {
             <div className="col-md-4 d-flex align-items-center">
               <div className="card-body text-center">
                 <h5 className="card-title">Pijamada perruna</h5>
-                <p className="card-text">
-                  Cuidado integral de tu mascota
-                </p>
-				<p>
-					8 h
-				</p>
-                <a className={`${"btn"} ${styles.button}`} href="#" role="button">
+                <p className="card-text">Cuidado integral de tu mascota</p>
+                <p>8 h</p>
+                <a
+                  className={`${"btn btn-dark"} ${styles.button}`}
+                  href="#"
+                  role="button"
+                >
                   Reserva ahora
                 </a>
               </div>
