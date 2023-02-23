@@ -1,11 +1,45 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import { Context } from "../../store/appContext";
 import styles from "./iniciosesion.module.css";
 
 export const InicioSesion = () => {
   const { store, actions } = useContext(Context);
+  const [email, setEmail ] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const login = () => {
+    console.log(email, password)
+
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var raw = JSON.stringify({
+      "email": email,
+      "password": password,
+    });
+
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw
+    };
+
+    fetch("https://3001-s3rtr3s-petsfriends-2sttree32r9.ws-eu87.gitpod.io/api/login", requestOptions)
+    .then(response => 
+      {
+        if (response.status===200) {
+        return response.json()}else{
+          alert("Ha ocurrido un error")
+        }})
+    .then(result => console.log(result))
+
+    .catch(error => alert("Ha ocurrido un error", error));
+  }
+
 
   return (
     <div className="text-center mt-5">
@@ -26,6 +60,7 @@ export const InicioSesion = () => {
                     id="email"
                     placeholder="Email"
                     autoComplete="off"
+                    onChange={(event) => setEmail(event.target.value)}
                   />
                 </div>
               </div>
@@ -42,12 +77,13 @@ export const InicioSesion = () => {
                     id="password"
                     placeholder="Contraseña"
                     autoComplete="off"
+                    onChange={(event) => setPassword(event.target.value)}
                   />
                 </div>
               </div>
             </div>
             <div className="col-sm-12">
-              <div className="btn btn-dark ">Iniciar sesión</div>
+              <div className="btn btn-dark" onClick={login}>Iniciar sesión</div>
             </div>
           </div>
           <p className="text-center">
