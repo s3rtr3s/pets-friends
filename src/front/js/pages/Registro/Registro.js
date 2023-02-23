@@ -10,10 +10,22 @@ export const Registro = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
-
-
+  const [ciudades, setCiudades] = useState(null);
+  
   const navigate = useNavigate();
-        console.log(email, password, name, surname);
+
+  const registrar = () => {
+
+  
+        console.log(email, password, name, surname, ciudades);
+
+        const ciudad = ciudades.value;
+        const longitude = ciudades.options[ciudades.selectedIndex].getAttribute("data-longitud");
+        const latitude = ciudades.options[ciudades.selectedIndex].getAttribute("data-latitud");
+
+        console.log("ciudad", ciudad);
+        console.log("longitude", longitude);
+        console.log("latitude", latitude);
 
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
@@ -22,7 +34,10 @@ export const Registro = () => {
         "email": email,
         "password": password,
         "name": name,
-        "surname": surname
+        "surname": surname,
+        "ciudad": ciudad,
+        "longitude": longitude,
+        "latitude": latitude
         });
 
         var requestOptions = {
@@ -31,19 +46,26 @@ export const Registro = () => {
         body: raw,
         };
 
-    fetch("https://3001-s3rtr3s-petsfriends-hlkkemt25ya.ws-eu87.gitpod.io/api/clients", requestOptions)
-        .then(response => response.json())
-        .then(result => {
-            console.log(result);
-            if (result.access_token) {
-                localStorage.setItem("token", result.access_token);
-                navigate("/NombreInicio");
-            } else {
-                store.message = result.message;
-                navigate("/Registro");
+      
+    
+    fetch("https://3001-s3rtr3s-petsfriends-2dnyu2a1tus.ws-eu87.gitpod.io/api/clients", requestOptions)
+        .then(response => 
+          {
+            if (response.status===200) {
+            return response.json()}else{
+              alert("Ha ocurrido un error")
             }})
-        .catch(error => console.log('error', error));
-  
+
+        .then(result => {
+          console.log(result);
+          if (response.status===200) {
+            navigate("/iniciosesion");}
+        })
+
+        .catch(error => alert("Ha ocurrido un error", error));
+      }
+
+
   return (
     <div className="mt-5">
       <div className="card-3d-wrap mx-auto">
@@ -92,64 +114,36 @@ export const Registro = () => {
                   />
 
                 <div className="desplegable">
-                  <select>
-                    <option>Selecciona una opción</option>
-                    <option value="43.37012643,-8.39114853">La Coruña</option>
-                    <option value="38.4786378049,-0.568699068376">Alicante</option>
-                    <option value="38.8254086192, -1.98037326935">Albacete</option>
-                    <option value="37.1960852121, -2.3448128003">Almería</option>
-                    <option value="42.8351264353, -2.72060346921">Álava</option>
-                    <option value="43.292357861, -5.99350932547">Asturias</option>
-                    <option value="40.5710367492, -4.94553505619">Ávila</option>
-                    <option value="38.7097707381, -6.14158521981">Badajoz</option>
-                    <option value="41.7310008895, 1.98405401772">Barcelona</option>
-                    <option value="43.2376797057, -2.85260007926">Vizcaya</option>
-                    <option value="42.3687127267, -3.58574245567">Burgos</option>
-                    <option value="39.7118899607, -6.16082194997">Cáceres</option>
-                    <option value="36.5538729195, -5.7604183752">Cádiz</option>
-                    <option value="43.1975220484, -4.03002122038">Cantabria</option>
-                    <option value="40.2413705852, -0.146777086937">Castellón</option>
-                    <option value="35.8934069863, -5.34342403891">Ceuta</option>
-                    <option value="38.9256128254, -3.82809764894">Ciudad Real</option>
-                    <option value="37.9926944409, -4.80926161095">Córdoba</option>
-                    <option value="39.8960496846, -2.19567153274">Cuenca</option>
-                    <option value="43.1437759117, -2.19417845709">Guipúzcoa</option>
-                    <option value="42.1280117119, 2.6735559327">Gerona</option>
-                    <option value="37.3125169672, -3.26788107732">Granada</option>
-                    <option value="40.8134495654, -2.62368878371">Guadalajara</option>
-                    <option value="37.5771794021, -6.82930221031">Huelva</option>
-                    <option value="42.2030557371, -0.0728865943582">Huesca</option>
-                    <option value="39.5751889864, 2.91229172079">Islas Baleares</option>
-                    <option value="38.0165122783, -3.44169215171">Jaén</option>
-                    <option value="42.2748706958, -2.5170441194">La Rioja</option>
-                    <option value="28.3624928216, -14.5509933924">Las Palmas</option>
-                    <option value="42.6199552439, -5.83988102629">León</option>
-                    <option value="42.0439686698, 1.04798206104">Lleida</option>
-                    <option value="43.011764, -7.44638404764">Lugo</option>
-                    <option value="40.4950873744, -3.71704619215">Madrid</option>
-                    <option value="36.8138591651, -4.72586195603">Málaga</option>
-                    <option value="35.2908279949, -2.95053552337">Melilla</option>
-                    <option value="	38.0023681653, -1.48575629332">Murcia</option>
-                    <option value="42.6672011509, -1.64611414443">Navarra</option>
-                    <option value="42.1964503002, -7.59259790937">Orense</option>
-                    <option value="42.3718338546, -4.53585717538">Palencia</option>
-                    <option value="42.435764706, -8.46106294738">Pontevedra</option>
-                    <option value="40.8049892162, -6.06541224773">Salamanca</option>
-                    <option value="28.3125567678, -17.017856743">Santa Cruz de Tenerife</option>
-                    <option value="41.1710254065, -4.05415057783">Segovia</option>
-                    <option value="37.4356699135, -5.68277303032">Sevilla</option>
-                    <option value="41.6207742504, -2.58874304739">Soria</option>
-                    <option value="41.0876143957, 0.818127863314">Tarragona</option>
-                    <option value="40.6612619615, -0.815532258446">Teruel</option>
-                    <option value="39.7937341614, -4.14815562595">Toledo</option>
-                    <option value="39.3702562375, -0.800789615081">Valencia</option>
-                    <option value="41.6341260695, -4.84719141141">Valladolid</option>
-                    <option value="41.7271743961, -5.98053925522">Zamora</option>
-                    <option value="41.6203648019, -1.06449678144">Zaragoza</option>
-                  </select>
+               
+                <select id="provincia" name="provincia"
+                 onChange={(event) => setCiudades(event.target)}>
+                  <option value="">-- Selecciona una provincia --</option>
+                  <option value="Álava" data-latitud="42.847831" data-longitud="-2.672338">Álava</option>
+                  <option value="Albacete" data-latitud="38.997777" data-longitud="-1.860737">Albacete</option>
+                  <option value="Alicante" data-latitud="38.345487" data-longitud="-0.483166">Alicante</option>
+                  <option value="Almería" data-latitud="36.834047" data-longitud="-2.463713">Almería</option>
+                  <option value="Asturias" data-latitud="43.361914" data-longitud="-5.849389">Asturias</option>
+                  <option value="Ávila" data-latitud="40.656265" data-longitud="-4.700299">Ávila</option>
+                  <option value="Badajoz" data-latitud="38.879449" data-longitud="-6.970657">Badajoz</option>
+                  <option value="Barcelona" data-latitud="41.394768" data-longitud="2.078727">Barcelona</option>
+                  <option value="Burgos" data-latitud="42.340873" data-longitud="-3.699731">Burgos</option>
+                  <option value="Cáceres" data-latitud="39.476048" data-longitud="-6.372197">Cáceres</option>
+                  <option value="Cádiz" data-latitud="36.524905" data-longitud="-6.288858">Cádiz</option>
+                  <option value="Cantabria" data-latitud="43.182839" data-longitud="-3.987842">Cantabria</option>
+                  <option value="Castellón" data-latitud="39.986068" data-longitud="-0.037647">Castellón</option>
+                  <option value="Ciudad Real" data-latitud="38.986545" data-longitud="-3.929977">Ciudad Real</option>
+                  <option value="Córdoba" data-latitud="37.891871" data-longitud="-4.819501">Córdoba</option>
+                  <option value="Cuenca" data-latitud="40.071268" data-longitud="-2.134134">Cuenca</option>
+                  <option value="Girona" data-latitud="41.981468" data-longitud="2.823611">Girona</option>
+                  <option value="Granada" data-latitud="37.177336" data-longitud="-3.598557">Granada</option>
+                  <option value="Guadalajara" data-latitud="40.629396" data-longitud="-3.166228">Guadalajara</option>
+                  <option value="Guipúzcoa" data-latitud="43.158961" data-longitud="-2.330748">Guipúzcoa</option>
+
+                </select>
+
                 </div>
 
-                <div className="btn btn-dark">Regístrate</div>
+                <div className="btn btn-dark" onClick={registrar}>Regístrate</div>
             </div></div>
           </div>
           <p className="text-center">
