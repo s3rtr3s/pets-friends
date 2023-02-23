@@ -2,8 +2,7 @@ import React from "react";
 
 import { NombreInicio } from "./component/NombreInicio/NombreInicio";
 import { SobrePetFriends } from "./component/SobrePetFiends/SobrePetFriends";
-
-import { Services } from "./component/Services";
+import { Services } from "./component/Servicios/Services";
 
 export const Home = () => {
   return (

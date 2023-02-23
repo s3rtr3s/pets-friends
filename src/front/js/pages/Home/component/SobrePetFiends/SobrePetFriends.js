@@ -8,18 +8,14 @@ import hueso from "../../../../../img/hueso.png";
 export const SobrePetFriends = () => {
   return (
     <div className="SobrePetFriends" id="sobrePetFriends">
-      <img src={pata} alt="pata" id="pata" />
-      <img src={pata} alt="pata" id="pataUno" />
-      <img src={pata} alt="pata" id="pataDos" />
-      <img src={pelota} alt="pelota" id="pelota" />
-      <img src={pelota} alt="pelota" id="pelotaDos" />
-      <img src={hueso} alt="hueso" id="hueso" />
-      <p id="titulo">Sobre Pet Friends</p>
-      <div>
-        <img
-          className="heroImg"
-          src="https://image.europafm.com/clipping/cmsimages01/2021/10/17/062EC2FA-A697-438D-A069-C2D152AB7A29/98.jpg?crop=1920,1080,x0,y102&width=1900&height=1069&optimize=high&format=webply"
-        />
+      <img className="heroImg" src={pata} alt="pata" id="pata" />
+      <img className="heroImg" src={pata} alt="pata" id="pataUno" />
+      <img className="heroImg" src={pata} alt="pata" id="pataDos" />
+      <img className="heroImg" src={pelota} alt="pelota" id="pelota" />
+      <img className="heroImg" src={pelota} alt="pelota" id="pelotaDos" />
+      <img className="heroImg" src={hueso} alt="hueso" id="hueso" />
+      <p id="titulo" className="">Sobre Pet Friends</p>
+      <div className="d-flex align-items-center justify-content-evenly">
         <p id="texto">
           <span>
             ¿Necesitas una persona responsable y cuidadosa para cuidar de tus
@@ -37,6 +33,10 @@ export const SobrePetFriends = () => {
             especializada, te ofrecemos tranquilidad.
           </span>
         </p>
+        <img
+          className="heroImg"
+          src="https://image.europafm.com/clipping/cmsimages01/2021/10/17/062EC2FA-A697-438D-A069-C2D152AB7A29/98.jpg?crop=1920,1080,x0,y102&width=1900&height=1069&optimize=high&format=webply"
+        />
       </div>
     </div>
   );

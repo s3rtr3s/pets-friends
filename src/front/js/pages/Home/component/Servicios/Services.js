@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./services.module.css";
 
 const servicesList = [
   {
@@ -37,10 +36,10 @@ export const Services = () => {
   };
 
   return (
-    <div className="container mt-4" id="services">
+    <div className="container mt-4">
       {servicesList.map((service, i) => (
         <div key={i} className="col d-flex justify-content-center">
-          <div className={`${"card mb-3 bg-white"} ${styles.cardBody}`}>
+          <div className="card mb-3 bg-white">
             <div className="row g-0">
               <div className="col-md-8">
                 <img
@@ -55,8 +54,7 @@ export const Services = () => {
                   <p className="card-text">{service.description}</p>
                   <p>{service.duration}</p>
                   <a
-                    className={`${"btn btn-dark"} ${styles.button}`}
-                    href="#"
+                    className="btn btn-dark"
                     role="button"
                     onClick={handleClick}
                   >

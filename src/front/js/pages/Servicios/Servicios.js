@@ -11,6 +11,39 @@ const listaServicios = [
     description: "Paseo de una hora",
     carer_id: 1,
   },
+  {
+    id: 2,
+    img: "https://images.unsplash.com/photo-1567644495368-82cb64d087f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+    title: "Energia por una hora",
+    price: 15,
+    description: "Paseo de una hora",
+    carer_id: 1,
+  },
+  {
+    id: 3,
+    img: "https://images.unsplash.com/photo-1567644495368-82cb64d087f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+    title: "Energia por una hora",
+    price: 15,
+    description: "Paseo de una hora",
+    carer_id: 1,
+  },
+  {
+    id: 4,
+    img: "https://images.unsplash.com/photo-1567644495368-82cb64d087f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+    title: "Energia por una hora",
+    price: 15,
+    description: "Paseo de una hora",
+    carer_id: 1,
+  },
+  {
+    id: 5,
+    img: "https://images.unsplash.com/photo-1567644495368-82cb64d087f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+    title: "Energia por una hora",
+    price: 15,
+    description: "Paseo de una hora",
+    carer_id: 1,
+  },
+
 ];
 
 export const Servicios = () => {
