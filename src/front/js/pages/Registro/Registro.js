@@ -48,19 +48,13 @@ export const Registro = () => {
 
       
     
-    fetch("https://3001-s3rtr3s-petsfriends-2dnyu2a1tus.ws-eu87.gitpod.io/api/clients", requestOptions)
+    fetch("https://3001-s3rtr3s-petsfriends-2sttree32r9.ws-eu87.gitpod.io/api/clients", requestOptions)
         .then(response => 
           {
-            if (response.status===200) {
+            if (response.status===200) {navigate("/iniciosesion");
             return response.json()}else{
               alert("Ha ocurrido un error")
             }})
-
-        .then(result => {
-          console.log(result);
-          if (response.status===200) {
-            navigate("/iniciosesion");}
-        })
 
         .catch(error => alert("Ha ocurrido un error", error));
       }
