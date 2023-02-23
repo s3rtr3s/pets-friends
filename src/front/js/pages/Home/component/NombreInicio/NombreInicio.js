@@ -13,7 +13,7 @@ export const NombreInicio = () => {
             <p>Pet Friends</p>
             <h5>Amigos de tus mascotas</h5>
             <div className="col-sm-12">
-              <div className="btn btn-dark" id="boton-pasear">¡Vamos a pasear!</div>
+              <div className="btn btn-dark" id="boton-pasear"><a href="#servicios">¡Vamos a pasear!</a></div>
             </div>
             
         </div>

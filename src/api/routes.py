@@ -57,20 +57,28 @@ def get_client(client_id):
 
 @api.route('/clients', methods=['POST'])
 def register_client():
-    request_body = request.get_json()
-    client = Clients(roles=request_body['roles'],
-                     name=request_body['name'],
-                     surname=request_body['surname'],
-                     email=request_body['email'],
-                     password=request_body['password'],
-                     avatar=request_body['avatar'],
-                     description=request_body['description'],
-                     city=request_body['city'],
-                     latitude=request_body['latitude'],
-                     longitude=request_body['longitude'])
-    db.session.add(client)
-    db.session.commit()
-    return jsonify(request_body), 200
+    try:
+        request_body = request.get_json()
+        client = Clients(
+                        name=request_body['name'],
+                        surname=request_body['surname'],
+                        email=request_body['email'],
+                        password=request_body['password'],
+                        city=request_body['ciudad'],
+                        latitude=request_body['latitude'],
+                        longitude=request_body['longitude'])
+    
+
+        db.session.add(client)
+        db.session.commit()
+        return jsonify("usuario creado"), 200
+    
+    except Exception as e:
+
+        print(e)
+        return jsonify("error"), 500
+
+    
 
 
 @api.route('/clients/<int:client_id>', methods=['DELETE'])
