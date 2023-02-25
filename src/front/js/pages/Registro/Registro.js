@@ -250,7 +250,7 @@ export const Registro = () => {
                 </select>
               </div>
 
-              <div className="btn btn-dark" onClick={registrar}>
+              <div className="btn btn-dark rounded-pill px-3 text-white" onClick={registrar}>
                 Regístrate
               </div>
             </div>

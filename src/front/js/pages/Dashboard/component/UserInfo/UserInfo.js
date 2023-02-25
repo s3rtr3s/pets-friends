@@ -14,8 +14,8 @@ export const UserInfo = () => {
   };
 
   useEffect(() => {
-    actions.setClientId();
-    getClientInfo(store.clientId);
+    actions.setClientInfo();
+    getClientInfo(store.clientInfo.id);
   }, []);
 
   return (
@@ -33,7 +33,7 @@ export const UserInfo = () => {
         edit profile
       </a>
       <a className="btn btn-danger text-white rounded-pill px-3">log out</a>
-      <UserInfoModal />
+      {/* <UserInfoModal /> */}
     </div>
   );
 };
