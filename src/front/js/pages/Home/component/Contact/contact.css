@@ -1,0 +1,25 @@
+#contactoId{
+    /*font-family: 'Amatic SC', cursive;*/
+    background-color: #F4ECE1;
+    width: 91%;
+    margin:auto; /*Centramos cuadro*/
+    margin-top: 1%;
+    margin-bottom: 3%;
+    text-align:center;
+    
+}
+
+#letreroPetFriends{ 
+    margin:0 auto;
+}
+#cuadroForm{  
+    background-color: rgb(235, 192, 157);
+    border-radius: 10px;
+    display:flex;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+#imagenGato {
+    margin: 0 auto;
+  }
