@@ -193,7 +193,7 @@ def update_pet(pet_id):
 @api.route('/services_by_carer/<int:carer_id>', methods=['GET'])
 def get_services_by_carer(carer_id):
     services = Services.query.filter(Services.carer_id == carer_id)
-    results = [services.serialize() for services in servicess]
+    results = [service.serialize() for service in services]
     response_body = {'message': 'OK',
                      'total_records': len(results),
                      'results': results}
@@ -334,6 +334,17 @@ def update_contract(contract_id):
 
 
 # IMAGES
+
+
+@api.route('/gallery/<int:client_id>', methods=['GET'])
+def get_client_gallery(client_id):
+    gallery = Images.query.filter(Images.client_id == client_id)
+    results = [image.serialize() for image in gallery]
+    response_body = {'message': 'OK',
+                     'total_records': len(results),
+                     'results': results}
+    return jsonify(response_body), 200
+
 
 
 @api.route('/upload', methods=['POST'])
