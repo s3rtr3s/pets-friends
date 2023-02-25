@@ -48,7 +48,7 @@ export const Registro = () => {
 
       
     
-    fetch("https://3001-s3rtr3s-petsfriends-2sttree32r9.ws-eu87.gitpod.io/api/clients", requestOptions)
+    fetch("https://3001-s3rtr3s-petsfriends-sgmotwrxid7.ws-eu88.gitpod.io/api/clients", requestOptions)
         .then(response => 
           {
             if (response.status===200) {navigate("/iniciosesion");

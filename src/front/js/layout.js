@@ -5,6 +5,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { Registro } from "./pages/Registro/Registro";
 import { InicioSesion } from "./pages/InicioSesion/InicioSesion";
 import { Servicios } from "./pages/Servicios/Servicios";
+import { Owner } from "./pages/Perfil/Owner/Owner";
 
 import injectContext from "./store/appContext";
 
@@ -30,6 +31,7 @@ const Layout = () => {
             <Route element={<Registro />} path="/registro" />
             <Route element={<InicioSesion />} path="/iniciosesion" />
             <Route element={<Servicios />} path="/servicios" />
+            <Route element={<Owner />} path="/owner" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
         </ScrollToTop>
