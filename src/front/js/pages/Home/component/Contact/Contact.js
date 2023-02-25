@@ -16,7 +16,7 @@ export const Contact = () => {
 						<h2>PET FRIENDS</h2>
              			<p>info@petfriends.com</p>
        				</div>
-       				<div className="col-5 py-2">
+       				<div className="col-5 py-5">
                        <FormContact />
         			</div>
 				</div>
