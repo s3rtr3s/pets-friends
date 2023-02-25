@@ -66,9 +66,9 @@ export const Navbar = () => {
                 </li>
 
                 <li>
-                  <a className="dropdown-item" href="#">
+                  <Link className="dropdown-item" to="/owner">
                     Mi perfil
-                  </a>
+                    </Link>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
