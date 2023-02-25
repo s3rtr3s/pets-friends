@@ -12,30 +12,33 @@ export const InicioSesion = () => {
   const navigate = useNavigate();
 
   const login = () => {
-    console.log(email, password)
-
-    var myHeaders = new Headers();
+    const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    var raw = JSON.stringify({
+    const raw = JSON.stringify({
       "email": email,
       "password": password,
     });
 
-    var requestOptions = {
+    const requestOptions = {
       method: 'POST',
       headers: myHeaders,
       body: raw
     };
 
-    fetch("https://3001-s3rtr3s-petsfriends-5muz0sjdacq.ws-eu88.gitpod.io/api/login", requestOptions)
+    fetch(`${store.BACKEND_URL}api/login`, requestOptions)
     .then(response => 
       {
         if (response.status===200) {
         return response.json()}else{
           alert("Ha ocurrido un error")
         }})
-    .then(result => console.log(result))
+    .then(result => {
+      console.log(result)
+      localStorage.setItem("client_id", result.client_info.id)
+      actions.setClientId()
+      navigate("/dashboard")
+    })
 
     .catch(error => alert("Ha ocurrido un error", error));
   }
