@@ -54,7 +54,7 @@ export const Services = () => {
                   <p className="card-text">{service.description}</p>
                   <p>{service.duration}</p>
                   <a
-                    className="btn btn-dark"
+                    className="btn btn-dark rounded-pill px-3 text-white"
                     role="button"
                     onClick={handleClick}
                   >

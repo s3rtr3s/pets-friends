@@ -22,6 +22,7 @@ class Clients(db.Model):
 
     def serialize(self):
         return {'id': self.id,
+                'roles': self.roles,
                 'name': self.name,
                 'surname': self.surname,
                 'avatar': self.avatar,

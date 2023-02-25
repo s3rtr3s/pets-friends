@@ -35,8 +35,8 @@ export const InicioSesion = () => {
         }})
     .then(result => {
       console.log(result)
-      localStorage.setItem("client_id", result.client_info.id)
-      actions.setClientId()
+      localStorage.setItem("clientInfo", JSON.stringify(result.client_info))
+      actions.setClientInfo()
       navigate("/dashboard")
     })
 
@@ -86,7 +86,7 @@ export const InicioSesion = () => {
               </div>
             </div>
             <div className="col-sm-12">
-              <div className="btn btn-dark" onClick={login}>Iniciar sesión</div>
+              <div className="btn btn-dark rounded-pill text-white px-3" onClick={login}>Iniciar sesión</div>
             </div>
           </div>
           <p className="text-center">
