@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { ServicesNav } from "./component/ServicesNav";
 
 import "./servicios.css";
 
@@ -10,6 +11,7 @@ const listaServicios = [
     price: 15,
     description: "Paseo de una hora",
     carer_id: 1,
+    city: "Badajoz",
   },
   {
     id: 2,
@@ -18,6 +20,7 @@ const listaServicios = [
     price: 15,
     description: "Paseo de una hora",
     carer_id: 1,
+    city: "Badajoz",
   },
   {
     id: 3,
@@ -26,6 +29,7 @@ const listaServicios = [
     price: 15,
     description: "Paseo de una hora",
     carer_id: 1,
+    city: "Alicante",
   },
   {
     id: 4,
@@ -34,6 +38,7 @@ const listaServicios = [
     price: 15,
     description: "Paseo de una hora",
     carer_id: 1,
+    city: "Alicante",
   },
   {
     id: 5,
@@ -42,25 +47,41 @@ const listaServicios = [
     price: 15,
     description: "Paseo de una hora",
     carer_id: 1,
+    city: "Alicante",
   },
-
 ];
 
 export const Servicios = () => {
+  const [city, setCity] = useState("");
+  const [servicesList, setServicesList] = useState([]);
+
+  const getServices = async () => {
+    const resp = await fetch("https://3001-s3rtr3s-petsfriends-6e7wbza77zs.ws-eu88.gitpod.io/api/services")
+    const data = await resp.json()
+    console.log(data)
+  };
+
+  useEffect(() => {
+    getServices()
+  },[])
+
   return (
-    <div class="container mt-5 pt-5">
-      <div class="row row-cols-1 row-cols-md-3 g-4">
-        {listaServicios.map((servicio) => (
-          <div key={servicio.id} class="col">
-            <div class="card">
-              <img src={servicio.img} class="card-img-top" alt="..." />
-              <div class="card-body text-center">
-                <div class="d-flex justify-content-between">
-                  <h5 class="card-title ">{servicio.title}</h5>
-                  <span class="text-warning">${servicio.price}</span>
+    <div className="container mt-5 pt-5">
+      <ServicesNav setCity={setCity} />
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        {listaServicios.filter(servicio => servicio.city === city).map((servicio) => (
+          <div key={servicio.id} className="col">
+            <div className="card">
+              <img src={servicio.img} className="card-img-top"/>
+              <div className="card-body text-center">
+                <div className="d-flex justify-content-between">
+                  <h5 className="card-title ">{servicio.title}</h5>
+                  <span className="text-warning">${servicio.price}</span>
                 </div>
-                <p class="card-text">{servicio.description}</p>
-                <button class="btn btn-dark rounded-pill service-button">Contratar</button>
+                <p className="card-text">{servicio.description}</p>
+                <button className="btn btn-dark rounded-pill service-button">
+                  Contratar
+                </button>
               </div>
             </div>
           </div>
