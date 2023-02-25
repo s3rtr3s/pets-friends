@@ -1,0 +1,10 @@
+.pet-service-card {
+  background-color: #faece1;
+  border-radius: 1vh;
+}
+
+
+.pet-service-card .img-container {
+    width: 110px;
+    height: 110px;
+}
