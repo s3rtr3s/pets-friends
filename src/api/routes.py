@@ -190,6 +190,16 @@ def update_pet(pet_id):
 # SERVICES
 
 
+@api.route('/services_by_carer/<int:carer_id>', methods=['GET'])
+def get_services_by_carer(carer_id):
+    services = Services.query.filter(Services.carer_id == carer_id)
+    results = [services.serialize() for services in servicess]
+    response_body = {'message': 'OK',
+                     'total_records': len(results),
+                     'results': results}
+    return jsonify(response_body), 200
+
+
 @api.route('/services', methods=['GET'])
 def get_services():
     services = Services.query.all()

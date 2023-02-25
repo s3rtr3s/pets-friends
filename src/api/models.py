@@ -28,7 +28,8 @@ class Clients(db.Model):
                 'city': self.city,
                 'description': self.description,
                 'latitude': self.latitude,
-                'longitude': self.longitude}
+                'longitude': self.longitude,
+                'email': self.email}
 
 
 class Pets(db.Model):
