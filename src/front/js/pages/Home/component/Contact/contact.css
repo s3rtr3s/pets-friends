@@ -1,14 +1,12 @@
 #contactoId{
-    /*font-family: 'Amatic SC', cursive;*/
     background-color: #F4ECE1;
-    width: 91%;
+    width: 90%;
     margin:auto; /*Centramos cuadro*/
     margin-top: 1%;
     margin-bottom: 3%;
     text-align:center;
     
 }
-
 #letreroPetFriends{ 
     margin:0 auto;
 }
