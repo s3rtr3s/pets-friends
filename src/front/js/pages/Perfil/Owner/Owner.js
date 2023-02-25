@@ -4,27 +4,28 @@ import styles from "./owner.css";
 
 export const Owner = () => {
     const [owner, setOwner ] = useState("");
-    const [pets, setPets ] = useState("");
+    const [pets, setPets ] = useState([]);
 
     const getOwner = async () => {
-        const resp = await fetch ("https://3001-s3rtr3s-petsfriends-sgmotwrxid7.ws-eu88.gitpod.io/api/clients/2")
+        const resp = await fetch ("https://3001-s3rtr3s-petsfriends-5muz0sjdacq.ws-eu88.gitpod.io/api/clients/1")
         const data = await resp.json()
         setOwner(data.result)
     }
 
+    const getPets = async () => {
+        const resp = await fetch ("https://3001-s3rtr3s-petsfriends-5muz0sjdacq.ws-eu88.gitpod.io/api/pets_by_owner/1")
+        const data = await resp.json()
+        setPets(data.results)
+    }
+
     useEffect(() => {
+        getPets()
         getOwner()
     },[]);
 
-    // const getPets = async () => {
-    //     const resp = await fetch ("https://3001-s3rtr3s-petsfriends-sgmotwrxid7.ws-eu88.gitpod.io/api/pets/2")
-    //     const data = await resp.json()
-    //     setPets(data)
-    // }
 
-    // useEffect(() => {
-    //     getPets()
-    // },[]);
+
+    // FALTA FETCH DE IMAGENES
 
     return(
         <div className="container emp-profile">
@@ -77,22 +78,17 @@ export const Owner = () => {
                         <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <div className="row row-cols-1 row-cols-md-3 g-4">
                                 <div className="d-flex justify-content-start" id="cardspets"> 
-                                    <div className="col">   
+                                    {pets?.map(pet =>(
+                                        <div className="col">   
                                         <div className="ica">
-                                            <img src="https://images.unsplash.com/photo-1551887373-3c5bd224f6e2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHBlcnJvJTIwZ29sZGVufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" className="card-img-top"></img>
+                                            <img src={pet.image} className="card-img-top"></img>
                                             <div className="card-body">
-                                                <p className="card-text">Este es Hero, juguetón, energético y cariñoso. Su pelota y él no se separan.</p>
+                                                <p className="card-text">{pet.name}, {pet.description}</p>
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col">
-                                        <div className="ica">
-                                            <img src="https://images.unsplash.com/photo-1608228028188-acdf9ebd3044?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8Y2hpaHVhaHVhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" className="card-img-top"></img>
-                                            <div className="card-body">
-                                                <p className="card-text">Este es Whisky, al principio es tímido pero tarda poco en pedirte mimos.</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    ))
+                                    }
                                 </div>
                             </div>
                         </div>
