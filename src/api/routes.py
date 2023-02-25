@@ -115,6 +115,16 @@ def update_client(client_id):
 # PETS
 
 
+@api.route('/pets_by_owner/<int:owner_id>', methods=['GET'])
+def get_pets_by_owner(owner_id):
+    pets = Pets.query.filter(Pets.owner_id == owner_id)
+    results = [pet.serialize() for pet in pets]
+    response_body = {'message': 'OK',
+                     'total_records': len(results),
+                     'results': results}
+    return jsonify(response_body), 200
+
+
 @api.route('/pets', methods=['GET'])
 def get_pets():
     pets = Pets.query.all()
@@ -178,6 +188,16 @@ def update_pet(pet_id):
 
 
 # SERVICES
+
+
+@api.route('/services_by_carer/<int:carer_id>', methods=['GET'])
+def get_services_by_carer(carer_id):
+    services = Services.query.filter(Services.carer_id == carer_id)
+    results = [services.serialize() for services in servicess]
+    response_body = {'message': 'OK',
+                     'total_records': len(results),
+                     'results': results}
+    return jsonify(response_body), 200
 
 
 @api.route('/services', methods=['GET'])
