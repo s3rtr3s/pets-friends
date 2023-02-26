@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../../../../../store/appContext";
 
-export const PetForm = ({ handleOpenModal, getItems }) => {
+export const PetForm = ({ handleOpenModal }) => {
   const { store } = useContext(Context);
   const [petInfo, setPetInfo] = useState({
     name: "",
@@ -26,7 +26,6 @@ export const PetForm = ({ handleOpenModal, getItems }) => {
   const handleClick = () => {
     addPet();
     handleOpenModal();
-    getItems();
   };
 
   return (
