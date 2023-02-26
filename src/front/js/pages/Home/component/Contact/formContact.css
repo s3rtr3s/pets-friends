@@ -1,2 +1,7 @@
 #formulario{
-font-weight: bold;}
+    font-weight: bold;
+}
+
+#botonForm:focus, #botonForm:hover {
+    color: #f4a12e;
+}

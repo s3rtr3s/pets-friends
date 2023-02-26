@@ -16,7 +16,7 @@ export const FormContact = () => {
                 <textarea className="form-control" id="comment" name="text" placeholder="Tus comentarios aqui!!!"></textarea>      
             </div>
             <div className="col d-md-flex justify-content-around">
-                <button type="submit" className="btn btn-dark btn-lg me-md-2">Enviar...</button>
+                <button type="submit" className="btn btn-dark btn-lg me-md-2" id="botonForm">Enviar...</button>
                 <h6 className="pt-3">Gracias por tu mensaje!!!</h6>
             </div>
         </div>
