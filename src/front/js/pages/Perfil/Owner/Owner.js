@@ -5,6 +5,8 @@ import styles from "./owner.css";
 export const Owner = () => {
     const [owner, setOwner ] = useState("");
     const [pets, setPets ] = useState([]);
+    const [image, setImage ] = useState([]);
+
 
     const getOwner = async () => {
         const resp = await fetch ("https://3001-s3rtr3s-petsfriends-5muz0sjdacq.ws-eu88.gitpod.io/api/clients/1")
@@ -18,14 +20,18 @@ export const Owner = () => {
         setPets(data.results)
     }
 
+    const getImage = async () => {
+        const resp = await fetch ("https://3001-s3rtr3s-petsfriends-5muz0sjdacq.ws-eu88.gitpod.io/api/gallery/1")
+        const data = await resp.json()
+        setImage(data.results)
+    }
+
     useEffect(() => {
         getPets()
         getOwner()
+        getImage()
     },[]);
 
-
-
-    // FALTA FETCH DE IMAGENES
 
     return(
         <div className="container emp-profile">
@@ -94,19 +100,14 @@ export const Owner = () => {
                         </div>
                         <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                             <div id="carouselExampleAutoplaying" className="carousel slide" data-bs-ride="carousel">
+                                
                                 <div className="carousel-inner">
+                                    {image?.map(image =>(
                                     <div className="carousel-item active">
-                                    <img src="https://images.unsplash.com/photo-1494205577727-d32e58564756?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8Y2hpaHVhaHVhfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" className="d-block w-80" alt="..."></img>
+                                        <img src={image.url} className="d-block w-80" alt="..."/>
                                     </div>
-                                    <div className="carousel-item">
-                                    <img src="https://images.unsplash.com/photo-1658416726035-91f5287f9b80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjN8fHBlcnJvJTIwZ29sZGVufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" className="d-block w-80" alt="..."></img>
-                                    </div>
-                                    <div className="carousel-item">
-                                    <img src="https://images.unsplash.com/photo-1609510471617-b2e55f24d821?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NjV8fHBlcnJvJTIwZ29sZGVufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" className="d-block w-80" alt="..."></img>
-                                    </div>
-                                    <div className="carousel-item">
-                                    <img src="https://images.unsplash.com/photo-1514134136604-e14631dd3477?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGNoaWh1YWh1YXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" className="d-block w-80" alt="..."></img>
-                                    </div>
+                                    ))
+                                    }  
                                 </div>
                                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
                                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
