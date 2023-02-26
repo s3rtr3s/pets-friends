@@ -14,8 +14,8 @@ export const UserInfo = () => {
   };
 
   useEffect(() => {
-    actions.setClientId();
-    getClientInfo(store.clientId);
+    actions.setClientInfo();
+    getClientInfo(store.clientInfo.id);
   }, []);
 
   const vacio={

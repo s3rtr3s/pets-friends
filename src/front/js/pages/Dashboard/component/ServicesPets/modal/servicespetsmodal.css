@@ -1,0 +1,18 @@
+.close-button:hover {
+  cursor: pointer;
+}
+
+.service-pet-form {
+  background-color: #f4ece1;
+  border-radius: 1vh;
+}
+
+.service-pet-form input {
+  border: none;
+  background: transparent;
+  border-bottom: 1px solid;
+}
+
+.service-pet-form input:focus {
+  outline: none;
+}

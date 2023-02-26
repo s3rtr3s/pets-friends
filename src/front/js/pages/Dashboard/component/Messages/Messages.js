@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import "./messages.css";
+import { MessagesModal } from "./modal/MessagesModal";
 
 const messagesList = [
   {
@@ -33,6 +34,11 @@ const messagesList = [
 ];
 
 export const Messages = () => {
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpenModal = () => {
+    setOpenModal(!openModal);
+  };
+
   return (
     <div className="dashboard-box container mt-4 mb-4 p-3 d-flex flex-column align-items-center bg-white">
       <p className="fs-4">Messages</p>
@@ -43,13 +49,17 @@ export const Messages = () => {
         </div>
         <div className="messages p-3 my-3 w-100">
           {messagesList.map((message) => (
-            <div key={message.id} className="d-flex gap-3 border-bottom">
-              <p className="fs-5">{message.transmitter_id}</p>
-              <p className="text-muted">{message.date}</p>
+            <div key={message.id} className="d-flex gap-3 px-4 border-bottom align-items-center justify-content-between">
+              <div className="d-flex h-100 align-items-center gap-3">
+                <p className="fs-5">{message.transmitter_id}</p>
+                <p className="text-muted">{message.date}</p>
+              </div>
+              <a className="btn btn-dark text-white rounded-pill" onClick={handleOpenModal}>abrir</a>
+              {openModal && <MessagesModal content={message.content} handleOpenModal={handleOpenModal} />}
             </div>
           ))}
         </div>
-      </div>
+      </div>  
     </div>
   );
 };
