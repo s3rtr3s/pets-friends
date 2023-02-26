@@ -64,22 +64,6 @@ export const Navbar = () => {
                     Registrarme
                   </Link>
                 </li>
-
-                <li>
-                  <Link className="dropdown-item" to="/owner">
-                    Mi perfil
-                    </Link>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Mis revervas
-                  </a>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Mensajes
-                  </a>
-                </li>
                 <li>
                   <a className="dropdown-item" href="#">
                     Cerrar sesión
