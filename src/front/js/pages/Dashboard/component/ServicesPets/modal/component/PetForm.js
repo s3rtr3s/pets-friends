@@ -30,7 +30,7 @@ export const PetForm = ({ handleOpenModal, getItems }) => {
   };
 
   return (
-    <form className="service-pet-form gap-3 p-3 w-100 d-flex flex-column align-items-center">
+    <form className="dashboard-form gap-3 p-3 w-100 d-flex flex-column align-items-center">
       <label className="fs-5 fw-bold">Nombre</label>
       <input
         className="col-8"
