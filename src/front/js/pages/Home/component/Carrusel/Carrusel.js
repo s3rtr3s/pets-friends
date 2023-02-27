@@ -35,46 +35,37 @@ export const Carrusel = () =>
     }
   ];
   
+  
   return (
-    <div  id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
-        <div className="carousel-inner col-11" id="carrouselId">
+    <div  id="carouselExampleControls" className="carousel-slide" data-bs-ride="carousel">
+        <div className="align-items-center carousel-inner col-12 justify-content-center" id="carrouselId">
+
             <div className="carousel-item active" data-bs-interval="3000">
-                <img src="https://www.vetcomunicaciones.com.ar/uploadsfotos/animales_domesticos.jpg" 
-                className="d-block w-100"  height="500" alt="..."/>
-                <div className="carousel-caption d-none d-md-block">
-                    <h4>"Organizamos reuniones y pijamadas nocturnas"</h4>
-                </div>
+                <img src="https://images.unsplash.com/photo-1519052537078-e6302a4968d4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                className="d-block w-100"   alt="..."/>
+            
             </div>
             <div className="carousel-item" data-bs-interval="3000">
-                <img src="https://cdn.pixabay.com/photo/2019/11/07/08/40/puppy-4608266_1280.jpg" 
-                className="d-block w-100" height="500" alt="..."/>
-                <div class="carousel-caption d-none d-md-block">
-                    <h4>"Programa con el cuidador la duración del mejor momento del dia para tu mascota"</h4>
-                </div>
+                <img src="https://images.unsplash.com/photo-1628071554664-0b8942cbd11c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                className="d-block w-100"  alt="..."/>
+                
             </div>
             <div className="carousel-item" data-bs-interval="3000">
-                <img src="https://www.dogalize.com/wp-content/uploads/2017/06/rabbit-1422882_640.jpg" 
-                className="d-block w-100" height="500" alt="..."/>
-                <div class="carousel-caption d-none d-md-block">
-                    <h4>"Enseña a tu macota con ayuda de un cuidador especializado"</h4>
-                </div>
+                <img src="https://images.unsplash.com/photo-1589130674510-6dadfc8a1266?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" 
+                className="d-block w-100"  alt="..."/>
+                
             </div>
             <div className="carousel-item" data-bs-interval="3000">
-                <img src="//cdn.pixabay.com/photo/2021/01/25/01/35/flying-dog-5946987_1280.jpg" 
-                className="d-block w-100" height="500" alt="..."/>
-                <div class="carousel-caption d-none d-md-block">
-                    <h4>"Encuentra entre nuestros cuidadores el mejor servicio especializado para tu mascota"</h4>
-                </div>
+                <img src="https://images.unsplash.com/photo-1654338771169-5ba24d6db85e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80" 
+                className="d-block w-100"  alt="..."/>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+        
+        <div className="textoC"><h2>Galería de Pet Friends</h2></div><br/>
+        <div className="textDescripcionCarrusel">
+          <p>¿Tienes un gato, un pájaro, un conejo o un hamster que necesita ser cuidado? No hay ningún problema, en Pet Friends podrás encontrar cuidadores para todas tus mascotas.</p>
+        </div>
+        
     </div>
   );
 }

@@ -2,9 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&family=Comfortaa:wght@300&display=swap");
 
 .SobrePetFriends {
-  margin: 50px;
+  margin: 70px;
   background: white;
   padding: 100px;
+  border-radius: 5px;
 }
 
 #pata {
@@ -84,6 +85,6 @@
 
 #titulo {
   font-family: "Amatic SC";
-  margin: 20px;
-  font-size: 60px;
+  font-size: 45px;
+  margin-left: 45px;
 }

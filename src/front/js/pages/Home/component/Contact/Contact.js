@@ -5,7 +5,8 @@ import "./contact.css";
 export const Contact = () => {
 	return (
     		<div className="row" id="contactoId">
-				<div id="cuadroForm">
+
+				<div className="px-5" id="cuadroForm">
                     <div className="col-3 p-5" id="imagenGato">
 						<img src=
                         "https://cdn.pixabay.com/photo/2016/03/31/19/23/cat-1294968_1280.png" 
@@ -15,6 +16,7 @@ export const Contact = () => {
 						<h2>CONTACTA CON </h2>
 						<h2>PET FRIENDS</h2>
              			<p>info@petfriends.com</p>
+				
        				</div>
        				<div className="col-5 py-5">
                        <FormContact />

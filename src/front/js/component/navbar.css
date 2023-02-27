@@ -1,21 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&family=Comfortaa:wght@300&display=swap');
 
-.container-fluid{
-    background-color:white;
-    width: 100%;
-    display: grid;
-    height: auto;
-    min-height: auto;
-    margin:0px;
-    padding: 20px;
-    list-style: none;
-    font-family: 'Comfortaa';
-    font-size: 14px;
-    justify-items: center;
+
+#navbarPet{
     position:fixed;
     z-index: 100;
-    padding-top: 80px;
+    width:100%;
 }
+
 .navbar-nav a{
     color: rgb(0, 0, 0);
 }
