@@ -249,13 +249,14 @@ export const Registro = () => {
                   </option>
                 </select>
               </div>
-
+              <br/>
               <div className="btn btn-dark rounded-pill px-3 text-white" onClick={registrar}>
                 Regístrate
               </div>
             </div>
           </div>
         </div>
+        <br/>
         <p className="text-center">
           <Link to="/iniciosesion" className={styles.link}>
             ¿Ya tienes una cuenta? Inicia Sesión

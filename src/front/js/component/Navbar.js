@@ -1,10 +1,15 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 import "./navbar.css";
+
+
+
+
 
 export const Navbar = () => {
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary ">
       <div className="container-fluid" id="container">
         <div
           className="collapse navbar-collapse justify-content-center"
@@ -64,16 +69,10 @@ export const Navbar = () => {
                     Registrarme
                   </Link>
                 </li>
-
                 <li>
                   <Link className="dropdown-item" to="/owner">
                     Mi perfil
                     </Link>
-                </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Mis revervas
-                  </a>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">

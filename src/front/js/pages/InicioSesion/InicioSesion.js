@@ -82,6 +82,8 @@ export const InicioSesion = () => {
                     autoComplete="off"
                     onChange={(event) => setPassword(event.target.value)}
                   />
+                  <br/>
+                  <br/>
                 </div>
               </div>
             </div>
@@ -89,15 +91,11 @@ export const InicioSesion = () => {
               <div className="btn btn-dark rounded-pill text-white px-3" onClick={login}>Iniciar sesión</div>
             </div>
           </div>
+          <br/>
           <p className="text-center">
             <Link to="/registro" className={styles.link}>
               ¿No tienes una cuenta? Regístrate
             </Link>
-          </p>
-          <p className="text-center">
-            <a href="#1" className={styles.link2}>
-              Recuperar contraseña
-            </a>
           </p>
         </div>
       </div>
