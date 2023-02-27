@@ -34,20 +34,40 @@ export const ServicesPets = () => {
         {store.clientInfo.roles === "Owner" ? "Mis Mascotas" : "Mis Servicios"}
       </p>
       <div className="w-100">
-        {items.map((item) => (
-          <div
-            key={item.id}
-            className="p-2 d-flex mb-2 pet-service-card col-12"
-          >
-            <div className="img-container mr-2">
-              <img className="img-fluid" src={item.image} />
-            </div>
-            <div>
-              <p className="fs-4">{item.name}</p>
-              <p className="fs-6">{item.description}</p>
-            </div>
-          </div>
-        ))}
+        {store.clientInfo.roles === "Owner"
+          ? items.map((item) => (
+              <div
+                key={item.id}
+                className="p-2 d-flex gap-3 mb-2 pet-service-card"
+              >
+                <div className="img-container mr-2">
+                  <img className="img-fluid" src={item.image} />
+                </div>
+                <div>
+                  <p className="fs-4">{item.name}</p>
+                  <p className="fs-6">{item.description}</p>
+                </div>
+                <i className="fa-solid fa-pen-to-square fs-4 edit-button"></i>
+              </div>
+            ))
+          : items.map((item) => (
+              <div
+                key={item.id}
+                className="p-2 d-flex gap-3 mb-2 pet-service-card"
+              >
+                <div className="img-container mr-2">
+                  <img className="img-fluid" src={item.image} />
+                </div>
+                <div>
+                  <div className="d-flex gap-3">
+                    <p className="fs-4">{item.title}</p>
+                    <p className="fs-4 text-warning">${item.price}</p>
+                  </div>
+                  <p className="fs-6">{item.description}</p>
+                </div>
+                <i className="fa-solid fa-pen-to-square fs-4 edit-button"></i>
+              </div>
+            ))}
         <div className="p-4 d-flex mb-2 pet-service-card col-12 justify-content-center">
           <i
             className="fa-solid fa-circle-plus fs-1 add"
@@ -55,7 +75,12 @@ export const ServicesPets = () => {
           ></i>
         </div>
       </div>
-      {openModal && <ServicesPetsModal getItems={getItems} handleOpenModal={handleOpenModal} />}
+      {openModal && (
+        <ServicesPetsModal
+          getItems={getItems}
+          handleOpenModal={handleOpenModal}
+        />
+      )}
     </div>
   );
 };

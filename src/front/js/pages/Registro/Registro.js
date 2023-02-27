@@ -11,7 +11,10 @@ export const Registro = () => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [ciudades, setCiudades] = useState(null);
-  const [roles, setRoles] = useState(null);
+
+
+  const [roles, setRoles] = useState("");
+
 
   const navigate = useNavigate();
 
@@ -33,7 +36,11 @@ export const Registro = () => {
       ciudad: ciudad,
       longitude: longitude,
       latitude: latitude,
-      roles: roles
+
+    
+
+      roles: roles,
+
     });
 
     const requestOptions = {
@@ -101,6 +108,16 @@ export const Registro = () => {
                 autoComplete="off"
                 onChange={(event) => setPassword(event.target.value)}
               />
+              <div className="desplegable">
+                <select
+                  name="roles"
+                  onChange={(event) => setRoles(event.target.value)}
+                >
+                  <option>-- Selecciona un rol --</option>
+                  <option value="Owner">Dueño de mascota</option>
+                  <option value="Carer">Cuidador</option>
+                </select>
+              </div>
 
               <div className="desplegable">
                 <select
@@ -271,6 +288,17 @@ export const Registro = () => {
                   Regístrate
                 </div>
               </div>
+
+
+
+              <div
+                className="btn btn-dark rounded-pill px-3 text-white"
+                onClick={registrar}
+              >
+                Regístrate
+              </div>
+            </div>
+
           </div>
         </div>
         <br/>

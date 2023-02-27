@@ -10,12 +10,14 @@ import "./navbar.css";
 export const Navbar = () => {
   const { store } = useContext(Context);
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary ">
-      <div className="container-fluid" id="container">
+
+
+    <nav className="navbar navbar-expand-lg bg-body-tertiary bg-primary" id="navbarPet">
+
         <div
           className="collapse navbar-collapse justify-content-center"
-          id="navbarNavDropdown"
-        >
+          id="navbarNavDropdown">
+
           <div className="inicioHome" id="inicioHome">
             <a href="/#inicio" className="navbar-brand">
               Inicio
@@ -69,6 +71,7 @@ export const Navbar = () => {
                     Registrarme
                   </Link>
                 </li>
+
                 {
                   store.clientInfo ? (
                     <>
@@ -90,11 +93,12 @@ export const Navbar = () => {
                     </>
                   ) : null   
                 }
+
               </ul>
             </li>
           </ul>
         </div>
-      </div>
+      
     </nav>
   );
 };
