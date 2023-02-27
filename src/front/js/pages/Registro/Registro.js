@@ -11,6 +11,7 @@ export const Registro = () => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [ciudades, setCiudades] = useState(null);
+  const [roles, setRoles] = useState(null);
 
   const navigate = useNavigate();
 
@@ -32,6 +33,7 @@ export const Registro = () => {
       ciudad: ciudad,
       longitude: longitude,
       latitude: latitude,
+      roles: roles
     });
 
     const requestOptions = {
@@ -248,12 +250,27 @@ export const Registro = () => {
                     Guipúzcoa
                   </option>
                 </select>
+              </div><br/>
+                <div className="d-flex justify-content-start align-items-center">
+                  <div className="form-check col-7">
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={(event) => setRoles(event.target.value)}/>
+                    <label className="form-check-label" for="flexRadioDefault1">
+                      ¿Eres cuidador?
+                    </label>
+                    
+                  </div>
+                  <div class="form-check col-7">
+                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked onChange={(event) => setRoles(event.target.value)}/>
+                    <label className="form-check-label" for="flexRadioDefault2">
+                      ¿Eres dueño?
+                    </label>
+                  </div>
+                </div>
+                <br/>
+                <div className="btn btn-dark rounded-pill px-3 text-white" onClick={registrar}>
+                  Regístrate
+                </div>
               </div>
-              <br/>
-              <div className="btn btn-dark rounded-pill px-3 text-white" onClick={registrar}>
-                Regístrate
-              </div>
-            </div>
           </div>
         </div>
         <br/>
