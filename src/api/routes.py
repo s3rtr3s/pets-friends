@@ -225,6 +225,7 @@ def get_service(service_id):
 def register_service():
     request_body = request.get_json()
     service = Services(title=request_body['title'],
+                       image=request_body['image'],
                        price=request_body['price'],
                        description=request_body['description'],
                        carer_id=request_body['carer_id'])
