@@ -59,7 +59,7 @@ def get_client(client_id):
 def register_client():
     try:
         request_body = request.get_json()
-        client = Clients(
+        client = Clients(roles=request_body['roles'],
                         name=request_body['name'],
                         surname=request_body['surname'],
                         email=request_body['email'],
