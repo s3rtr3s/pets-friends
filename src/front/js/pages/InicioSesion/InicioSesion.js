@@ -45,7 +45,7 @@ export const InicioSesion = () => {
 
 
   return (
-    <div className="text-center mt-5">
+    <div className="text-center">
       <div className="card-3d-wrap mx-auto">
         <div className="card-3d-wrapper">
           <header className={styles.heading}> Iniciar Sesión </header>
@@ -86,10 +86,12 @@ export const InicioSesion = () => {
               </div>
             </div>
             <div className="col-sm-12">
-              <div className="btn btn-dark rounded-pill text-white px-3" onClick={login}>Iniciar sesión</div>
+              <div className="btn btn-dark rounded-pill text-white px-3"
+                              onClick={login}>Iniciar sesión
+              </div>
             </div>
           </div>
-          <p className="text-center">
+          <p className="text-center my-3">
             <Link to="/registro" className={styles.link}>
               ¿No tienes una cuenta? Regístrate
             </Link>
