@@ -37,8 +37,7 @@ export const ServicesPets = () => {
         {items.map((item) => (
           <div
             key={item.id}
-            className="p-2 d-flex mb-2 pet-service-card col-12"
-          >
+            className="p-2 d-flex mb-2 pet-service-card col-12">
             <div className="img-container mr-2">
               <img className="img-fluid" src={item.image} />
             </div>
