@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
+
 const servicesList = [
   {
     title: "Paseo de mediodía",
@@ -37,6 +38,7 @@ export const Services = () => {
 
   return (
     <div className="container mt-4">
+     
       {servicesList.map((service, i) => (
         <div key={i} className="col d-flex justify-content-center">
           <div className="card mb-3 bg-white">
