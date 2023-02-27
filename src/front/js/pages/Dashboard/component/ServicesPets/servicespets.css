@@ -1,6 +1,7 @@
 .pet-service-card {
   background-color: #faece1;
   border-radius: 1vh;
+  position: relative;
 }
 
 .pet-service-card .img-container {
@@ -11,4 +12,21 @@
 .add:hover {
   cursor: pointer;
   opacity: 0.9;
+}
+
+.edit-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 1vh;
+  opacity: 0;
+}
+
+.pet-service-card:hover .edit-button {
+  opacity: 1;
+}
+
+.edit-button:hover {
+  cursor: pointer;
+  opacity: 0.8;
 }
