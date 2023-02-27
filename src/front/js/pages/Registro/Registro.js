@@ -118,7 +118,7 @@ export const Registro = () => {
                   <option value="Carer">Cuidador</option>
                 </select>
               </div>
-
+        
               <div className="desplegable">
                 <select
                   id="provincia"
@@ -268,37 +268,11 @@ export const Registro = () => {
                   </option>
                 </select>
               </div><br/>
-                <div className="d-flex justify-content-start align-items-center">
-                  <div className="form-check col-7">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={(event) => setRoles(event.target.value)}/>
-                    <label className="form-check-label" for="flexRadioDefault1">
-                      ¿Eres cuidador?
-                    </label>
-                    
-                  </div>
-                  <div class="form-check col-7">
-                    <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked onChange={(event) => setRoles(event.target.value)}/>
-                    <label className="form-check-label" for="flexRadioDefault2">
-                      ¿Eres dueño?
-                    </label>
-                  </div>
-                </div>
-                <br/>
                 <div className="btn btn-dark rounded-pill px-3 text-white" onClick={registrar}>
                   Regístrate
                 </div>
               </div>
-
-
-
-              <div
-                className="btn btn-dark rounded-pill px-3 text-white"
-                onClick={registrar}
-              >
-                Regístrate
-              </div>
             </div>
-
           </div>
         </div>
         <br/>
@@ -308,6 +282,6 @@ export const Registro = () => {
           </Link>
         </p>
       </div>
-    </div>
+    
   );
 };
