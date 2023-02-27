@@ -1,53 +1,57 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../../../../../store/appContext";
 
-export const PetForm = ({ handleOpenModal }) => {
+export const ServiceForm = ({ handleOpenModal }) => {
   const { store } = useContext(Context);
-  const [petInfo, setPetInfo] = useState({
-    name: "",
-    image: "",
+  const [serviceInfo, setServiceInfo] = useState({
+    title: "",
+    price: "",
     description: "",
-    owner_id: store.clientInfo.id,
+    carer_id: store.clientInfo.id,
   });
 
-  const addPet = async () => {
+  const addService = async () => {
     const options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(petInfo),
+      body: JSON.stringify(serviceInfo),
     };
-    const resp = await fetch(`${store.BACKEND_URL}api/pets`, options);
+    const resp = await fetch(`${store.BACKEND_URL}api/services`, options);
     const data = await resp.json();
     console.log(data);
   };
 
   const handleClick = () => {
-    addPet();
+    addService();
     handleOpenModal();
   };
 
   return (
     <form className="dashboard-form gap-3 p-3 w-100 d-flex flex-column align-items-center">
-      <label className="fs-5 fw-bold">Nombre</label>
+      <label className="fs-5 fw-bold">Titulo</label>
       <input
         className="col-8"
-        value={petInfo.name}
-        onChange={(e) => setPetInfo({ ...petInfo, name: e.target.value })}
+        value={serviceInfo.title}
+        onChange={(e) =>
+          setServiceInfo({ ...serviceInfo, title: e.target.value })
+        }
       />
-      <label className="fs-5 fw-bold">Imagen</label>
+      <label className="fs-5 fw-bold">Precio</label>
       <input
         className="col-8"
-        value={petInfo.image}
-        onChange={(e) => setPetInfo({ ...petInfo, image: e.target.value })}
+        value={serviceInfo.price}
+        onChange={(e) =>
+          setServiceInfo({ ...serviceInfo, price: e.target.value })
+        }
       />
       <label className="fs-5 fw-bold">Descripción</label>
       <input
         className="col-8"
-        value={petInfo.description}
+        value={serviceInfo.description}
         onChange={(e) =>
-          setPetInfo({ ...petInfo, description: e.target.value })
+          setServiceInfo({ ...serviceInfo, description: e.target.value })
         }
       />
       <a

@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { Context } from "../../../../../store/appContext";
 import { PetForm } from "./component/PetForm";
+import { ServiceForm } from "./component/ServiceForm";
 import "./servicespetsmodal.css";
 
-export const ServicesPetsModal = ({ handleOpenModal, getItems }) => {
+export const ServicesPetsModal = ({ handleOpenModal }) => {
   const { store } = useContext(Context);
   return (
     <div className="content">
@@ -15,9 +16,9 @@ export const ServicesPetsModal = ({ handleOpenModal, getItems }) => {
           ></i>
         </div>
         {store.clientInfo.roles === "Owner" ? (
-          <PetForm getItems={getItems} handleOpenModal={handleOpenModal} />
+          <PetForm handleOpenModal={handleOpenModal} />
         ) : (
-          <h1>hola</h1>
+          <ServiceForm handleOpenModal={handleOpenModal} />
         )}
       </div>
     </div>
