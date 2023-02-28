@@ -11,8 +11,8 @@
   text-align: center;
   font-size: 40px;
   color: rgb(20, 15, 13);
-  padding-top: 75px;
-  margin: 10px;
+  padding-top: 100px;
+  margin: 0px;
   font-family: "Caveat", cursive;
 }
 
@@ -43,7 +43,7 @@
   color: #000000;
 }
 .link:hover {
-  color: #59555c;
+  color: #ed5d10;
 }
 p {
   font-weight: 500;
@@ -56,9 +56,8 @@ a {
   transition: all 200ms linear;
 }
 a:hover {
-  text-decoration: none;
+  text-decoration: none; 
 }
-
 .link2 {
   color: #000000;
 }

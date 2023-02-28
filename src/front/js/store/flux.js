@@ -2,7 +2,6 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       BACKEND_URL:
-
         "https://3001-s3rtr3s-petsfriends-zh73pnx4sf6.ws-eu88.gitpod.io/",
       clientInfo: null,
     },
