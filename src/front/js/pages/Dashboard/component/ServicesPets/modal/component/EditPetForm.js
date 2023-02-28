@@ -1,31 +1,19 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../../../../../store/appContext";
 
-export const PetForm = ({ handleOpenModal }) => {
+export const EditPetForm = ({ handleOpenEditModal, itemPet }) => {
   const { store } = useContext(Context);
   const [petInfo, setPetInfo] = useState({
-    name: "",
-    image: "",
-    description: "",
+    name: itemPet.name,
+    image: itemPet.url,
+    description: itemPet.description,
     owner_id: store.clientInfo.id,
   });
 
-  const addPet = async () => {
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(petInfo),
-    };
-    const resp = await fetch(`${store.BACKEND_URL}api/pets`, options);
-    const data = await resp.json();
-    console.log(data);
-  };
-
   const handleClick = () => {
-    addPet();
-    handleOpenModal();
+    //savePet();
+    handleOpenEditModal();
+    //getItems();
   };
 
   return (
