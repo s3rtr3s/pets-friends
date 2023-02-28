@@ -5,7 +5,7 @@ import { EditPetsModal } from "./modal/EditPetsModal";
 import "./servicespets.css";
 
 export const ServicesPets = () => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const [items, setItems] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [openEditModal, setOpenEditModal] = useState(false);
@@ -27,12 +27,12 @@ export const ServicesPets = () => {
   /*Debe hacer solo una llamada*/
   useEffect(() => {
     getItems();
+    actions.setClientInfo()
   }, []);
 
   const handleOpenModal = () => {
     setOpenModal(!openModal);
   };
-
   const handleOpenEditModal = (item) => {
     setEdit(item);
     setOpenEditModal(!openEditModal);
@@ -77,6 +77,5 @@ export const ServicesPets = () => {
           handleOpenModal={handleOpenModal}
         />
       )}
-    </div>
-  ;
+    </div> : null
 };

@@ -1,14 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "./navbar.css";
 
 
-
-
-
 export const Navbar = () => {
-  const { store } = useContext(Context);
+  const { store, actions} = useContext(Context);
+  useEffect(() =>{
+    actions.setClientInfo()
+  },[])
+
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary" id="navbarPet">
         <div
@@ -57,21 +58,11 @@ export const Navbar = () => {
               >
                 Iniciar sesión
               </a>
-              <ul className="dropdown-menu">
-                <li>
-                  <Link className="dropdown-item" to="/iniciosesion">
-                    Iniciar sesión
-                  </Link>
-                </li>
-                <li>
-                  <Link className="dropdown-item" to="/registro">
-                    Registrarme
-                  </Link>
-                </li>
-
+  
                 {
                   store.clientInfo ? (
-                    <>
+                  
+                  <ul className="dropdown-menu">
                    <li>
                       <Link className="dropdown-item" to="/owner">
                           Mi perfil
@@ -83,15 +74,25 @@ export const Navbar = () => {
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="#" onClick={()=>actions.logout()}>
                         Cerrar sesión
                       </a>
                     </li>
-                    </>
-                  ) : null   
+                    </ul>
+                  ) : <ul className="dropdown-menu">
+                    
+                  <li>
+                    <Link className="dropdown-item" to="/iniciosesion">
+                      Iniciar sesión
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="dropdown-item" to="/registro">
+                      Registrarme
+                    </Link>
+                  </li>
+                   </ul>  
                 }
-
-              </ul>
             </li>
           </ul>
         </div>
