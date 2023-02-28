@@ -12,6 +12,10 @@ export const Registro = () => {
   const [surname, setSurname] = useState("");
   const [ciudades, setCiudades] = useState(null);
 
+
+  const [roles, setRoles] = useState("");
+
+
   const navigate = useNavigate();
 
   const registrar = () => {
@@ -32,6 +36,11 @@ export const Registro = () => {
       ciudad: ciudad,
       longitude: longitude,
       latitude: latitude,
+
+    
+
+      roles: roles,
+
     });
 
     const requestOptions = {
@@ -99,7 +108,17 @@ export const Registro = () => {
                 autoComplete="off"
                 onChange={(event) => setPassword(event.target.value)}
               />
-
+              <div className="desplegable">
+                <select
+                  name="roles"
+                  onChange={(event) => setRoles(event.target.value)}
+                >
+                  <option>-- Selecciona un rol --</option>
+                  <option value="Owner">Dueño de mascota</option>
+                  <option value="Carer">Cuidador</option>
+                </select>
+              </div>
+        
               <div className="desplegable">
                 <select
                   id="provincia"
@@ -248,20 +267,21 @@ export const Registro = () => {
                     Guipúzcoa
                   </option>
                 </select>
-              </div>
-
-              <div className="btn btn-dark rounded-pill px-3 text-white" onClick={registrar}>
-                Regístrate
+              </div><br/>
+                <div className="btn btn-dark rounded-pill px-3 text-white" onClick={registrar}>
+                  Regístrate
+                </div>
               </div>
             </div>
           </div>
         </div>
+        <br/>
         <p className="text-center">
           <Link to="/iniciosesion" className={styles.link}>
             ¿Ya tienes una cuenta? Inicia Sesión
           </Link>
         </p>
       </div>
-    </div>
+    
   );
 };

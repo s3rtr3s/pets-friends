@@ -1,8 +1,14 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 import "./navbar.css";
 
+
+
+
+
 export const Navbar = () => {
+  const { store } = useContext(Context);
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary" id="navbarPet">
         <div
@@ -57,17 +63,34 @@ export const Navbar = () => {
                     Iniciar sesión
                   </Link>
                 </li>
-
                 <li>
                   <Link className="dropdown-item" to="/registro">
                     Registrarme
                   </Link>
                 </li>
-                <li>
-                  <a className="dropdown-item" href="#">
-                    Cerrar sesión
-                  </a>
-                </li>
+
+                {
+                  store.clientInfo ? (
+                    <>
+                   <li>
+                      <Link className="dropdown-item" to="/owner">
+                          Mi perfil
+                      </Link>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Mensajes
+                      </a>
+                    </li>
+                    <li>
+                      <a className="dropdown-item" href="#">
+                        Cerrar sesión
+                      </a>
+                    </li>
+                    </>
+                  ) : null   
+                }
+
               </ul>
             </li>
           </ul>

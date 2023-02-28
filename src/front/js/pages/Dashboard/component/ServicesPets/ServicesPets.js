@@ -62,8 +62,7 @@ export const ServicesPets = () => {
               </div>
               {/*openEditModal && <EditPetsModal  
                           handleOpenEditModal={handleOpenEditModal} itemPet={item} />*/}
-            </div>
-            
+            </div>            
         ))}
         <div className="p-4 d-flex mb-2 pet-service-card col-12 justify-content-center">
           <i
@@ -72,7 +71,12 @@ export const ServicesPets = () => {
           ></i>
         </div>
       </div>
-      {openModal && <ServicesPetsModal getItems={getItems} handleOpenModal={handleOpenModal} />}
+      {openModal && (
+        <ServicesPetsModal
+          getItems={getItems}
+          handleOpenModal={handleOpenModal}
+        />
+      )}
     </div>
   ;
 };

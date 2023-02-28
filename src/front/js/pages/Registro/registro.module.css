@@ -27,7 +27,7 @@
     text-align : center;
     font-size:40px;
     color:rgb(20, 15, 13);
-    padding-top:75px;
+    padding-top:25px;
     margin: 10px;
     font-family: 'Amatic SC', cursive;
     font-family: 'Caveat', cursive;
@@ -106,3 +106,4 @@ select{
 #provincia{
     justify-items: center;
 }
+

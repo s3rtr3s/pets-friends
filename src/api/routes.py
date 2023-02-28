@@ -59,7 +59,7 @@ def get_client(client_id):
 def register_client():
     try:
         request_body = request.get_json()
-        client = Clients(
+        client = Clients(roles=request_body['roles'],
                         name=request_body['name'],
                         surname=request_body['surname'],
                         email=request_body['email'],
@@ -225,6 +225,7 @@ def get_service(service_id):
 def register_service():
     request_body = request.get_json()
     service = Services(title=request_body['title'],
+                       image=request_body['image'],
                        price=request_body['price'],
                        description=request_body['description'],
                        carer_id=request_body['carer_id'])
