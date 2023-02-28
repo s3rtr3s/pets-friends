@@ -4,7 +4,7 @@ import { ServicesPetsModal } from "./modal/ServicesPetsModal";
 import "./servicespets.css";
 
 export const ServicesPets = () => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const [items, setItems] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
@@ -22,13 +22,14 @@ export const ServicesPets = () => {
 
   useEffect(() => {
     getItems();
+    actions.setClientInfo()
   }, []);
 
   const handleOpenModal = () => {
     setOpenModal(!openModal);
   };
 
-  return (
+  return store.clientInfo?
     <div className="dashboard-box container mt-4 mb-4 p-3 d-flex flex-column align-items-center bg-white">
       <p className="fs-4">
         {store.clientInfo.roles === "Owner" ? "Mis Mascotas" : "Mis Servicios"}
@@ -81,6 +82,5 @@ export const ServicesPets = () => {
           handleOpenModal={handleOpenModal}
         />
       )}
-    </div>
-  );
+    </div> : null
 };
