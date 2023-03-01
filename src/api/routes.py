@@ -202,6 +202,23 @@ def get_services_by_carer(carer_id):
 
 @api.route('/services', methods=['GET'])
 def get_services():
+    args = request.args
+    if args != None:
+        city = args.get('city')
+        service_type = args.get('service_type')
+        if city != None and service_type != None:
+            services = Services.query.filter(Services.service_type == service_type).join(Clients).filter_by(city=city).all()
+        if city != None and service_type == None:
+            services = Services.query.join(Clients).filter_by(city=city).all()
+        if city == None and service_type != None:
+            services = Services.query.filter(Services.service_type == service_type)
+
+        results = [service.serialize() for service in services]
+        response_body = {'message': 'OK',
+                'total_records': len(results),
+                'results': results}
+        return jsonify(response_body), 200
+
     services = Services.query.all()
     results = [service.serialize() for service in services]
     response_body = {'message': 'OK',
@@ -226,6 +243,7 @@ def register_service():
     request_body = request.get_json()
     service = Services(title=request_body['title'],
                        image=request_body['image'],
+                       service_type=request_body['service_type'],
                        price=request_body['price'],
                        description=request_body['description'],
                        carer_id=request_body['carer_id'])
@@ -250,6 +268,8 @@ def update_service(service_id):
 
     service.title = request.json.get('title', service.title)
     service.price = request.json.get('price', service.price)
+    service.image = request.json.get('image', service.image)
+    service.service_type = request.json.get('service_type', service.service_type)
     service.description = request.json.get('description', service.description)
     service.carer_id = request.json.get('carer_id', service.carer_id)
 
@@ -258,6 +278,8 @@ def update_service(service_id):
     response_body = {'id': service.id,
                      'title': service.title,
                      'price': service.price,
+                     'image': service.image,
+                     'service_type': service.service_type,
                      'description': service.description,
                      'carer_id': service.carer_id}
 
