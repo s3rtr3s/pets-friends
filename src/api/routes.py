@@ -203,15 +203,15 @@ def get_services_by_carer(carer_id):
 @api.route('/services', methods=['GET'])
 def get_services():
     args = request.args
-    if args != None:
-        city = args.get('city')
-        service_type = args.get('service_type')
-        if city != None and service_type != None:
-            services = Services.query.filter(Services.service_type == service_type).join(Clients).filter_by(city=city).all()
-        if city != None and service_type == None:
-            services = Services.query.join(Clients).filter_by(city=city).all()
-        if city == None and service_type != None:
-            services = Services.query.filter(Services.service_type == service_type)
+    city = args.get('city')
+    service_type = args.get('service_type')
+
+    if None not in (city, service_type):
+        services = Services.query.filter(Services.service_type == service_type).join(Clients).filter_by(city=city).all()
+    elif city is not None:
+        services = Services.query.join(Clients).filter_by(city=city).all()
+    elif service_type is not None:
+        services = Services.query.filter(Services.service_type == service_type)
 
         results = [service.serialize() for service in services]
         response_body = {'message': 'OK',
