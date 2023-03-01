@@ -36,9 +36,6 @@ export const Registro = () => {
       ciudad: ciudad,
       longitude: longitude,
       latitude: latitude,
-
-    
-
       roles: roles,
 
     });

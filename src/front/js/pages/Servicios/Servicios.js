@@ -51,12 +51,13 @@ const listaServicios = [
   },
 ];
 
+
 export const Servicios = () => {
   const [city, setCity] = useState("");
   const [servicesList, setServicesList] = useState([]);
 
   const getServices = async () => {
-    const resp = await fetch("https://3001-s3rtr3s-petsfriends-6e7wbza77zs.ws-eu88.gitpod.io/api/services")
+    const resp = await fetch("https://3001-s3rtr3s-petsfriends-ad95d8v6pp4.ws-eu88.gitpod.io/api/services")
     const data = await resp.json()
     console.log(data)
   };
@@ -67,6 +68,26 @@ export const Servicios = () => {
 
   return (
     <div className="container mt-5 pt-5">
+      <ServicesNav setCity={setCity} />
+      <div className="row row-cols-1 row-cols-md-3 g-4">
+        {listaServicios.filter(servicio => servicio.city === city).map((servicio) => (
+          <div key={servicio.id} className="col">
+            <div className="card">
+              <img src={servicio.img} className="card-img-top"/>
+              <div className="card-body text-center">
+                <div className="d-flex justify-content-between">
+                  <h5 className="card-title ">{servicio.title}</h5>
+                  <span className="text-warning">${servicio.price}</span>
+                </div>
+                <p className="card-text">{servicio.description}</p>
+                <button className="btn btn-dark rounded-pill service-button">
+                  Contratar
+                </button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
       <ServicesNav setCity={setCity} />
       <div className="row row-cols-1 row-cols-md-3 g-4">
         {listaServicios.filter(servicio => servicio.city === city).map((servicio) => (

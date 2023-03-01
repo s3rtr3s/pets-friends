@@ -22,10 +22,10 @@ export const Home = () => {
         <Services />
       </div>
       
-      <div>
+      <div id="carrusel">
         <Carrusel />
       </div>
-      <div>
+      <div id="contacto">
         <Contact />
       </div>
 
