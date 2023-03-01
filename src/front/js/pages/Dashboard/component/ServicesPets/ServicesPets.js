@@ -76,6 +76,6 @@ export const ServicesPets = () => {
           getItems={getItems}
           handleOpenModal={handleOpenModal}
         />
-      )}
-    </div> : null
+      )}: null
+    </div> 
 };
