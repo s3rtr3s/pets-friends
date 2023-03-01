@@ -56,6 +56,7 @@ class Services(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String)
     price = db.Column(db.Integer)
+    service_type = db.Column(db.Integer)
     description = db.Column(db.String)
     image = db.Column(db.String)
     carer_id = db.Column(db.Integer, db.ForeignKey(
@@ -68,6 +69,7 @@ class Services(db.Model):
         return {'id': self.id,
                 'title': self.title,
                 'price': self.price,
+                'service_type': self.service_type,
                 'description': self.description,
                 'image': self.image,
                 'carer_id': self.carer_id}
