@@ -38,32 +38,39 @@ export const ServicesPets = () => {
     setOpenEditModal(!openEditModal);
   };
 
+  /*Borra pet del listado*/
+  const handleDeleteModal=(item)=>{
+    let newItems=items.filter(it => it!==item);
+    setItems(newItems);
+    /*Hay que llamar a la api delete de pets*/
+  };
+
   return openEditModal ? (
     <EditPetsModal handleOpenEditModal={handleOpenEditModal} itemPet={edit} />
-  ) : (
+    ) : (
     <div className="dashboard-box container mt-5 mb-4 p-3 d-flex flex-column align-items-center bg-white">
       <p className="fs-4">
         {store.clientInfo?.roles === "Owner" ? "Mis Mascotas" : "Mis Servicios"}
       </p>
       <div className="w-100">
-        {items.map((item) => (
-          <div key={item.id} className="p-2 d-flex mb-2 pet-service-card">
-            <div className="img-container mr-2">
+        {items.map((item,i) => (
+          <div key={i} className="p-2 d-flex mb-2 pet-service-card">
+            <div className="img-container mr-2 col-3">
               <img className="img-fluid" src={item.image} />
             </div>
-            <div>
+            <div className="col-8">
               <p className="fs-4">{item.name}</p>
               <p className="fs-6">{item.description}</p>
             </div>
             {/*con ml-auto nos llevamos el icono a la derecha*/}
-            <div className="ml-auto">
-              <i
-                className="fas fa-edit"
+            <div className="col-1 fs-6">
+              <i className="fas fa-edit mb-5"
                 onClick={() => handleOpenEditModal(item)}
               ></i>
+              <i className="fas fa-trash"
+                onClick={() => handleDeleteModal(item)}
+              ></i>
             </div>
-            {/*openEditModal && <EditPetsModal  
-                          handleOpenEditModal={handleOpenEditModal} itemPet={item} />*/}
           </div>
         ))}
         <div className="p-4 d-flex mb-2 pet-service-card col-12 justify-content-center">
@@ -74,10 +81,7 @@ export const ServicesPets = () => {
         </div>
       </div>
       {openModal && (
-        <ServicesPetsModal
-          getItems={getItems}
-          handleOpenModal={handleOpenModal}
-        />
+        <ServicesPetsModal getItems={getItems} handleOpenModal={handleOpenModal}/>
       )}
     </div>
   );
