@@ -1,26 +1,45 @@
 import React, { useEffect, useState } from "react";
-import styles from "./carer.css";
+import { useParams } from "react-router-dom";
+import "./carer.css";
 
 export const Carer = () => {
     const [carer, setCarer ] = useState("");
     const [services, setServices ] = useState([]);
     const [image, setImage ] = useState([]);
+    
+    
+    const { id } = useParams(); 
+    
 
-
+        useEffect(() => {
+            async function fetchData() {
+              try {
+                const response = await fetch(`https://3001-s3rtr3s-petsfriends-vnkmtyh59mf.ws-eu89.gitpod.io/api/clients/${id}`);
+                const json = await response.json();
+                console.log(json);
+              } catch (error) {
+                console.error(error);
+              }
+            }
+            
+            fetchData();
+        }, [id]);
+        
+      
     const getCarer = async () => {
-        const resp = await fetch ("https://3001-s3rtr3s-petsfriends-5muz0sjdacq.ws-eu88.gitpod.io/api/clients/1")
+        const resp = await fetch (`https://3001-s3rtr3s-petsfriends-vnkmtyh59mf.ws-eu89.gitpod.io/api/clients/${id}`)
         const data = await resp.json()
         setCarer(data.result)
     }
 
     const getServices = async () => {
-        const resp = await fetch ("https://3001-s3rtr3s-petsfriends-5muz0sjdacq.ws-eu88.gitpod.io/api/services_by_carer/1")
+        const resp = await fetch (`https://3001-s3rtr3s-petsfriends-vnkmtyh59mf.ws-eu89.gitpod.io/api/services_by_carer/${id}`)
         const data = await resp.json()
         setServices(data.results)
     }
 
     const getImage = async () => {
-        const resp = await fetch ("https://3001-s3rtr3s-petsfriends-5muz0sjdacq.ws-eu88.gitpod.io/api/gallery/1")
+        const resp = await fetch (`https://3001-s3rtr3s-petsfriends-vnkmtyh59mf.ws-eu89.gitpod.io/api/gallery/${id}`)
         const data = await resp.json()
         setImage(data.results)
     }
@@ -30,8 +49,7 @@ export const Carer = () => {
         getServices()
         getImage()
     },[]);
-// QUEDA MODIFICAR LA PARTE DE SERVICIOS Y DE IMAGENES SEGÚN EL SERIALIZE
-// pedro tiene que añadir al serialize de servicios las imagenes para poder crear las cards de servicios con sus img
+
 
     return(
         <div className="container emp-profile">
