@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { ServicesNav } from "./component/ServicesNav";
-import { Context } from "../../store/appContext"
+import { Context } from "../../store/appContext";
 
 import "./servicios.css";
+import { useNavigate, useParams } from "react-router-dom";
 
 const listaServicios = [
   {
@@ -52,51 +53,60 @@ const listaServicios = [
   },
 ];
 
-
 export const Servicios = () => {
   const [city, setCity] = useState("");
   const [serviceType, setServiceType] = useState("");
   const [url, setUrl] = useState("");
   const [servicesList, setServicesList] = useState([]);
   const { store } = useContext(Context);
+  const { id } = useParams();
+  const navigate = useNavigate();
 
   const getServices = async () => {
-    const resp = await fetch(url)
-    const data = await resp.json()
-    console.log(data)
+    const resp = await fetch(url);
+    const data = await resp.json();
+    console.log(data);
   };
 
   useEffect(() => {
-    let urlBase;
-    if (serviceType !==  "" && city !== "") {
-      urlBase = store.BACKEND_URL + "api/services?service_type=" + serviceType + "&city=" + city
+    let urlBase = store.BACKEND_URL + "api/services";
+    if (serviceType !== "" && city !== "") {
+      urlBase += "?service_type=" + serviceType + "&city=" + city;
     } else if (serviceType !== "" && city === "") {
-      urlBase = store.BACKEND_URL + "api/services?service_type=" + serviceType
-    } else {
-      urlBase = store.BACKEND_URL + "api/services?city=" + city
-    } 
-    setUrl(urlBase)
-  },[serviceType, city])
+      urlBase += "?service_type=" + serviceType;
+    } else if (serviceType === "" && city !== "") {
+      urlBase += "?city=" + city;
+    }
+    setUrl(urlBase);
+  }, [serviceType, city]);
 
   useEffect(() => {
-    console.log(url)
-  },[url])
+    id && setServiceType(id);
+    getServices();
+  }, [url]);
+
+  const handleClick = (id) => {
+    navigate(`/carer/${id}`);
+  };
 
   return (
     <div className="container mt-5 pt-5">
       <ServicesNav setCity={setCity} setServiceType={setServiceType} />
       <div className="row row-cols-1 row-cols-md-3 g-4">
-        {listaServicios.filter(servicio => servicio.city === city).map((servicio) => (
+        {listaServicios.map((servicio) => (
           <div key={servicio.id} className="col">
             <div className="card">
-              <img src={servicio.img} className="card-img-top"/>
+              <img src={servicio.img} className="card-img-top" />
               <div className="card-body text-center">
                 <div className="d-flex justify-content-between">
                   <h5 className="card-title ">{servicio.title}</h5>
                   <span className="text-warning">${servicio.price}</span>
                 </div>
                 <p className="card-text">{servicio.description}</p>
-                <button className="btn btn-dark rounded-pill service-button">
+                <button
+                  className="btn btn-dark rounded-pill service-button"
+                  onClick={() => handleClick(servicio.id)}
+                >
                   Contratar
                 </button>
               </div>
