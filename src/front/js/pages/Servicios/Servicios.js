@@ -86,7 +86,7 @@ export const Servicios = () => {
     <div className="container mt-5 pt-5">
       <ServicesNav setCity={setCity} setServiceType={setServiceType} />
       <div className="row row-cols-1 row-cols-md-3 g-4">
-        {listaServicios.filter(servicio => servicio.city === city).map((servicio) => (
+        {listaServicios.map((servicio) => (
           <div key={servicio.id} className="col">
             <div className="card">
               <img src={servicio.img} className="card-img-top"/>
