@@ -1,8 +1,11 @@
 import React from "react";
 
-export const ServicesNav = ({ setCity }) => {
+export const ServicesNav = ({ setCity, setServiceType }) => {
   const hanldeCityClick = (city) => {
     setCity(city);
+  };
+  const handleServiceClick = (serviceType) => {
+    setServiceType(serviceType);
   };
 
   return (
@@ -77,6 +80,30 @@ export const ServicesNav = ({ setCity }) => {
             </li>
             <li onClick={() => hanldeCityClick("Guipúzcoa")}>
               <a className="dropdown-item">Guipúzcoa</a>
+            </li>
+          </ul>
+        </div>
+        <div className="dropdown">
+          <button
+            className="btn btn-warning dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Servicio
+          </button>
+          <ul className="dropdown-menu">
+            <li className="dropdown-item" onClick={() => handleServiceClick(1)}>
+              Paseos de 30 min
+            </li>
+            <li className="dropdown-item" onClick={() => handleServiceClick(2)}>
+              Paseos de 1 h
+            </li>
+            <li className="dropdown-item" onClick={() => handleServiceClick(3)}>
+              Pijamadas
+            </li>
+            <li className="dropdown-item" onClick={() => handleServiceClick(4)}>
+              Personalizados
             </li>
           </ul>
         </div>
