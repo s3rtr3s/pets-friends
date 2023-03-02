@@ -3,7 +3,7 @@ import { Context } from "../../../../../store/appContext";
 import { EditPetForm } from "./component/EditPetForm";
 //import "./servicespetsmodal.css";
 
-export const EditPetsModal = ({ handleOpenEditModal, itemPet }) => {
+export const EditPetsModal = ({ handleOpenEditModal, itemPet, getItems }) => {
   const { store } = useContext(Context);
   return (
     <div className="content">
@@ -14,7 +14,7 @@ export const EditPetsModal = ({ handleOpenEditModal, itemPet }) => {
           </i>
         </div>
         {store.clientInfo.roles === "Owner" ? (
-          <EditPetForm itemPet={itemPet} handleOpenEditModal={handleOpenEditModal} />
+          <EditPetForm itemPet={itemPet} handleOpenEditModal={handleOpenEditModal} getItems={getItems} />
         ) : (
           <h1>hola</h1>
         )}
