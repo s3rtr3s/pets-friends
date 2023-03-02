@@ -1,45 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "./carer.css";
+import { Context } from "../../../store/appContext"
 
 export const Carer = () => {
+    const { store } = useContext(Context)
     const [carer, setCarer ] = useState("");
     const [services, setServices ] = useState([]);
-    const [image, setImage ] = useState([]);
-    
+    const [image, setImage ] = useState([]);   
     
     const { id } = useParams(); 
     
-
-        useEffect(() => {
-            async function fetchData() {
-              try {
-                const response = await fetch(`https://3001-s3rtr3s-petsfriends-vnkmtyh59mf.ws-eu89.gitpod.io/api/clients/${id}`);
-                const json = await response.json();
-                console.log(json);
-              } catch (error) {
-                console.error(error);
-              }
-            }
-            
-            fetchData();
-        }, [id]);
-        
-      
     const getCarer = async () => {
-        const resp = await fetch (`https://3001-s3rtr3s-petsfriends-vnkmtyh59mf.ws-eu89.gitpod.io/api/clients/${id}`)
+        const resp = await fetch (`${store.BACKEND_URL}api/clients/${id}`)
         const data = await resp.json()
         setCarer(data.result)
     }
 
     const getServices = async () => {
-        const resp = await fetch (`https://3001-s3rtr3s-petsfriends-vnkmtyh59mf.ws-eu89.gitpod.io/api/services_by_carer/${id}`)
+        const resp = await fetch (`${store.BACKEND_URL}api/services_by_carer/${id}`)
         const data = await resp.json()
         setServices(data.results)
     }
 
     const getImage = async () => {
-        const resp = await fetch (`https://3001-s3rtr3s-petsfriends-vnkmtyh59mf.ws-eu89.gitpod.io/api/gallery/${id}`)
+        const resp = await fetch (`${store.BACKEND_URL}api/gallery/${id}`)
         const data = await resp.json()
         setImage(data.results)
     }
@@ -95,14 +80,14 @@ export const Carer = () => {
                     <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                             <div className="col-md-9">
                                 <div className="bio-content">
-                                    {carer.description}
+                                    {carer?.description}
                                 </div>
                             </div>
                         </div>
                         <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <div className="row row-cols-1 row-cols-md-3 g-4">
                                 <div className="d-flex justify-content-start" id="cardspets"> 
-                                    {/* {services?.map(service =>(
+                                    {services?.map(service =>(
                                         <div className="col">   
                                         <div className="ica">
                                             <img src={service.image} className="card-img-top"></img>
@@ -112,7 +97,7 @@ export const Carer = () => {
                                         </div>
                                     </div>
                                     ))
-                                    } */}
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -122,7 +107,7 @@ export const Carer = () => {
                                 <div className="carousel-inner">
                                     {image?.map(image =>(
                                     <div className="carousel-item active">
-                                        <img src={image.url} className="d-block w-80" alt="..."/>
+                                        <img src={image?.url} className="d-block w-80" alt="..."/>
                                     </div>
                                     ))
                                     }  

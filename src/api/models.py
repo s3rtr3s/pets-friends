@@ -75,47 +75,37 @@ class Services(db.Model):
                 'carer_id': self.carer_id}
 
 
-class Contracts(db.Model):
+class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    pet_id = db.Column(db.Integer, db.ForeignKey('pets.id'), nullable=False)
-    service_id = db.Column(db.Integer, db.ForeignKey(
-        'services.id'), nullable=False)
-    date = db.Column(db.String)
-    price = db.Column(db.Integer)
-    assessment = db.Column(db.Integer)
-    comments = db.Column(db.String)
-
-    def __repr__(self):
-        return '<Contracts %r>' % self.id
-
-    def serialize(self):
-        return {'id': self.id,
-                'pet_id': self.pet_id,
-                'service_id': self.service_id,
-                'date': self.date,
-                'price': self.price,
-                'assessment': self.assessment,
-                'comments': self.comments}
-
-
-class Messages(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    transmitter_id = db.Column(
-        db.Integer, db.ForeignKey('clients.id'), nullable=False)
-    receiver_id = db.Column(
-        db.Integer, db.ForeignKey('clients.id'), nullable=False)
+    chat_id = db.Columndb.Column(db.Integer, db.ForeignKey(
+        'chat.id'), nullable=False)
     date = db.Column(db.String)
     content = db.Column(db.String)
 
     def __repr__(self):
-        return '<Messages %r>' % self.id
+        return '<Message %r' % self.id
+    
+    def serialize(self):
+        return {'id': self.id,
+                'chat_id': self.chat_id,
+                'date': self.date,
+                'content': self.content}
+
+
+class Chat(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    client_1_id = db.Column(
+        db.Integer, db.ForeignKey('clients.id'), nullable=False)
+    client_2_id = db.Column(
+        db.Integer, db.ForeignKey('clients.id'), nullable=False)
+
+    def __repr__(self):
+        return '<Chat %r>' % self.id
 
     def serialize(self):
         return {'id': self.id,
-                'transmitter_id': self.transmitter_id,
-                'receiver_id': self.receiver_id,
-                'date': self.date,
-                'content': self.content}
+                'client_1_id': self.client_1_id,
+                'client_2_id': self.client_2_id}
 
 
 class Images(db.Model):
