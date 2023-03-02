@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../../../../../store/appContext";
 
-export const EditPetForm = ({ handleOpenEditModal, itemPet }) => {
+export const EditPetForm = ({ handleOpenEditModal, itemPet,getItems }) => {
   const { store } = useContext(Context);
   const [petInfo, setPetInfo] = useState({
     name: itemPet.name,
@@ -25,6 +25,8 @@ export const EditPetForm = ({ handleOpenEditModal, itemPet }) => {
 
   const handleClick = () => {
     saveEditPet();
+    getItems();
+    
     handleOpenEditModal();
   };
 
@@ -53,12 +55,12 @@ export const EditPetForm = ({ handleOpenEditModal, itemPet }) => {
           setPetInfo({ ...petInfo, description: e.target.value })
         }
       />
-      <a
+      <span
         className="btn btn-dark rounded-pill px-3 text-white"
         onClick={handleClick}
       >
         Guardar
-      </a>
+      </span>
     </form>
   );
 };
