@@ -13,6 +13,7 @@ import { Navbar } from "./component/Navbar";
 
 import { Home } from "./pages/Home/Home";
 import { Dashboard } from "./pages/Dashboard/Dashboard";
+import { Chats } from "./pages/Chats/chats";
 
 //import { Footer } from "./component/footer";
 
@@ -35,6 +36,7 @@ const Layout = () => {
             <Route element={<Carer />} path="/carer/:id" />
             <Route element={<Owner />} path="/owner" />
             <Route element={<Dashboard />} path="/dashboard" />
+            <Route element={<Chats />} path="/chats" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
         </ScrollToTop>
