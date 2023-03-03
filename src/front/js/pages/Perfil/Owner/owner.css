@@ -1,9 +1,8 @@
 
-
+.distancia{
+    padding-top: 80px;
+}
 .emp-profile{
-    padding: 3%;
-    margin-top: 5%;
-    margin-bottom: 3%;
     border-radius: 0.5rem;
     background: #fff;
 }
