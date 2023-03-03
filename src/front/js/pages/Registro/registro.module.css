@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Poppins:wght@200&display=swap');
 
 .fname{
-    margin-top:15px;
+    margin-top:0px;
     background: none;
     color: rgb(0, 0, 0);
     border: none;
     outline: 0px;
     border-bottom: 2px solid #000000;
     width: 280px;
-    padding: 10px;
+   
 }
 
 .lname{
@@ -27,12 +27,9 @@
     text-align : center;
     font-size:40px;
     color:rgb(20, 15, 13);
-    padding-top:25px;
-    margin: 10px;
+    padding-top:55px; 
     font-family: 'Amatic SC', cursive;
-    font-family: 'Caveat', cursive;
-
-    
+    font-family: 'Caveat', cursive;  
 }
 
 .email{
