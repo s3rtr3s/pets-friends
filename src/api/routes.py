@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, Clients, Pets, Services, Contracts, Messages, Images
+from api.models import db, Clients, Pets, Services, Message, Images, Chat
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, get_jwt_identity, jwt_required
 import cloudinary

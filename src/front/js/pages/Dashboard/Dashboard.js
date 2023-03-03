@@ -1,4 +1,5 @@
 import React from "react";
+import { ChatList } from "./component/Chats/ChatList";
 import { ServicesPets } from "./component/ServicesPets/ServicesPets";
 import { UserInfo } from "./component/UserInfo/UserInfo";
 
@@ -10,6 +11,7 @@ export const Dashboard = () => {
       </div>
       <div className="col-8">
         <ServicesPets />
+        <ChatList />
       </div>
     </div>
   );
