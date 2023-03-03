@@ -1,18 +1,33 @@
-.chat-list, .messages {
-    background-color: #f4ece1;
-    border-radius: 1vh;
+.chat-list,
+.messages {
+  background-color: #f4ece1;
+  border-radius: 1vh;
 }
 
 .chat {
-    border-radius: 1vh; 
+  border-radius: 1vh;
 }
 
 .chat:hover {
-    cursor: pointer;
-    opacity: 0.9;
-    scale: 1.03;
+  cursor: pointer;
+  opacity: 0.9;
+  scale: 1.03;
 }
 
 .message {
-    border-radius: 1vh;
+  border-radius: 1vh;
+}
+
+.text-message {
+  border: none;
+  border-radius: 1vh;
+  resize: none;
+}
+
+.avatar {
+    display: inline-block;
+    overflow: hidden;
+    border-radius: 50%;
+    width: 20%;
+    aspect-ratio: 1/1;
 }
