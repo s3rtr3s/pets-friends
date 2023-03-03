@@ -60,7 +60,7 @@ export const Registro = () => {
   };
 
   return (
-    <div className="mt-5">
+    <div>
       <div className="card-3d-wrap mx-auto">
         <div className="card-3d-wrapper">
           <header className={styles.heading}> Regístrate </header>
