@@ -77,10 +77,11 @@ class Services(db.Model):
 
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    chat_id = db.Columndb.Column(db.Integer, db.ForeignKey(
+    chat_id = db.Column(db.Integer, db.ForeignKey(
         'chat.id'), nullable=False)
     date = db.Column(db.String)
     content = db.Column(db.String)
+    client_id = db.Column(db.Integer, db.ForeignKey('clients.id'), nullable=False)
 
     def __repr__(self):
         return '<Message %r' % self.id
@@ -89,7 +90,8 @@ class Message(db.Model):
         return {'id': self.id,
                 'chat_id': self.chat_id,
                 'date': self.date,
-                'content': self.content}
+                'content': self.content,
+                'client_id': self.client_id}
 
 
 class Chat(db.Model):

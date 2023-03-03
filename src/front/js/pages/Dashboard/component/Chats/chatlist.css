@@ -1,0 +1,18 @@
+.chat-list, .messages {
+    background-color: #f4ece1;
+    border-radius: 1vh;
+}
+
+.chat {
+    border-radius: 1vh; 
+}
+
+.chat:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    scale: 1.03;
+}
+
+.message {
+    border-radius: 1vh;
+}
