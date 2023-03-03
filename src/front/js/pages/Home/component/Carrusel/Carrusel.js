@@ -1,5 +1,8 @@
 import React, {useEffect,useState} from "react";
 import { Carousel } from '@sefailyasoz/react-carousel';
+import pata from "../../../../../img/pata.png";
+import pelota from "../../../../../img/pelota.png";
+import hueso from "../../../../../img/hueso.png";
 import "./carrusel.css";
 
 export const Carrusel = () =>
@@ -61,6 +64,13 @@ export const Carrusel = () =>
             </div>
         </div>
         
+        <img className="pPataDos" src={pata} alt="pata" />
+        <img className="pePelota" src={pelota} alt="pelota" id="pePelota" />
+        <img className="pePelotaDos" src={pelota} alt="pelota" />
+        <img className="hHueso" src={hueso} alt="hueso" />
+        <img className="hHuesoDos" src={hueso} alt="hueso" id="hHueso" />
+        <img className="hHuesoTres" src={hueso} alt="hueso" />
+        <img className="pPataTres" src={pata} alt="pata" />
         <div className="textoC"><h2>Galería de Pet Friends</h2></div><br/>
         <div className="textDescripcionCarrusel">
           <p>¿Tienes un gato, un pájaro, un conejo o un hamster que necesita ser cuidado? No hay ningún problema, en Pet Friends podrás encontrar cuidadores para todas tus mascotas.</p>

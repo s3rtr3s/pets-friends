@@ -72,7 +72,10 @@ export const Carer = () => {
                         <p>Apellidos: {carer?.surname}</p>
                         <p>Email: {carer?.email}</p>
                         <p>Ciudad: {carer?.city}</p>
-
+                        <a className="btn btn-dark rounded-pill px-3 text-white"
+                            role="button">
+                            Abrir chat
+                        </a>
                     </div>
                 </div>
                 <div className="col-md-8">
