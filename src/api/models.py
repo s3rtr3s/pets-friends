@@ -100,6 +100,9 @@ class Chat(db.Model):
         db.Integer, db.ForeignKey('clients.id'), nullable=False)
     client_2_id = db.Column(
         db.Integer, db.ForeignKey('clients.id'), nullable=False)
+    
+    client_1 = db.relationship('Clients', foreign_keys=[client_1_id])
+    client_2 = db.relationship('Clients', foreign_keys=[client_2_id])
 
     def __repr__(self):
         return '<Chat %r>' % self.id
@@ -107,7 +110,11 @@ class Chat(db.Model):
     def serialize(self):
         return {'id': self.id,
                 'client_1_id': self.client_1_id,
-                'client_2_id': self.client_2_id}
+                'client_1_name': self.client_1.name,
+                'client_1_avatar': self.client_1.avatar,
+                'client_2_id': self.client_2_id,
+                'client_2_name': self.client_2.name,
+                'client_2_avatar': self.client_2.avatar,}
 
 
 class Images(db.Model):

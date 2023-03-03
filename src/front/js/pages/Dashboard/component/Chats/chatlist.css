@@ -6,6 +6,7 @@
 
 .chat {
   border-radius: 1vh;
+  position: relative;
 }
 
 .chat:hover {
@@ -22,6 +23,7 @@
   border: none;
   border-radius: 1vh;
   resize: none;
+  background-color: #f4ece1;
 }
 
 .avatar {
@@ -30,4 +32,15 @@
     border-radius: 50%;
     width: 20%;
     aspect-ratio: 1/1;
+}
+
+.chat-box {
+  max-height: 40vh;
+  overflow: auto;
+}
+
+.bell {
+  position: absolute;
+  right: -1vh;
+  top: -1vh;
 }
