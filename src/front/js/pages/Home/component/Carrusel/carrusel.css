@@ -3,7 +3,7 @@
 
 
 .carousel-slide{
-    margin: 70px;
+    margin: 100px;
     background: white;
     padding: 100px;
     border-radius: 5px;
@@ -15,7 +15,7 @@
     border-radius: 15px;
     object-fit: cover;
     float: right;
-    margin: 40px;
+    margin: 80px;
     bottom: 80px;
     
 }
@@ -23,20 +23,83 @@
 .textoC h2{
     font-family: "Amatic SC";
     font-size: 45px;
-    margin-left: 45px;
+    margin-left: 105px;
     
 }
 
 .textDescripcionCarrusel{
     line-height: 1.5em;
-    font-size: 16px;
+    font-size: 18px;
     color: rgb(10, 10, 10);
     position: relative;
     font-family: "Comfortaa";
     line-height: 1.5em;
     letter-spacing: normal;
-    width: 500px;
+    width: 400px;
     margin: 0;
     padding: 0 2rem;
-    margin-left: 45px;
+    margin-left: 105px;
+}
+
+.textDescripcionCarrusel p{
+    font-size: 18px;
+}
+
+.pePelotaDos{
+    position: absolute;
+    transform: rotate(-20deg);
+    width: 65px;
+    height: 65px;
+    right: 5%;
+    bottom: -254%;
+}
+
+.pePelota{
+    position: absolute;
+    transform: rotate(10deg);
+    width: 55px;
+    height: 55px;
+    left: 55%;
+}
+
+.hHueso{
+    position: absolute;
+    transform: rotate(-10deg);
+    width: 65px;
+    height: 65px;
+    left: 5%;
+    bottom: -144%;
+}
+.hHuesoDos{
+    position: absolute;
+    transform: rotate(10deg);
+    width: 65px;
+    height: 65px;
+    left: 35%;
+    bottom: -374%;
+}
+.pPataDos{
+    position: absolute;
+    transform: rotate(-20deg);
+    width: 65px;
+    height: 65px;
+    left: 5%;
+    bottom: -314%;
+}
+
+.hHuesoTres{
+    position: absolute;
+    transform: rotate(-20deg);
+    width: 65px;
+    height: 65px;
+    left: 5%;
+    bottom: -424%;
+}
+.pPataTres{
+    position: absolute;
+    transform: rotate(-20deg);
+    width: 65px;
+    height: 65px;
+    right: 5%;
+    bottom: -384%;
 }

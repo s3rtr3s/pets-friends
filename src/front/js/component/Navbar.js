@@ -6,9 +6,13 @@ import "./navbar.css";
 
 export const Navbar = () => {
   const { store, actions} = useContext(Context);
+
+
   useEffect(() =>{
     actions.setClientInfo()
   },[])
+
+
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary" id="navbarPet">
@@ -44,11 +48,18 @@ export const Navbar = () => {
               </a>
             </li>
             <li className="nav-item">
+              <a className="nav-link" href="/#carrusel">
+                Galería
+              </a>
+            </li>
+            <li className="nav-item">
               <a className="nav-link" href="/#contacto">
                 Contacto
               </a>
             </li>
             <li className="nav-item dropdown" id="nav-item-dropdown">
+            {
+                  store.clientInfo ? (
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
@@ -56,15 +67,27 @@ export const Navbar = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Iniciar sesión
-              </a>
-  
+                Menú
+              </a>):
+               <a
+               className="nav-link dropdown-toggle"
+               href="#"
+               role="button"
+               data-bs-toggle="dropdown"
+               aria-expanded="false"
+             >
+               Iniciar sesión
+             </a>
+              
+            }
+            
                 {
                   store.clientInfo ? (
-                  
+                    
                   <ul className="dropdown-menu">
+                    
                    <li>
-                      <Link className="dropdown-item" to="/owner">
+                      <Link className="dropdown-item" to="/dashboard">
                           Mi perfil
                       </Link>
                     </li>
@@ -74,23 +97,23 @@ export const Navbar = () => {
                       </a>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#" onClick={()=>actions.logout()}>
+                    <Link className="dropdown-item" to="/" onClick={()=>actions.logout()}>
                         Cerrar sesión
-                      </a>
+                        </Link>
                     </li>
                     </ul>
                   ) : <ul className="dropdown-menu">
                     
-                  <li>
-                    <Link className="dropdown-item" to="/iniciosesion">
-                      Iniciar sesión
-                    </Link>
-                  </li>
-                  <li>
-                    <Link className="dropdown-item" to="/registro">
-                      Registrarme
-                    </Link>
-                  </li>
+                      <li>
+                        <Link className="dropdown-item" to="/iniciosesion">
+                          Iniciar sesión
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="/registro">
+                          Registrarme
+                        </Link>
+                      </li>
                    </ul>  
                 }
             </li>
@@ -99,4 +122,5 @@ export const Navbar = () => {
       
     </nav>
   );
+ 
 };

@@ -1,9 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./nombre.css";
 import Diseño from "../../../../../img/Diseño.png";
-import pata from "../../../../../img/pata.png";
-import muchasp from "../../../../../img/muchasp.png";
 
 export const NombreInicio = () => {
   return (
@@ -12,9 +9,10 @@ export const NombreInicio = () => {
       <p>Pet Friends</p>
       <h5>Amigos de tus mascotas</h5>
       <div className="col-sm-12">
-        <div className="btn btn-dark" id="boton-pasear">
-          ¡Vamos a pasear!
-        </div>
+      <a className="btn btn-dark" id="boton-pasear" href="/#servicios">
+      ¡Vamos a pasear!
+      </a>
+        
       </div>
     </div>
   );

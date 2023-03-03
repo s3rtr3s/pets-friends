@@ -28,6 +28,7 @@
 
 .nombre {
   position: relative;
+  margin: 5%;
 }
 
 #boton-pasear:hover {

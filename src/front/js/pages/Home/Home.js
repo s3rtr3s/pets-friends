@@ -14,21 +14,20 @@ export const Home = () => {
         <NombreInicio />
       </div>
 
-      <div id="sobre">
+      <div id="sobre" className="pt-4">
         <SobrePetFriends />
       </div>
 
-      <div id="servicios">
+      <div id="servicios"  className="pt-4">
         <Services />
       </div>
       
-      <div id="carrusel">
+      <div id="carrusel" className="pt-4">
         <Carrusel />
       </div>
-      <div id="contacto">
+      <div id="contacto" className="pt-4">
         <Contact />
       </div>
-
       <div>
         <Footer />
       </div>
