@@ -36,6 +36,10 @@ export const Carer = () => {
     },[]);
 
 
+        const mostrarAlerta = () => {
+          alert("Para abrir un chat tienes que iniciar sesión.");
+        };
+
     return(
         <div className="container emp-profile">
         <form method="post">
@@ -72,10 +76,17 @@ export const Carer = () => {
                         <p>Apellidos: {carer?.surname}</p>
                         <p>Email: {carer?.email}</p>
                         <p>Ciudad: {carer?.city}</p>
+                        {
+                         store.clientInfo ? (
                         <a className="btn btn-dark rounded-pill px-3 text-white"
-                            role="button">
+                            role="button" href="/#chat">
                             Abrir chat
-                        </a>
+                        </a>): 
+                            <a className="btn btn-dark rounded-pill px-3 text-white"
+                                role="button" href="" onClick={mostrarAlerta} >
+                                Abrir chat
+                            </a>
+                        }                   
                     </div>
                 </div>
                 <div className="col-md-8">

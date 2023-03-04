@@ -92,7 +92,7 @@ export const Navbar = () => {
                       </Link>
                     </li>
                     <li>
-                      <a className="dropdown-item" href="#">
+                      <a className="dropdown-item" href="/#chat">
                         Mensajes
                       </a>
                     </li>

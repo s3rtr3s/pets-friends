@@ -78,3 +78,8 @@
     border-color: rgb(0, 0, 0);
     
 }
+
+.alert-custom {
+    background-color: #f8d7da;
+    color: #721c24;
+  }
