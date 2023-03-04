@@ -50,12 +50,6 @@ export const ServiceForm = ({ handleOpenModal }) => {
         value={serviceInfo.price}
         onChange={(e) =>setServiceInfo({ ...serviceInfo, price: e.target.value })}
       />
-      <label className="fs-5 fw-bold">Imagen</label>
-      <input type="text"
-        className="col-8"
-        value={serviceInfo.image}
-        onChange={(e) =>setServiceInfo({ ...serviceInfo, image: e.target.value })}
-      />
       <label className="fs-5 fw-bold">Descripción</label>
       <input type="text"
         className="col-8"

@@ -24,7 +24,7 @@ export const UserInfo = () => {
   };
 
   return (
-<div className="dashboard-box container mt-4 mb-4 p-3 d-flex flex-column align-items-center bg-white">
+    <div className="dashboard-box container mt-4 mb-4 p-3 d-flex flex-column align-items-center bg-white">
       <div className="img-container" id="iContainer">
         <img className="img-fluid rounded-circle" src={clientInfo.avatar} />
       </div>
@@ -34,11 +34,14 @@ export const UserInfo = () => {
       </p>
       <p className="fs-5 text-muted">{clientInfo.email}</p>
       <p className="fs-6">{clientInfo.description}</p>
-      <a className="btn btn-dark text-white rounded-pill px-3 mb-2" onClick={handleOpenModal}>
-        edit profile
+      <a
+        className="btn btn-dark text-white rounded-pill px-3 mb-2"
+        onClick={handleOpenModal}
+      >
+        Editar Perfil
       </a>
-      <a className="btn btn-danger text-white rounded-pill px-3">log out</a>
-        {openModal && <UserInfoModal handleOpenModal={handleOpenModal} />}
-      </div>
+
+      {openModal && <UserInfoModal handleOpenModal={handleOpenModal} getClientInfo={getClientInfo} />}
+    </div>
   );
 };

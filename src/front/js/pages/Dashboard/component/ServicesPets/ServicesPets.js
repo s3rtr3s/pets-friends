@@ -61,7 +61,6 @@ export const ServicesPets = () => {
   useEffect(() => {
     actions.setClientInfo();
     getItems();
-
   }, []);
 
   const handleOpenModal = () => {
@@ -97,19 +96,21 @@ export const ServicesPets = () => {
           <div key={i} className="p-2 d-flex mb-2 pet-service-card">
             <div className="img-container mr-2 col-3">
                 {store.clientInfo?.roles === "Owner" ? 
-                <img className="img-fluid" src={item.image? item.image : urlAltPet} /> : 
-                <img className="img-fluid" src={item.image? item.image : urlAltService} />}
+                <img className="img-fluid rounded-circle" src={item.image? item.image : urlAltPet} /> : 
+                <img className="img-fluid rounded-circle" src={item.image? item.image : urlAltService} />}
             </div>
             <div className="col-8">
               {store.clientInfo?.roles === "Owner" ? 
-                <p className="fs-4">{item.name}</p> : <p className="fs-4">{item.title}</p>}
-                <p className="fs-6">{item.description}</p>
-                {store.clientInfo?.roles === "Owner" ? 
-                            "" : <p className="fs-6">Precio:{item.price}€/Hora</p>}      
+                <p className="fs-4">{item.name}</p> : 
+                <div className="d-flex justify-content-between align-items-center">
+                  <p className="fs-4">{item.title}</p>
+                  <p className="fs-6">{item.price}€</p>
+                </div>}
+                <p className="fs-6">{item.description}</p>   
             </div>
             
-            <div className="col-1">
-              <i className="fas fa-edit mb-5 fs-3"
+            <div className="d-flex flex-column justify-content-center align-items-center gap-2 actions">
+              <i className="fas fa-edit fs-3"
                 onClick={() => handleOpenEditModal(item)}
               ></i>
               <i className="fas fa-trash fs-3"

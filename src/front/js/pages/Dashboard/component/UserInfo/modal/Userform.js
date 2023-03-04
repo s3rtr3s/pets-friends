@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../../../../store/appContext";
 
-export const UserForm = ({ handleOpenModal }) => {
-  const { store } = useContext(Context);
+export const UserForm = ({ handleOpenModal, getClientInfo }) => {
+  const { store, actions } = useContext(Context);
   const [city, setCity] = useState();
   const [userInfo, setUserInfo] = useState({
     roles: store.clientInfo.roles,
@@ -42,11 +42,14 @@ export const UserForm = ({ handleOpenModal }) => {
       options
     );
     const data = await resp.json();
-    console.log(data);
+    getClientInfo(data.result.id);
   };
 
   const handleClick = () => {
     saveInfo();
+    
+    actions.setClientInfo();
+    handleOpenModal();
   };
 
   return (
@@ -68,6 +71,7 @@ export const UserForm = ({ handleOpenModal }) => {
         <select
           id="provincia"
           name="provincia"
+          value={userInfo.city}
           onChange={(event) => {
             setCity(event.target), changeCity();
           }}
