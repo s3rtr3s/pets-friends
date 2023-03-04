@@ -7,7 +7,8 @@ export const Carer = () => {
     const { store } = useContext(Context)
     const [carer, setCarer ] = useState("");
     const [services, setServices ] = useState([]);
-    const [image, setImage ] = useState([]);   
+    const [image, setImage ] = useState([]);
+    const [openToast, setOpenToast] = useState(true);
     
     const { id } = useParams(); 
     
@@ -36,8 +37,8 @@ export const Carer = () => {
     },[]);
 
 
-        const mostrarAlerta = () => {
-          alert("Para abrir un chat tienes que iniciar sesión.");
+        const handleOpenToast = () => {
+          setOpenToast(!openToast)
         };
 
     return(
@@ -83,10 +84,18 @@ export const Carer = () => {
                             Abrir chat
                         </a>): 
                             <a className="btn btn-dark rounded-pill px-3 text-white"
-                                role="button" href="" onClick={mostrarAlerta} >
+                                role="button" href="" onClick={handleOpenToast} >
                                 Abrir chat
                             </a>
-                        }                   
+                        } 
+                        {
+                            openToast && 
+                            <div className="bg-dark text-white">
+                                <h5>Atención!</h5>
+                                <p>Inicia sesión para abrir un chat</p>
+                                <i className="fa-solid fa-xmark" onClick={() => handleOpenToast()} ></i>
+                            </div>
+                        }                  
                     </div>
                 </div>
                 <div className="col-md-8">
