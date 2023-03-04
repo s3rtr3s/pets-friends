@@ -7,6 +7,8 @@ export const ServiceForm = ({ handleOpenModal }) => {
     title: "",
     price: "",
     description: "",
+    service_type: "",
+    image: "",
     carer_id: store.clientInfo.id,
   });
 
@@ -54,6 +56,26 @@ export const ServiceForm = ({ handleOpenModal }) => {
           setServiceInfo({ ...serviceInfo, description: e.target.value })
         }
       />
+      <label className="fs-5 fw-bold">Imagen</label>
+      <input
+        className="col-8"
+        value={serviceInfo.image}
+        onChange={(e) =>
+          setServiceInfo({ ...serviceInfo, image: e.target.value })
+        }
+      />
+      <select
+        name="serviceType"
+        onChange={(e) =>
+          setServiceInfo({ ...serviceInfo, service_type: e.target.value })
+        }
+      >
+        <option>-- Selecciona el tipo de servicio --</option>
+        <option value={1}>Paseo de 30 min</option>
+        <option value={2}>Paseo de 1 hr</option>
+        <option value={3}>Pijamada</option>
+        <option value={4}>Personalizado</option>
+      </select>
       <a
         className="btn btn-dark rounded-pill px-3 text-white"
         onClick={handleClick}
