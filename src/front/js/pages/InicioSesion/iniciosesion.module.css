@@ -11,7 +11,7 @@
   text-align: center;
   font-size: 40px;
   color: rgb(20, 15, 13);
-  padding-top: 100px;
+  padding-top: 150px;
   margin: 0px;
   font-family: "Caveat", cursive;
 }
@@ -43,7 +43,7 @@
   color: #000000;
 }
 .link:hover {
-  color: #ed5d10;
+  color: #575656;
 }
 p {
   font-weight: 500;

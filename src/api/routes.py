@@ -325,3 +325,52 @@ def destroy_image(img_id):
     db.session.delete(image)
     db.session.commit()
     return 'Ok', 200
+
+
+# CHATS
+
+
+@api.route('/chats/<int:client_id>', methods=['GET'])
+def get_chats_by_client(client_id):
+    chat_list = Chat.query.filter((Chat.client_1_id == client_id) | (Chat.client_2_id == client_id)).all()
+    results = [chat.serialize() for chat in chat_list]
+    response_body = {'message': 'OK',
+                     'total_records': len(results),
+                     'results': results}
+    return jsonify(response_body), 200
+
+
+@api.route('/chats', methods=['POST'])
+def create_new_chat():
+    request_body = request.get_json()
+    chat = Chat(client_1_id=request_body['client_1_id'],
+                client_2_id=request_body['client_2_id'])
+    db.session.add(chat)
+    db.session.commit()
+    return jsonify(request_body), 200
+
+
+# MESSAGES
+
+
+@api.route('/message', methods=['POST'])
+def send_message():
+    request_body = request.get_json()
+    message = Message(chat_id=request_body['chat_id'],
+                      date=request_body['date'],
+                      content=request_body['content'],
+                      client_id=request_body['client_id'])
+    db.session.add(message)
+    db.session.commit()
+    return jsonify(message.serialize()), 200
+
+
+@api.route('/message/<int:chat_id>', methods=['GET'])
+def get_messages(chat_id):
+    messages = Message.query.filter(Message.chat_id == chat_id).all()
+    results = [message.serialize() for message in messages]
+    response_body = {'message': 'OK',
+                     'total_records': len(results),
+                     'results': results}
+    return jsonify(response_body), 200
+    

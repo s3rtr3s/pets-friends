@@ -11,7 +11,9 @@ export const Dashboard = () => {
       </div>
       <div className="col-8">
         <ServicesPets />
+        <div id="/chat">
         <ChatList />
+        </div>
       </div>
     </div>
   );

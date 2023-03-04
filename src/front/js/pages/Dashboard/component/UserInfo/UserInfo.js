@@ -25,7 +25,7 @@ export const UserInfo = () => {
 
   return (
 <div className="dashboard-box container mt-4 mb-4 p-3 d-flex flex-column align-items-center bg-white">
-      <div className="img-container">
+      <div className="img-container" id="iContainer">
         <img className="img-fluid rounded-circle" src={clientInfo.avatar} />
       </div>
       <p className="fs-2">

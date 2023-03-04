@@ -51,6 +51,15 @@ const listaServicios = [
     carer_id: 1,
     city: "Alicante",
   },
+  {
+    id: 6,
+    img: "https://images.unsplash.com/photo-1567644495368-82cb64d087f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+    title: "Energia por una hora",
+    price: 15,
+    description: "Paseo de una hora",
+    carer_id: 1,
+    city: "Alicante",
+  },
 ];
 
 export const Servicios = () => {
@@ -90,30 +99,39 @@ export const Servicios = () => {
   };
 
   return (
-    <div className="container mt-5 pt-5">
-      <ServicesNav setCity={setCity} setServiceType={setServiceType} />
-      <div className="row row-cols-1 row-cols-md-3 g-4">
-        {listaServicios.map((servicio) => (
-          <div key={servicio.id} className="col">
-            <div className="card">
-              <img src={servicio.img} className="card-img-top" />
-              <div className="card-body text-center">
-                <div className="d-flex justify-content-between">
-                  <h5 className="card-title ">{servicio.title}</h5>
-                  <span className="text-warning">${servicio.price}</span>
+    <div className="padre">
+      <nav class="bg-dark navbar-dark">
+            <div class="container">
+              <a href="" class="navbar-brand"><i class="fas fa-tree mr-2"></i>SERVICIOS</a>
+            </div>
+      </nav>
+            <section id="header" class="jumbotron text-center">
+              <h3 class="display-3">Servicios</h3>
+              <h5 class="aaa">Encuentra al cuidador que más te guste</h5>
+              <ServicesNav setCity={setCity} setServiceType={setServiceType}/>
+          </section>
+          <section id="gallery">
+            {listaServicios.map((servicio) => (
+              <div key={servicio.id} class="container">
+                <div class="row d-flex justify-content-evenly" id="rounder-card">
+                  <div class="col-lg-4 mb-4">
+                    <div class="card">
+                      <img src={servicio.img} class="card-img-top"/>
+                      <div class="card-body">
+                        <h5 class="card-title">{servicio.title}</h5>
+                        <p class="card-text">{servicio.description}</p>
+                        <a href="" class="btn btn-outline-warning btn-sm" onClick={() => handleClick(servicio.id)}>Contactar</a>
+                      </div>
+                  </div>
                 </div>
-                <p className="card-text">{servicio.description}</p>
-                <button
-                  className="btn btn-dark rounded-pill service-button"
-                  onClick={() => handleClick(servicio.id)}
-                >
-                  Contratar
-                </button>
+                
               </div>
             </div>
-          </div>
-        ))}
-      </div>
+            ))}
+          </section>
+          
     </div>
   );
 };
+
+

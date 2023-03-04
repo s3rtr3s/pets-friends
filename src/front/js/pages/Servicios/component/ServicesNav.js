@@ -1,4 +1,5 @@
 import React from "react";
+import "./servicesNav.css"
 
 export const ServicesNav = ({ setCity, setServiceType }) => {
   const hanldeCityClick = (city) => {
@@ -9,11 +10,11 @@ export const ServicesNav = ({ setCity, setServiceType }) => {
   };
 
   return (
-    <div className="bg-white p-4 mb-5 rounded">
-      <div className="d-flex justify-content-evenly">
+    <div className="p-4 mb-5 rounded">
+      <div className="d-flex justify-content-center">
         <div className="dropdown">
           <button
-            className="btn btn-warning dropdown-toggle"
+            className="bCiudad btn btn-light dropdown-toggle"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -85,7 +86,7 @@ export const ServicesNav = ({ setCity, setServiceType }) => {
         </div>
         <div className="dropdown">
           <button
-            className="btn btn-warning dropdown-toggle"
+            className="bCiudad btn btn-light dropdown-toggle"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
