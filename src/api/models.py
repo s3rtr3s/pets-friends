@@ -1,5 +1,10 @@
 from flask_sqlalchemy import SQLAlchemy
 
+# configuracion Seeding 
+from flask_seeder import Seeder, Faker, generator
+from faker import Faker
+import random
+
 
 db = SQLAlchemy()
 
@@ -32,6 +37,51 @@ class Clients(db.Model):
                 'longitude': self.longitude,
                 'email': self.email}
 
+
+class DemoSeeder(Seeder):
+
+  # run() will be called by Flask-Seeder
+  def run(self):
+    # Create a new Faker and tell it how to create User objects
+    faker = Faker(
+      cls=Clients,
+      init={
+        "id": generator.Sequence(),
+        "roles": generator.String(Owner|Carer),
+        "name": generator.Name(it_IT),
+        "surname": generator.String(Perez),
+        'avatar': self.avatar,
+        'city': generator.String(Almeria),
+        'description': generator.String("Me gustan las mascotas"),
+        'latitude': generator.Integer(100),
+        'longitude': generator.Integer(100),
+        'email': generator.String(yo@yo.com),
+        'password': generator.String(password)
+      }
+    )
+
+    # Create 3 users
+    #for client in faker.create(3):
+        #print("Adding client: %s" % client)
+        #self.db.session.add(client) 
+      # local
+
+locale_list=['es_ES']
+cliente=['Owner','Carer']
+descripcionCliente=['Amante de los animales','Le gusta la naturaleza','loco por el spinning']
+faker2=Faker(locale_list); 
+
+for i in range(5):
+    print(f'nombre: {faker2.first_name()}')
+    print(f'apellido: {faker2.last_name()}')
+    print(f'address: {faker2.address()}')
+    print(f'city: {faker2.administrative_unit()}')
+    print(f'email: {faker2.ascii_company_email()}')
+    print(f'cliente: {random.choice(cliente)}')
+    print(f'cliente_id: {i}')
+    print(f'Descripcion cliente: {random.choice(descripcionCliente)}')
+
+#print(f'text: {faker2.text()}')
 
 class Pets(db.Model):
     id = db.Column(db.Integer, primary_key=True)
