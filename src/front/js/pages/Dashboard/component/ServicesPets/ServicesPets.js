@@ -85,7 +85,7 @@ export const ServicesPets = () => {
   };
 
   return openEditModal ? (
-    <EditPetsModal handleOpenEditModal={handleOpenEditModal} itemPet={editing} getItems={getItems} />
+    <EditPetsModal handleOpenEditModal={handleOpenEditModal} itemPet={editing} />
     ) : (
     <div className="dashboard-box container mt-5 mb-4 p-3 d-flex flex-column align-items-center bg-white">
       <p className="fs-4">

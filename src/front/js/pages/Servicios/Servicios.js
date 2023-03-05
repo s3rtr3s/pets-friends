@@ -63,35 +63,39 @@ const listaServicios = [
 ];
 
 export const Servicios = () => {
+  const { id } = useParams();
   const [city, setCity] = useState("");
-  const [serviceType, setServiceType] = useState("");
+  const [serviceType, setServiceType] = useState(id);
   const [url, setUrl] = useState("");
   const [servicesList, setServicesList] = useState([]);
   const { store } = useContext(Context);
-  const { id } = useParams();
   const navigate = useNavigate();
 
-  const getServices = async () => {
+  const getServices = async (url) => {
     const resp = await fetch(url);
     const data = await resp.json();
-    console.log(data);
+    setServicesList(data.results);
+    console.log(data.results);
+  };
+
+  const buildUrl = () => {
+    let baseUrl = `${store.BACKEND_URL}api/services`;
+    if (serviceType !== "" && city !== "") {
+      baseUrl += "?service_type=" + serviceType + "&city=" + city;
+    } else if (serviceType !== "" && city === "") {
+      baseUrl += "?service_type=" + serviceType;
+    } else if (serviceType === "" && city !== "") {
+      baseUrl += "?city=" + city;
+    }
+    setUrl(baseUrl);
   };
 
   useEffect(() => {
-    let urlBase = store.BACKEND_URL + "api/services";
-    if (serviceType !== "" && city !== "") {
-      urlBase += "?service_type=" + serviceType + "&city=" + city;
-    } else if (serviceType !== "" && city === "") {
-      urlBase += "?service_type=" + serviceType;
-    } else if (serviceType === "" && city !== "") {
-      urlBase += "?city=" + city;
-    }
-    setUrl(urlBase);
+    buildUrl();
   }, [serviceType, city]);
 
   useEffect(() => {
-    id && setServiceType(id);
-    getServices();
+    getServices(url);
   }, [url]);
 
   const handleClick = (id) => {
@@ -100,33 +104,38 @@ export const Servicios = () => {
 
   return (
     <div className="padre">
-      <nav class="bg-dark navbar-dark">
-            <div class="container">
-              <a href="" class="navbar-brand"><i class="fas fa-tree mr-2"></i>SERVICIOS</a>
-            </div>
+      <nav className="bg-dark navbar-dark">
+        <div className="container">
+          <a href="" className="navbar-brand">
+            <i className="fas fa-tree mr-2"></i>SERVICIOS
+          </a>
+        </div>
       </nav>
-            <section id="header" class="jumbotron text-center">
-              <h3 class="display-3">Servicios</h3>
-              <h5 class="aaa">Encuentra al cuidador que más te guste</h5>
-              <ServicesNav setCity={setCity} setServiceType={setServiceType}/>
-          </section>
-          <section id="gallery">
-            <div className="d-flex flex-wrap gap-5 mx-5 justify-content-center">
-            {listaServicios.map((servicio) => (
-              <div key={servicio.id} class="card" style={{width: "28rem"}}>
-                <img src={servicio.img} class="card-img-top"/>
-                <div class="card-body">
-                  <h5 class="card-title">{servicio.title}</h5>
-                  <p class="card-text">{servicio.description}</p>
-                  <a href="" class="btn btn-outline-warning btn-sm" onClick={() => handleClick(servicio.id)}>Contactar</a>
-                </div>
+      <section id="header" className="jumbotron text-center">
+        <h3 className="display-3">Servicios</h3>
+        <h5 className="aaa">Encuentra al cuidador que más te guste</h5>
+        <ServicesNav setCity={setCity} setServiceType={setServiceType} />
+      </section>
+      <section id="gallery">
+        <div className="d-flex flex-wrap gap-5 mx-5 justify-content-center">
+          {servicesList?.map((servicio) => (
+            <div key={servicio?.id} className="card" style={{ width: "28rem" }}>
+              <img src={servicio?.img} className="card-img-top" />
+              <div className="card-body">
+                <h5 className="card-title">{servicio?.title}</h5>
+                <p className="card-text">{servicio?.description}</p>
+                <a
+                  href=""
+                  className="btn btn-outline-warning btn-sm"
+                  onClick={() => handleClick(servicio?.carer_id)}
+                >
+                  Contactar
+                </a>
               </div>
-            ))}
-          </div>
-          </section>
-          
+            </div>
+          ))}
+        </div>
+      </section>
     </div>
   );
 };
-
-

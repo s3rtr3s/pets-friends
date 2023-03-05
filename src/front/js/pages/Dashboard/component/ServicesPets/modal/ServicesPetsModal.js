@@ -4,7 +4,7 @@ import { PetForm } from "./component/PetForm";
 import { ServiceForm } from "./component/ServiceForm";
 import "./servicespetsmodal.css";
 
-export const ServicesPetsModal = ({ handleOpenModal }) => {
+export const ServicesPetsModal = ({ handleOpenModal, getItems }) => {
   const { store } = useContext(Context);
   return (
     <div className="content">
@@ -16,7 +16,7 @@ export const ServicesPetsModal = ({ handleOpenModal }) => {
           ></i>
         </div>
         {store.clientInfo.roles === "Owner" ? (
-          <PetForm handleOpenModal={handleOpenModal} />
+          <PetForm handleOpenModal={handleOpenModal} getItems={getItems} />
           ) : (
           <ServiceForm handleOpenModal={handleOpenModal} />
         )}

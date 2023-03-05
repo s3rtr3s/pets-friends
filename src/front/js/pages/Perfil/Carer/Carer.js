@@ -58,10 +58,6 @@ export const Carer = () => {
     getImage();
   }, []);
 
-  const mostrarAlerta = () => {
-    alert("Para abrir un chat tienes que iniciar sesión.");
-  };
-
   return (
     <div className="container emp-profile">
       <form method="post">
@@ -176,7 +172,7 @@ export const Carer = () => {
                         <img src={service.image} className="card-img-top"></img>
                         <div className="card-body">
                           <p className="card-text">
-                            {pet.name}, {pet.description}
+                            {service.title}, {service.description}
                           </p>
                         </div>
                       </div>
