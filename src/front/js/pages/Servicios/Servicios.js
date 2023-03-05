@@ -111,23 +111,18 @@ export const Servicios = () => {
               <ServicesNav setCity={setCity} setServiceType={setServiceType}/>
           </section>
           <section id="gallery">
+            <div className="d-flex flex-wrap gap-5 mx-5 justify-content-center">
             {listaServicios.map((servicio) => (
-              <div key={servicio.id} class="container">
-                <div class="row d-flex justify-content-evenly" id="rounder-card">
-                  <div class="col-lg-4 mb-4">
-                    <div class="card">
-                      <img src={servicio.img} class="card-img-top"/>
-                      <div class="card-body">
-                        <h5 class="card-title">{servicio.title}</h5>
-                        <p class="card-text">{servicio.description}</p>
-                        <a href="" class="btn btn-outline-warning btn-sm" onClick={() => handleClick(servicio.id)}>Contactar</a>
-                      </div>
-                  </div>
+              <div key={servicio.id} class="card" style={{width: "28rem"}}>
+                <img src={servicio.img} class="card-img-top"/>
+                <div class="card-body">
+                  <h5 class="card-title">{servicio.title}</h5>
+                  <p class="card-text">{servicio.description}</p>
+                  <a href="" class="btn btn-outline-warning btn-sm" onClick={() => handleClick(servicio.id)}>Contactar</a>
                 </div>
-                
               </div>
-            </div>
             ))}
+          </div>
           </section>
           
     </div>

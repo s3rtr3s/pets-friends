@@ -4,11 +4,19 @@ import "./carer.css";
 import { Context } from "../../../store/appContext";
 
 export const Carer = () => {
-  const { store } = useContext(Context);
-  const [carer, setCarer] = useState("");
-  const [services, setServices] = useState([]);
-  const [image, setImage] = useState([]);
-  const { id } = useParams();
+    const { store } = useContext(Context)
+    const [carer, setCarer ] = useState("");
+    const [services, setServices ] = useState([]);
+    const [image, setImage ] = useState([]);
+    const [openToast, setOpenToast] = useState(true);
+    
+    const { id } = useParams(); 
+    
+    const getCarer = async () => {
+        const resp = await fetch (`${store.BACKEND_URL}api/clients/${id}`)
+        const data = await resp.json()
+        setCarer(data.result)
+    }
   const navigate = useNavigate();
 
   const getCarer = async () => {
@@ -45,11 +53,16 @@ export const Carer = () => {
     data && navigate("/dashboard")
   };
 
+        const handleOpenToast = () => {
+          setOpenToast(!openToast)
+        };
+
   useEffect(() => {
     getCarer();
     getServices();
     getImage();
   }, []);
+
 
   const mostrarAlerta = () => {
     alert("Para abrir un chat tienes que iniciar sesión.");
@@ -114,47 +127,35 @@ export const Carer = () => {
                 </li>
               </ul>
             </div>
-          </div>
-        </div>
-        <div className="row">
-          <div className="col-md-4">
-            <div className="profile-work">
-              <h6>DATOS DE CONTACTO</h6>
-              <br />
-              <p>Nombre: {carer?.name}</p>
-              <p>Apellidos: {carer?.surname}</p>
-              <p>Email: {carer?.email}</p>
-              <p>Ciudad: {carer?.city}</p>
-              {store.clientInfo ? (
-                <a
-                  className="btn btn-dark rounded-pill px-3 text-white"
-                  role="button"
-                  onClick={handleChatClick}
-                >
-                  Abrir chat
-                </a>
-              ) : (
-                <a
-                  className="btn btn-dark rounded-pill px-3 text-white"
-                  role="button"
-                  href=""
-                  onClick={mostrarAlerta}
-                >
-                  Abrir chat
-                </a>
-              )}
-            </div>
-          </div>
-          <div className="col-md-8">
-            <div className="tab-content profile-tab" id="myTabContent">
-              <div
-                className="tab-pane fade show active"
-                id="nav-home"
-                role="tabpanel"
-                aria-labelledby="nav-home-tab"
-              >
-                <div className="col-md-9">
-                  <div className="bio-content">{carer?.description}</div>
+            <div className="row">
+                <div className="col-md-4">
+                    <div className="profile-work">
+                        <h6>DATOS DE CONTACTO</h6><br/>
+                        <p>Nombre: {carer?.name}</p>
+                        <p>Apellidos: {carer?.surname}</p>
+                        <p>Email: {carer?.email}</p>
+                        <p>Ciudad: {carer?.city}</p>
+                        {
+                         store.clientInfo ? (
+                        <a className="btn btn-dark rounded-pill px-3 text-white"
+                            role="button" href="/#chat" onClick={handleChatClick}>
+                            Abrir chat
+                        </a>): 
+                            <a className="btn btn-dark rounded-pill px-3 text-white"
+                                role="button" href="" onClick={handleOpenToast} >
+                                Abrir chat
+                            </a>
+                        } 
+                        {
+                            openToast && 
+                            <div className="bg-dark text-white">
+                                <h5>Atención!</h5>
+                                <p>Inicia sesión para abrir un chat</p>
+                                <i className="fa-solid fa-xmark" onClick={() => handleOpenToast()} ></i>
+                            </div>
+                        }                  
+                    </div>
+
                 </div>
               </div>
               <div
