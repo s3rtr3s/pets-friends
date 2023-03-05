@@ -30,7 +30,6 @@ export const PetForm = ({ handleOpenModal }) => {
 
   return (
     <form className="dashboard-form gap-3 p-3 w-100 d-flex flex-column align-items-center">
-      <p>formulario cambio de mascota</p>
       <label className="fs-5 fw-bold">Nombre</label>
       <input
         className="col-8"

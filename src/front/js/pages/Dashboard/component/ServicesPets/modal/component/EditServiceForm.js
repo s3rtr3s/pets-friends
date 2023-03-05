@@ -1,59 +1,58 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../../../../../store/appContext";
 
-export const EditPetForm = ({ handleOpenEditModal, itemPet,getItems }) => {
+export const EditServiceForm = ({ handleOpenEditModal, itService,getItems }) => {
   const { store } = useContext(Context);
-  
-  const [petInfo, setPetInfo] = useState({
-    name: itemPet.name,
-    image: itemPet.url,
-    description: itemPet.description,
-    owner_id: store.clientInfo.id,
+  const [serviceInfo, setServiceInfo] = useState({
+    title: itService.name,
+    image: itService.url,
+    price: itService.price,
+    description: itService.description,
+    carer_id: store.clientInfo.id,
   })
 
-  const saveEditPet = async () => {
+  const saveService = async () => {
     const options = {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(petInfo)
+      body: JSON.stringify(serviceInfo)
     };
-    const resp = await fetch(`${store.BACKEND_URL}api/pets/${itemPet.id}`, options);
+    const resp = await fetch(`${store.BACKEND_URL}api/services`, options);
     const data = await resp.json();
     console.log("dentro de async",data);
   };
 
   const handleClick = () => {
-    saveEditPet();
-    getItems();
-    
+    saveService();
+    getItems(); 
     handleOpenEditModal();
   };
 
   return (
     <form className="dashboard-form gap-3 p-3 w-100 d-flex flex-column align-items-center">
-      <p>Edita tu mascota</p>
+      <p>Edita el Servicio</p>
       <label className="fs-5 fw-bold">Nombre</label>
       <input
         className="col-8"
-        value={petInfo.name}
-        onChange={(e) => setPetInfo({ ...petInfo, name: e.target.value })}
+        value={itService.name}
+        onChange={(e) => setServiceInfo({ ...serviceInfo, name: e.target.value })}
       />
 
       <label className="fs-5 fw-bold">Imagen</label>
       <input
         className="col-8" type="url"
-        value={petInfo.image}
-        onChange={(e) => setPetInfo({ ...petInfo, image: e.target.value })}
+        value={itService.image}
+        onChange={(e) => setServiceInfo({ ...serviceInfo, image: e.target.value })}
       />
 
       <label className="fs-5 fw-bold">Descripción</label>
       <input
         className="col-8"
-        value={petInfo.description}
+        value={itService.description}
         onChange={(e) =>
-          setPetInfo({ ...petInfo, description: e.target.value })
+          setServiceInfo({ ...serviceInfo, description: e.target.value })
         }
       />
       <span
