@@ -2,7 +2,9 @@ import React, { useContext, useState } from "react";
 import { Context } from "../../../../../../store/appContext";
 
 export const PetForm = ({ handleOpenModal }) => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
+  const [checkBox, setCheckBox] = useState(true);
+  const [image, setImage] = useState();
   const [petInfo, setPetInfo] = useState({
     name: "",
     image: "",
@@ -28,6 +30,16 @@ export const PetForm = ({ handleOpenModal }) => {
     handleOpenModal();
   };
 
+  const handleChangeImage = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    const data = await actions.uploadImage(image)
+    setPetInfo({ ...petInfo, image: data.url})
+    setCheckBox(false)
+  };
+
   return (
     <form className="dashboard-form gap-3 p-3 w-100 d-flex flex-column align-items-center">
       <label className="fs-5 fw-bold">Nombre</label>
@@ -37,11 +49,16 @@ export const PetForm = ({ handleOpenModal }) => {
         onChange={(e) => setPetInfo({ ...petInfo, name: e.target.value })}
       />
       <label className="fs-5 fw-bold">Imagen</label>
-      <input
-        className="col-8"
-        value={petInfo.image}
-        onChange={(e) => setPetInfo({ ...petInfo, image: e.target.value })}
-      />
+      <div className="d-flex justify-content-center">
+        <input
+          className="col-8"
+          type="file"
+          onChange={(e) => handleChangeImage(e)}
+        />
+        {checkBox && <i className="fa-solid fa-check"
+          onClick={handleUpload}
+        ></i>}
+      </div>
       <label className="fs-5 fw-bold">Descripción</label>
       <input
         className="col-8"

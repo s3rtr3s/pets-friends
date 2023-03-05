@@ -308,9 +308,7 @@ def upload_image():
     upload_result = cloudinary.uploader.upload(file)
     image = Images(client_id=request.form['client_id'],
                    cloud_id=upload_result['public_id'],
-                   url=upload_result['url'],
-                   alt=request.form['alt'],
-                   caption=request.form['caption'])
+                   url=upload_result['url'])
     db.session.add(image)
     db.session.commit()
 

@@ -2,8 +2,10 @@ import React, { useContext, useState } from "react";
 import { Context } from "../../../../../store/appContext";
 
 export const UserForm = ({ handleOpenModal, getClientInfo }) => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
   const [city, setCity] = useState();
+  const [image, setImage] = useState();
+  const [checkBox, setCheckBox] = useState(true);
   const [userInfo, setUserInfo] = useState({
     roles: store.clientInfo.roles,
     name: store.clientInfo.name,
@@ -44,10 +46,19 @@ export const UserForm = ({ handleOpenModal, getClientInfo }) => {
     const data = await resp.json();
     data && getClientInfo();
   };
-
   const handleClick = () => {
     saveInfo();
     handleOpenModal();
+  };
+
+  const handleChangeImage = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    const data = await actions.uploadImage(image)
+    setUserInfo({ ...userInfo, avatar: data.url})
+    setCheckBox(false)
   };
 
   return (
@@ -218,11 +229,16 @@ export const UserForm = ({ handleOpenModal, getClientInfo }) => {
         </select>
       </div>
       <label className="fs-5 fw-bold">Imagen</label>
-      <input
-        className="col-8"
-        value={userInfo.image}
-        onChange={(e) => setUserInfo({ ...userInfo, image: e.target.value })}
-      />
+      <div className="d-flex justify-content-center">
+        <input
+          className="col-8"
+          type="file"
+          onChange={(e) => handleChangeImage(e)}
+        />
+        {checkBox && <i className="fa-solid fa-check"
+          onClick={handleUpload}
+        ></i>}
+      </div>
       <label className="fs-5 fw-bold">Descripción</label>
       <input
         className="col-8"
