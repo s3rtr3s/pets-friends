@@ -4,19 +4,14 @@ import "./carer.css";
 import { Context } from "../../../store/appContext";
 
 export const Carer = () => {
-    const { store } = useContext(Context)
-    const [carer, setCarer ] = useState("");
-    const [services, setServices ] = useState([]);
-    const [image, setImage ] = useState([]);
-    const [openToast, setOpenToast] = useState(true);
-    
-    const { id } = useParams(); 
-    
-    const getCarer = async () => {
-        const resp = await fetch (`${store.BACKEND_URL}api/clients/${id}`)
-        const data = await resp.json()
-        setCarer(data.result)
-    }
+  const { store } = useContext(Context);
+  const [carer, setCarer] = useState("");
+  const [services, setServices] = useState([]);
+  const [image, setImage] = useState([]);
+  const [openToast, setOpenToast] = useState(true);
+
+  const { id } = useParams();
+
   const navigate = useNavigate();
 
   const getCarer = async () => {
@@ -48,21 +43,20 @@ export const Carer = () => {
         client_2_id: carer.id,
       }),
     };
-    const resp = await fetch(store.BACKEND_URL + "api/chats", options)
-    const data = await resp.json()
-    data && navigate("/dashboard")
+    const resp = await fetch(store.BACKEND_URL + "api/chats", options);
+    const data = await resp.json();
+    data && navigate("/dashboard");
   };
 
-        const handleOpenToast = () => {
-          setOpenToast(!openToast)
-        };
+  const handleOpenToast = () => {
+    setOpenToast(!openToast);
+  };
 
   useEffect(() => {
     getCarer();
     getServices();
     getImage();
   }, []);
-
 
   const mostrarAlerta = () => {
     alert("Para abrir un chat tienes que iniciar sesión.");
@@ -128,109 +122,115 @@ export const Carer = () => {
               </ul>
             </div>
             <div className="row">
-                <div className="col-md-4">
-                    <div className="profile-work">
-                        <h6>DATOS DE CONTACTO</h6><br/>
-                        <p>Nombre: {carer?.name}</p>
-                        <p>Apellidos: {carer?.surname}</p>
-                        <p>Email: {carer?.email}</p>
-                        <p>Ciudad: {carer?.city}</p>
-                        {
-                         store.clientInfo ? (
-                        <a className="btn btn-dark rounded-pill px-3 text-white"
-                            role="button" href="/#chat" onClick={handleChatClick}>
-                            Abrir chat
-                        </a>): 
-                            <a className="btn btn-dark rounded-pill px-3 text-white"
-                                role="button" href="" onClick={handleOpenToast} >
-                                Abrir chat
-                            </a>
-                        } 
-                        {
-                            openToast && 
-                            <div className="bg-dark text-white">
-                                <h5>Atención!</h5>
-                                <p>Inicia sesión para abrir un chat</p>
-                                <i className="fa-solid fa-xmark" onClick={() => handleOpenToast()} ></i>
-                            </div>
-                        }                  
+              <div className="col-md-4">
+                <div className="profile-work">
+                  <h6>DATOS DE CONTACTO</h6>
+                  <br />
+                  <p>Nombre: {carer?.name}</p>
+                  <p>Apellidos: {carer?.surname}</p>
+                  <p>Email: {carer?.email}</p>
+                  <p>Ciudad: {carer?.city}</p>
+                  {store.clientInfo ? (
+                    <a
+                      className="btn btn-dark rounded-pill px-3 text-white"
+                      role="button"
+                      href="/#chat"
+                      onClick={handleChatClick}
+                    >
+                      Abrir chat
+                    </a>
+                  ) : (
+                    <a
+                      className="btn btn-dark rounded-pill px-3 text-white"
+                      role="button"
+                      href=""
+                      onClick={handleOpenToast}
+                    >
+                      Abrir chat
+                    </a>
+                  )}
+                  {openToast && (
+                    <div className="bg-dark text-white">
+                      <h5>Atención!</h5>
+                      <p>Inicia sesión para abrir un chat</p>
+                      <i
+                        className="fa-solid fa-xmark"
+                        onClick={() => handleOpenToast()}
+                      ></i>
                     </div>
-
+                  )}
                 </div>
               </div>
-              <div
-                className="tab-pane fade"
-                id="nav-profile"
-                role="tabpanel"
-                aria-labelledby="nav-profile-tab"
-              >
-                <div className="row row-cols-1 row-cols-md-3 g-4">
-                  <div className="d-flex justify-content-start" id="cardspets">
-                    {services?.map((service) => (
-                      <div className="col">
-                        <div className="ica">
-                          <img
-                            src={service.image}
-                            className="card-img-top"
-                          ></img>
-                          <div className="card-body">
-                            <p className="card-text">
-                              {pet.name}, {pet.description}
-                            </p>
-                          </div>
+            </div>
+            <div
+              className="tab-pane fade"
+              id="nav-profile"
+              role="tabpanel"
+              aria-labelledby="nav-profile-tab"
+            >
+              <div className="row row-cols-1 row-cols-md-3 g-4">
+                <div className="d-flex justify-content-start" id="cardspets">
+                  {services?.map((service) => (
+                    <div className="col">
+                      <div className="ica">
+                        <img src={service.image} className="card-img-top"></img>
+                        <div className="card-body">
+                          <p className="card-text">
+                            {pet.name}, {pet.description}
+                          </p>
                         </div>
                       </div>
-                    ))}
-                  </div>
+                    </div>
+                  ))}
                 </div>
               </div>
+            </div>
+            <div
+              className="tab-pane fade"
+              id="nav-contact"
+              role="tabpanel"
+              aria-labelledby="nav-contact-tab"
+            >
               <div
-                className="tab-pane fade"
-                id="nav-contact"
-                role="tabpanel"
-                aria-labelledby="nav-contact-tab"
+                id="carouselExampleAutoplaying"
+                className="carousel slide"
+                data-bs-ride="carousel"
               >
-                <div
-                  id="carouselExampleAutoplaying"
-                  className="carousel slide"
-                  data-bs-ride="carousel"
-                >
-                  <div className="carousel-inner">
-                    {image?.map((image) => (
-                      <div className="carousel-item active">
-                        <img
-                          src={image?.url}
-                          className="d-block w-80"
-                          alt="..."
-                        />
-                      </div>
-                    ))}
-                  </div>
-                  <button
-                    className="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="prev"
-                  >
-                    <span
-                      className="carousel-control-prev-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span className="visually-hidden">Previous</span>
-                  </button>
-                  <button
-                    className="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carouselExampleAutoplaying"
-                    data-bs-slide="next"
-                  >
-                    <span
-                      className="carousel-control-next-icon"
-                      aria-hidden="true"
-                    ></span>
-                    <span className="visually-hidden">Next</span>
-                  </button>
+                <div className="carousel-inner">
+                  {image?.map((image) => (
+                    <div className="carousel-item active">
+                      <img
+                        src={image?.url}
+                        className="d-block w-80"
+                        alt="..."
+                      />
+                    </div>
+                  ))}
                 </div>
+                <button
+                  className="carousel-control-prev"
+                  type="button"
+                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-slide="prev"
+                >
+                  <span
+                    className="carousel-control-prev-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="visually-hidden">Previous</span>
+                </button>
+                <button
+                  className="carousel-control-next"
+                  type="button"
+                  data-bs-target="#carouselExampleAutoplaying"
+                  data-bs-slide="next"
+                >
+                  <span
+                    className="carousel-control-next-icon"
+                    aria-hidden="true"
+                  ></span>
+                  <span className="visually-hidden">Next</span>
+                </button>
               </div>
             </div>
           </div>
