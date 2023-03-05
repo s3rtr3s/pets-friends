@@ -40,7 +40,6 @@ export const UserInfo = ({ id }) => {
       >
         Editar Perfil
       </a>
-
       {openModal && <UserInfoModal handleOpenModal={handleOpenModal} getClientInfo={getClientInfo} />}
     </div>
   );
