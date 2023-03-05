@@ -3,20 +3,20 @@ import { Context } from "../../../../store/appContext";
 import { UserInfoModal } from "./modal/UserInfoModal";
 import "./userinfo.css";
 
-export const UserInfo = () => {
+export const UserInfo = ({ id }) => {
   const [clientInfo, setClientInfo] = useState({});
   const [openModal, setOpenModal] = useState(false);
 
   const { store, actions } = useContext(Context);
-  const getClientInfo = async (id) => {
+  const getClientInfo = async () => {
     const resp = await fetch(`${store.BACKEND_URL}api/clients/${id}`);
     const data = await resp.json();
     setClientInfo(data.result);
+    actions.setLocalStorage(data.result)
   };
 
   useEffect(() => {
-    actions.setClientInfo();
-    getClientInfo(store.clientInfo.id);
+    getClientInfo()
   }, []);
 
   const handleOpenModal = () => {

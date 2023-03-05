@@ -14,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
         localStorage.removeItem("clientInfo");
         setStore({ ...getStore(), clientInfo: null });
       },
-      setLocalStorageClient: (client) => {
+      setLocalStorage: (client) => {
         localStorage.setItem("clientInfo", JSON.stringify(client))
       }
     },
