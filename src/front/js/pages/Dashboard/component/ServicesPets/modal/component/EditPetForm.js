@@ -1,15 +1,16 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../../../../../store/appContext";
 
-export const EditPetForm = ({ handleOpenEditModal, item, getItems }) => {
-  const { store } = useContext(Context);
-  
+export const EditPetForm = ({ handleOpenEditModal, item }) => {
+  const { store, actions } = useContext(Context);
+  const [image, setImage] = useState();
+  const [checkBox, setCheckBox] = useState(true);
   const [petInfo, setPetInfo] = useState({
     name: item.name,
     image: item.url,
     description: item.description,
     owner_id: store.clientInfo.id,
-  })
+  });
 
   const saveEditPet = async () => {
     const options = {
@@ -17,19 +18,29 @@ export const EditPetForm = ({ handleOpenEditModal, item, getItems }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(petInfo)
+      body: JSON.stringify(petInfo),
     };
-    const resp = await fetch(`${store.BACKEND_URL}api/pets/${item.id}`, options);
+    const resp = await fetch(
+      `${store.BACKEND_URL}api/pets/${item.id}`,
+      options
+    );
     const data = await resp.json();
-    console.log("dentro de async",data);
+    console.log("dentro de async", data);
   };
-
-  console.log(petInfo)
 
   const handleClick = () => {
     saveEditPet();
-    getItems();
     handleOpenEditModal();
+  };
+
+  const handleChangeImage = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    const data = await actions.uploadImage(image)
+    setPetInfo({ ...petInfo, image: data.url})
+    setCheckBox(false)
   };
 
   return (
@@ -42,12 +53,16 @@ export const EditPetForm = ({ handleOpenEditModal, item, getItems }) => {
         onChange={(e) => setPetInfo({ ...petInfo, name: e.target.value })}
       />
       <label className="fs-5 fw-bold">Imagen</label>
-      <input
-        className="col-8" type="url"
-        value={petInfo.image}
-        onChange={(e) => setPetInfo({ ...petInfo, image: e.target.value })}
-      />
-
+      <div className="d-flex justify-content-center">
+        <input
+          className="col-8"
+          type="file"
+          onChange={(e) => handleChangeImage(e)}
+        />
+        {checkBox && (
+          <i className="fa-solid fa-check" onClick={handleUpload}></i>
+        )}
+      </div>
       <label className="fs-5 fw-bold">Descripción</label>
       <input
         className="col-8"

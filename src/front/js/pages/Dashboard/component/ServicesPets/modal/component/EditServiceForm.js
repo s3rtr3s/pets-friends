@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../../../../../store/appContext";
 
-export const EditServiceForm = ({ handleOpenEditModal, item ,getItems }) => {
-  const { store } = useContext(Context);
+export const EditServiceForm = ({ handleOpenEditModal, item }) => {
+  const { store, actions } = useContext(Context);
+  const [image, setImage] = useState();
+  const [checkBox, setCheckBox] = useState(true);
   const [serviceInfo, setServiceInfo] = useState({
     title: item.title,
     image: item.url,
@@ -10,7 +12,7 @@ export const EditServiceForm = ({ handleOpenEditModal, item ,getItems }) => {
     description: item.description,
     service_type: item.service_type,
     carer_id: store.clientInfo.id,
-  })
+  });
 
   const saveService = async () => {
     const options = {
@@ -18,17 +20,29 @@ export const EditServiceForm = ({ handleOpenEditModal, item ,getItems }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(serviceInfo)
+      body: JSON.stringify(serviceInfo),
     };
-    const resp = await fetch(`${store.BACKEND_URL}api/services/${item.id}`, options);
+    const resp = await fetch(
+      `${store.BACKEND_URL}api/services/${item.id}`,
+      options
+    );
     const data = await resp.json();
-    console.log("dentro de async",data);
+    console.log("dentro de async", data);
   };
 
   const handleClick = () => {
     saveService();
-    getItems(); 
     handleOpenEditModal();
+  };
+
+  const handleChangeImage = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    const data = await actions.uploadImage(image)
+    setServiceInfo({ ...serviceInfo, image: data.url})
+    setCheckBox(false)
   };
 
   return (
@@ -38,7 +52,9 @@ export const EditServiceForm = ({ handleOpenEditModal, item ,getItems }) => {
       <input
         className="col-8"
         value={serviceInfo.title}
-        onChange={(e) => setServiceInfo({ ...serviceInfo, title: e.target.value })}
+        onChange={(e) =>
+          setServiceInfo({ ...serviceInfo, title: e.target.value })
+        }
       />
       <label className="fs-5 fw-bold">Descripción</label>
       <input
@@ -48,14 +64,17 @@ export const EditServiceForm = ({ handleOpenEditModal, item ,getItems }) => {
           setServiceInfo({ ...serviceInfo, description: e.target.value })
         }
       />
-            <label className="fs-5 fw-bold">Imagen</label>
-      <input
-        className="col-8"
-        value={serviceInfo.image}
-        onChange={(e) =>
-          setServiceInfo({ ...serviceInfo, image: e.target.value })
-        }
-      />
+      <label className="fs-5 fw-bold">Imagen</label>
+      <div className="d-flex justify-content-center">
+        <input
+          className="col-8"
+          type="file"
+          onChange={(e) => handleChangeImage(e)}
+        />
+        {checkBox && (
+          <i className="fa-solid fa-check" onClick={handleUpload}></i>
+        )}
+      </div>
       <select
         name="serviceType"
         value={serviceInfo.service_type}

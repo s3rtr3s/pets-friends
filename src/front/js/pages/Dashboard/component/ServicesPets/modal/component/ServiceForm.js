@@ -2,7 +2,9 @@ import React, { useContext, useState } from "react";
 import { Context } from "../../../../../../store/appContext";
 
 export const ServiceForm = ({ handleOpenModal }) => {
-  const { store } = useContext(Context);
+  const { store, actions } = useContext(Context);
+  const [checkBox, setCheckBox] = useState(true);
+  const [image, setImage] = useState();
   const [serviceInfo, setServiceInfo] = useState({
     title: "",
     price: "",
@@ -13,7 +15,6 @@ export const ServiceForm = ({ handleOpenModal }) => {
   });
 
   const addService = async () => {
-
     const options = {
       method: "POST",
       headers: {
@@ -24,46 +25,68 @@ export const ServiceForm = ({ handleOpenModal }) => {
     try {
       const resp = await fetch(`${store.BACKEND_URL}api/services`, options);
       const data = await resp.json();
-      console.log("dentro de addservice",data);
+      console.log("dentro de addservice", data);
     } catch (error) {
-      console.error("Hay un error en el metodo",error);
+      console.error("Hay un error en el metodo", error);
     }
   };
-  
+
   const handleClick = () => {
     addService();
     handleOpenModal();
   };
 
+  const handleChangeImage = (e) => {
+    setImage(e.target.files[0]);
+  };
+
+  const handleUpload = async () => {
+    const data = await actions.uploadImage(image);
+    setServiceInfo({ ...serviceInfo, image: data.url });
+    setCheckBox(false);
+  };
+
   return (
     <form className="dashboard-form gap-3 p-3 w-100 d-flex flex-column align-items-center">
       <label className="fs-5 fw-bold">Titulo</label>
-      <input type="text"
+      <input
+        type="text"
         className="col-8"
         value={serviceInfo.title}
-        onChange={(e) =>setServiceInfo({ ...serviceInfo, title: e.target.value })}
+        onChange={(e) =>
+          setServiceInfo({ ...serviceInfo, title: e.target.value })
+        }
       />
 
       <label className="fs-5 fw-bold">Precio</label>
       <input
-        className="col-8" type="number"
+        className="col-8"
+        type="number"
         value={serviceInfo.price}
-        onChange={(e) =>setServiceInfo({ ...serviceInfo, price: e.target.value })}
-      />
-      <label className="fs-5 fw-bold">Descripción</label>
-      <input type="text"
-        className="col-8"
-        value={serviceInfo.description}
-        onChange={(e) =>setServiceInfo({ ...serviceInfo, description: e.target.value })}
-      />
-      <label className="fs-5 fw-bold">Imagen</label>
-      <input
-        className="col-8"
-        value={serviceInfo.image}
         onChange={(e) =>
-          setServiceInfo({ ...serviceInfo, image: e.target.value })
+          setServiceInfo({ ...serviceInfo, price: e.target.value })
         }
       />
+      <label className="fs-5 fw-bold">Descripción</label>
+      <input
+        type="text"
+        className="col-8"
+        value={serviceInfo.description}
+        onChange={(e) =>
+          setServiceInfo({ ...serviceInfo, description: e.target.value })
+        }
+      />
+      <label className="fs-5 fw-bold">Imagen</label>
+      <div className="d-flex justify-content-center">
+        <input
+          className="col-8"
+          type="file"
+          onChange={(e) => handleChangeImage(e)}
+        />
+        {checkBox && (
+          <i className="fa-solid fa-check" onClick={handleUpload}></i>
+        )}
+      </div>
       <select
         name="serviceType"
         onChange={(e) =>

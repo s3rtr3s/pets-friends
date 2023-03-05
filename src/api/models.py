@@ -123,8 +123,6 @@ class Images(db.Model):
         'clients.id'), nullable=False)
     cloud_id = db.Column(db.String)
     url = db.Column(db.String)
-    alt = db.Column(db.String)
-    caption = db.Column(db.String)
 
     def __repr__(self):
         return '<Images %r>' % self.id
@@ -133,6 +131,4 @@ class Images(db.Model):
         return {'id': self.id,
                 'client_id': self.client_id,
                 'cloud_id': self.cloud_id,
-                'url': self.url,
-                'alt': self.alt,
-                'caption': self.caption}
+                'url': self.url}

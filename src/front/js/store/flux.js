@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
       BACKEND_URL:
-        "https://3001-s3rtr3s-petsfriends-3goc2b5lp5i.ws-eu89.gitpod.io/",
+        "https://3001-s3rtr3s-petsfriends-nat71atsdbh.ws-eu89.gitpod.io/",
       clientInfo: null,
     },
     actions: {
@@ -16,6 +16,20 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
       setLocalStorage: (client) => {
         localStorage.setItem("clientInfo", JSON.stringify(client))
+      },
+      uploadImage: async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('client_id', getStore().clientInfo.id);
+        
+        const options = {
+          method: 'POST',
+          body: formData,
+        };
+        
+        const resp = await fetch(getStore().BACKEND_URL + "api/upload", options)
+        const data = await resp.json()
+        return data
       }
     },
   };
