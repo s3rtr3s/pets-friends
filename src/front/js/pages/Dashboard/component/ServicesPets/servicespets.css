@@ -14,7 +14,7 @@
   opacity: 0.9;
 }
 
-.edit-button {
+.actions {
   position: absolute;
   right: 0;
   top: 0;
@@ -22,11 +22,11 @@
   opacity: 0;
 }
 
-.pet-service-card:hover .edit-button {
+.pet-service-card:hover .actions {
   opacity: 1;
 }
 
-.edit-button:hover {
+.actions:hover {
   cursor: pointer;
   opacity: 0.8;
 }

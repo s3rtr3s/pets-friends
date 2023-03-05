@@ -1,13 +1,14 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../../../../../store/appContext";
 
-export const EditServiceForm = ({ handleOpenEditModal, itService,getItems }) => {
+export const EditServiceForm = ({ handleOpenEditModal, item ,getItems }) => {
   const { store } = useContext(Context);
   const [serviceInfo, setServiceInfo] = useState({
-    title: itService.name,
-    image: itService.url,
-    price: itService.price,
-    description: itService.description,
+    title: item.title,
+    image: item.url,
+    price: item.price,
+    description: item.description,
+    service_type: item.service_type,
     carer_id: store.clientInfo.id,
   })
 
@@ -19,7 +20,7 @@ export const EditServiceForm = ({ handleOpenEditModal, itService,getItems }) => 
       },
       body: JSON.stringify(serviceInfo)
     };
-    const resp = await fetch(`${store.BACKEND_URL}api/services`, options);
+    const resp = await fetch(`${store.BACKEND_URL}api/services/${item.id}`, options);
     const data = await resp.json();
     console.log("dentro de async",data);
   };
@@ -36,25 +37,38 @@ export const EditServiceForm = ({ handleOpenEditModal, itService,getItems }) => 
       <label className="fs-5 fw-bold">Nombre</label>
       <input
         className="col-8"
-        value={itService.name}
-        onChange={(e) => setServiceInfo({ ...serviceInfo, name: e.target.value })}
+        value={serviceInfo.title}
+        onChange={(e) => setServiceInfo({ ...serviceInfo, title: e.target.value })}
       />
-
-      <label className="fs-5 fw-bold">Imagen</label>
-      <input
-        className="col-8" type="url"
-        value={itService.image}
-        onChange={(e) => setServiceInfo({ ...serviceInfo, image: e.target.value })}
-      />
-
       <label className="fs-5 fw-bold">Descripción</label>
       <input
         className="col-8"
-        value={itService.description}
+        value={serviceInfo.description}
         onChange={(e) =>
           setServiceInfo({ ...serviceInfo, description: e.target.value })
         }
       />
+            <label className="fs-5 fw-bold">Imagen</label>
+      <input
+        className="col-8"
+        value={serviceInfo.image}
+        onChange={(e) =>
+          setServiceInfo({ ...serviceInfo, image: e.target.value })
+        }
+      />
+      <select
+        name="serviceType"
+        value={serviceInfo.service_type}
+        onChange={(e) =>
+          setServiceInfo({ ...serviceInfo, service_type: e.target.value })
+        }
+      >
+        <option>-- Selecciona el tipo de servicio --</option>
+        <option value={1}>Paseo de 30 min</option>
+        <option value={2}>Paseo de 1 hr</option>
+        <option value={3}>Pijamada</option>
+        <option value={4}>Personalizado</option>
+      </select>
       <span
         className="btn btn-dark rounded-pill px-3 text-white"
         onClick={handleClick}
