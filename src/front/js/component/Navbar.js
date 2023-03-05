@@ -5,14 +5,7 @@ import "./navbar.css";
 
 
 export const Navbar = () => {
-  const { store, actions} = useContext(Context);
-
-
-  useEffect(() =>{
-    actions.setClientInfo()
-  },[])
-
-
+  const { store } = useContext(Context);
 
   return (
     <nav className="navbar navbar-expand-lg bg-body-tertiary" id="navbarPet">
@@ -87,7 +80,7 @@ export const Navbar = () => {
                   <ul className="dropdown-menu">
                     
                    <li>
-                      <Link className="dropdown-item" to="/dashboard">
+                      <Link className="dropdown-item" to={`/dashboard/${store.clientInfo.id}`}>
                           Mi perfil
                       </Link>
                     </li>

@@ -3,7 +3,7 @@ import { Context } from "../../../../../store/appContext";
 import { EditPetForm } from "./component/EditPetForm";
 import { EditServiceForm } from "./component/EditServiceForm";
 
-export const EditPetsModal = ({ handleOpenEditModal, itemPet , getItems }) => {
+export const EditPetsModal = ({ handleOpenEditModal, itemPet, getItems }) => {
   const { store } = useContext(Context);
   return (
     <div className="content">

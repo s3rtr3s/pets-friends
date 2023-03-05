@@ -1,13 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../../../../../../store/appContext";
 
-export const EditPetForm = ({ handleOpenEditModal, itemPet,getItems }) => {
+export const EditPetForm = ({ handleOpenEditModal, item, getItems }) => {
   const { store } = useContext(Context);
   
   const [petInfo, setPetInfo] = useState({
-    name: itemPet.name,
-    image: itemPet.url,
-    description: itemPet.description,
+    name: item.name,
+    image: item.url,
+    description: item.description,
     owner_id: store.clientInfo.id,
   })
 
@@ -19,15 +19,16 @@ export const EditPetForm = ({ handleOpenEditModal, itemPet,getItems }) => {
       },
       body: JSON.stringify(petInfo)
     };
-    const resp = await fetch(`${store.BACKEND_URL}api/pets/${itemPet.id}`, options);
+    const resp = await fetch(`${store.BACKEND_URL}api/pets/${item.id}`, options);
     const data = await resp.json();
     console.log("dentro de async",data);
   };
 
+  console.log(petInfo)
+
   const handleClick = () => {
     saveEditPet();
     getItems();
-    
     handleOpenEditModal();
   };
 
@@ -40,7 +41,6 @@ export const EditPetForm = ({ handleOpenEditModal, itemPet,getItems }) => {
         value={petInfo.name}
         onChange={(e) => setPetInfo({ ...petInfo, name: e.target.value })}
       />
-
       <label className="fs-5 fw-bold">Imagen</label>
       <input
         className="col-8" type="url"

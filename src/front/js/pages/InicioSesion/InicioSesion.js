@@ -34,10 +34,7 @@ export const InicioSesion = () => {
           alert("Ha ocurrido un error")
         }})
     .then(result => {
-      console.log(result)
-      localStorage.setItem("clientInfo", JSON.stringify(result.client_info))
-      actions.setClientInfo()
-      navigate("/dashboard")
+      navigate(`/dashboard/${result.client_info.id}`)
     })
 
     .catch(error => alert("Ha ocurrido un error", error));

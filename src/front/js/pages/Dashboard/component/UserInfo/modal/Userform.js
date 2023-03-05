@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Context } from "../../../../../store/appContext";
 
 export const UserForm = ({ handleOpenModal, getClientInfo }) => {
-  const { store, actions } = useContext(Context);
+  const { store } = useContext(Context);
   const [city, setCity] = useState();
   const [userInfo, setUserInfo] = useState({
     roles: store.clientInfo.roles,
@@ -42,13 +42,11 @@ export const UserForm = ({ handleOpenModal, getClientInfo }) => {
       options
     );
     const data = await resp.json();
-    getClientInfo(data.result.id);
+    data && getClientInfo();
   };
 
   const handleClick = () => {
     saveInfo();
-    
-    actions.setClientInfo();
     handleOpenModal();
   };
 
