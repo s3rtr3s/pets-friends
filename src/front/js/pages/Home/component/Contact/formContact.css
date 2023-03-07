@@ -1,9 +1,0 @@
-#formulario{
-    font-weight: bold;
-    width: 100%;
-    height: 60%;
-}
-
-#botonForm:focus, #botonForm:hover {
-    color: #f4a12e;
-}
