@@ -8,7 +8,6 @@ export const Carer = () => {
   const [carer, setCarer] = useState("");
   const [services, setServices] = useState([]);
   const [image, setImage] = useState([]);
-  const [openToast, setOpenToast] = useState(true);
 
   const { id } = useParams();
 
@@ -48,9 +47,6 @@ export const Carer = () => {
     data && navigate("/dashboard");
   };
 
-  const handleOpenToast = () => {
-    setOpenToast(!openToast);
-  };
 
   useEffect(() => {
     getCarer();
@@ -135,26 +131,7 @@ export const Carer = () => {
                     >
                       Abrir chat
                     </a>
-                  ) : (
-                    <a
-                      className="btn btn-dark rounded-pill px-3 text-white"
-                      role="button"
-                      href=""
-                      onClick={handleOpenToast}
-                    >
-                      Abrir chat
-                    </a>
-                  )}
-                  {openToast && (
-                    <div className="bg-dark text-white">
-                      <h5>Atención!</h5>
-                      <p>Inicia sesión para abrir un chat</p>
-                      <i
-                        className="fa-solid fa-xmark"
-                        onClick={() => handleOpenToast()}
-                      ></i>
-                    </div>
-                  )}
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -167,7 +144,7 @@ export const Carer = () => {
               <div className="row row-cols-1 row-cols-md-3 g-4">
                 <div className="d-flex justify-content-start" id="cardspets">
                   {services?.map((service) => (
-                    <div className="col">
+                    <div key={service.id} className="col">
                       <div className="ica">
                         <img src={service.image} className="card-img-top"></img>
                         <div className="card-body">
@@ -194,7 +171,7 @@ export const Carer = () => {
               >
                 <div className="carousel-inner">
                   {image?.map((image) => (
-                    <div className="carousel-item active">
+                    <div key={image.id} className="carousel-item active">
                       <img
                         src={image?.url}
                         className="d-block w-80"
