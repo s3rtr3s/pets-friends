@@ -88,12 +88,12 @@ export const ServicesPets = () => {
     <EditPetsModal handleOpenEditModal={handleOpenEditModal} itemPet={editing} />
     ) : (
     <div className="dashboard-box container mt-5 mb-4 p-3 d-flex flex-column align-items-center bg-white">
-      <p className="fs-4">
+      <p className="fs-4 fw-bold">
         {store.clientInfo?.roles === "Owner" ? "Mis Mascotas" : "Mis Servicios"}
       </p>
       <div className="w-100">
         {items.map((item,i) => (
-          <div key={i} className="p-2 d-flex mb-2 pet-service-card">
+          <div key={i} className="p-2 d-flex mb-2 pet-service-card d-flex align-items-center">
             <div className="img-container mr-2 col-3">
                 {store.clientInfo?.roles === "Owner" ? 
                 <img className="img-fluid rounded-circle" src={item.image? item.image : urlAltPet} /> : 
@@ -103,10 +103,10 @@ export const ServicesPets = () => {
               {store.clientInfo?.roles === "Owner" ? 
                 <p className="fs-4">{item.name}</p> : 
                 <div className="d-flex justify-content-between align-items-center">
-                  <p className="fs-4">{item.title}</p>
-                  <p className="fs-6">{item.price}€</p>
+                  <p className="fs-4 fw-bold">{item.title}</p>
+                  <p className="fs-5">{item.price}€</p>
                 </div>}
-                <p className="fs-6">{item.description}</p>   
+                <p className="fs-5">{item.description}</p>   
             </div>
             
             <div className="d-flex flex-column justify-content-center align-items-center gap-2 actions">

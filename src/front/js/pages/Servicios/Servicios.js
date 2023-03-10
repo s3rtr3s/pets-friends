@@ -9,18 +9,18 @@ const listaServicios = [
   {
     id: 1,
     img: "https://images.unsplash.com/photo-1567644495368-82cb64d087f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
-    title: "Energia por una hora",
+    title: "Paseo de medio dia",
     price: 15,
-    description: "Paseo de una hora",
+    description: "Paseo de media hora por zonas cercanas a tu hogar afdtgasgasd afgt asd asdfg asdf asd",
     carer_id: 1,
     city: "Badajoz",
   },
   {
     id: 2,
     img: "https://images.unsplash.com/photo-1567644495368-82cb64d087f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
-    title: "Energia por una hora",
+    title: "Energía por una hora",
     price: 15,
-    description: "Paseo de una hora",
+    description: "Paseo para los mas traviesos",
     carer_id: 1,
     city: "Badajoz",
   },
@@ -53,7 +53,7 @@ const listaServicios = [
   },
   {
     id: 6,
-    img: "https://images.unsplash.com/photo-1567644495368-82cb64d087f4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80",
+    img: "https://images.unsplash.com/photo-1678446332674-27e494ebe44e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80",
     title: "Energia por una hora",
     price: 15,
     description: "Paseo de una hora",
@@ -104,32 +104,30 @@ export const Servicios = () => {
 
   return (
     <div className="padre">
-      <nav className="bg-dark navbar-dark">
-        <div className="container">
-          <a href="" className="navbar-brand">
-            <i className="fas fa-tree mr-2"></i>SERVICIOS
-          </a>
-        </div>
-      </nav>
       <section id="header" className="jumbotron text-center">
         <h3 className="display-3">Servicios</h3>
-        <h5 className="aaa">Encuentra al cuidador que más te guste</h5>
+        <h5 className="aaa fs-4">Encuentra al cuidador que más te guste</h5>
         <ServicesNav setCity={setCity} setServiceType={setServiceType} />
       </section>
-      <section id="gallery">
+      <section className="container pb-4">
         <div className="d-flex flex-wrap gap-5 mx-5 justify-content-center">
-          {servicesList?.map((servicio) => (
-            <div key={servicio?.id} className="card" style={{ width: "28rem" }}>
-              <img src={servicio?.img} className="card-img-top" />
-              <div className="card-body">
-                <h5 className="card-title">{servicio?.title}</h5>
-                <p className="card-text">{servicio?.description}</p>
-                <a
-                  href=""
-                  className="btn btn-outline-warning btn-sm"
-                  onClick={() => handleClick(servicio?.carer_id)}
+          {servicesList?.map((service) => (
+            <div
+              key={service.id}
+              className="service-element p-3 d-flex aling-items-center justify-content-evenly mb-2 bg-white w-100"
+            >
+              <div className="card-img-container h-100 d-flex justify-content-center align-items-center">
+                <img className="img-fluid card-img" src={service.img} />
+              </div>
+              <div className="w-100 text-center d-flex flex-column justify-content-evenly px-3">
+                <p className="card-title fs-2 fw-bold">{service.title}</p>
+                <p className="card-text card-price fw-bold fs-5 p-3">{service.price} €</p>
+                <p className="card-text fs-5">{service.description}</p>
+                <a 
+                className="card-button bg-dark text-white"
+                onClick={() => handleClick(service.carer_id)}
                 >
-                  Contactar
+                  <span className="fs-2 fw-bold">Contactar</span>
                 </a>
               </div>
             </div>

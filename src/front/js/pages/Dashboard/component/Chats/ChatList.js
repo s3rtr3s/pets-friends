@@ -33,7 +33,7 @@ export const ChatList = () => {
 
   return (
     <div className="dashboard-box container mt-4 mb-4 p-3 d-flex flex-column align-items-center bg-white">
-      <p className="fs-4">Mis Chats</p>
+      <p className="fs-4 fw-bold">Mis Chats</p>
       <div className="w-100 chat-list p-3 d-flex flex-column gap-3">
         {chatList?.map((chat) => {
           const client_name =

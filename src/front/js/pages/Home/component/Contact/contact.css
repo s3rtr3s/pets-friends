@@ -2,14 +2,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&family=Comfortaa:wght@300&display=swap");
 
 
+.group-names {
+    font-family: "Comfortaa";
+}
+
 .contact{
     background-color: #ffffff;
-    width: 90%;
-    margin:auto; /*Centramos cuadro*/
-    margin-top: 1%;
-    margin-bottom: 3%;
     justify-content:center;
     align-items: center;
+    margin-bottom: 3rem;
+    border-radius: 2vh;
 }
 
 .letrero{ 

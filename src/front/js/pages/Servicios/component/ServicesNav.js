@@ -1,5 +1,5 @@
 import React from "react";
-import "./servicesNav.css"
+import "./servicesNav.css";
 
 export const ServicesNav = ({ setCity, setServiceType }) => {
   const hanldeCityClick = (city) => {
@@ -11,10 +11,10 @@ export const ServicesNav = ({ setCity, setServiceType }) => {
 
   return (
     <div className="p-4 mb-5 rounded">
-      <div className="d-flex justify-content-center">
+      <div className="d-flex justify-content-center gap-5">
         <div className="dropdown">
           <button
-            className="bCiudad btn btn-light dropdown-toggle"
+            className="bCiudad btn btn-dark text-white px-5 rounded-pill dropdown-toggle fs-4"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"
@@ -58,35 +58,11 @@ export const ServicesNav = ({ setCity, setServiceType }) => {
             <li onClick={() => hanldeCityClick("Cantabria")}>
               <a className="dropdown-item">Cantabria</a>
             </li>
-            <li onClick={() => hanldeCityClick("Castellón")}>
-              <a className="dropdown-item">Castellón</a>
-            </li>
-            <li onClick={() => hanldeCityClick("Ciudad Real")}>
-              <a className="dropdown-item">Ciudad Real</a>
-            </li>
-            <li onClick={() => hanldeCityClick("Córdoba")}>
-              <a className="dropdown-item">Córdoba</a>
-            </li>
-            <li onClick={() => hanldeCityClick("Cuenca")}>
-              <a className="dropdown-item">Cuenca</a>
-            </li>
-            <li onClick={() => hanldeCityClick("Girona")}>
-              <a className="dropdown-item">Girona</a>
-            </li>
-            <li onClick={() => hanldeCityClick("Granada")}>
-              <a className="dropdown-item">Granada</a>
-            </li>
-            <li onClick={() => hanldeCityClick("Guadalajara")}>
-              <a className="dropdown-item">Guadalajara</a>
-            </li>
-            <li onClick={() => hanldeCityClick("Guipúzcoa")}>
-              <a className="dropdown-item">Guipúzcoa</a>
-            </li>
           </ul>
         </div>
         <div className="dropdown">
           <button
-            className="bCiudad btn btn-light dropdown-toggle"
+            className="bCiudad btn btn-dark text-white px-5 rounded-pill dropdown-toggle fs-4"
             type="button"
             data-bs-toggle="dropdown"
             aria-expanded="false"

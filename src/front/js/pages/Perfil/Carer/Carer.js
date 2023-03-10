@@ -44,7 +44,7 @@ export const Carer = () => {
     };
     const resp = await fetch(store.BACKEND_URL + "api/chats", options);
     const data = await resp.json();
-    data && navigate("/dashboard");
+    data && navigate(`/dashboard/${store.clientInfo.id}`);
   };
 
 
@@ -125,8 +125,7 @@ export const Carer = () => {
                   {store.clientInfo ? (
                     <a
                       className="btn btn-dark rounded-pill px-3 text-white"
-                      role="button"
-                      href="/#chat"
+                      role="button"               
                       onClick={handleChatClick}
                     >
                       Abrir chat

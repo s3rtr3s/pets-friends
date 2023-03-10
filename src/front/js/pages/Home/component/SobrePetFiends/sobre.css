@@ -2,17 +2,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&family=Comfortaa:wght@300&display=swap");
 
 .SobrePetFriends {
-  margin: 8%;
   background: white;
-  padding: 100px;
-  border-radius: 5px;
+  border-radius: 2vh;
+  padding-bottom: 4rem;
 }
 
 #pata {
   position: absolute;
   transform: rotate(-20deg);
   width: 65px;
-    height: 65px;
+  height: 65px;
   left: 5%;
 }
 
@@ -71,7 +70,7 @@
   letter-spacing: normal;
   width: 500px;
   margin: 0;
-  padding: 0 2rem;
+  padding: 2rem;
 }
 
 .heroImg {

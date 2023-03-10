@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import "./services.css";
 
 const servicesList = [
   {
@@ -40,29 +41,22 @@ export const Services = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div
+      className="container mt-4 mb-3 bg-white p-5 services d-flex flex-column gap-3"
+      style={{ borderRadius: "2vh" }}
+    >
       {servicesList.map((service) => (
-        <div key={service.id} className="col d-flex justify-content-center">
-          <div className="card mb-3 bg-white">
-            <div className="row g-0">
-              <div className="col-md-8">
-                <img src={service.img} className="img-fluid rounded-start" />
-              </div>
-              <div className="col-md-4 d-flex align-items-center">
-                <div className="card-body text-center">
-                  <h5 className="card-title">{service.title}</h5>
-                  <p className="card-text">{service.description}</p>
-                  <p>{service.duration}</p>
-                  <a
-                    className="btn btn-dark rounded-pill px-3 text-white"
-                    role="button"
-                    onClick={() => handleClick(service.id)}
-                  >
-                    Reserva ahora
-                  </a>
-                </div>
-              </div>
-            </div>
+        <div key={service.id} className="home-service-card d-flex">
+          <div className="col-8 p-0 rounded overflow-hidden m-3">
+            <img src={service.img} className="w-100" />
+          </div>
+          <div className="w-100 d-flex flex-column align-items-center justify-content-center my-3 mr-3">
+            <p className="fs-1 fw-bold home-service-card-title">{service.title}</p>
+            <p className="fs-5 home-service-card-text text-center">{service.description}</p>
+            <p
+              onClick={() => handleClick(service.id)}
+              className="home-service-card-link fw-bold fs-5 mt-5 p-3 rounded-pill"
+            >RESERVA AHORA</p>
           </div>
         </div>
       ))}

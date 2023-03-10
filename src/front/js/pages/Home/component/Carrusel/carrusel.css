@@ -1,48 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Amatic+SC&family=Caveat&family=Comfortaa:wght@300&display=swap");
 
-
 .carousel-slide{
-    margin: 100px;
     background: white;
-    padding: 100px;
-    border-radius: 5px;
+    border-radius: 2vh;
 }
-
-#carrouselId{
-    width: 459px;
-    height: 280px;
-    border-radius: 15px;
-    object-fit: cover;
-    float: right;
-    margin: 80px;
-    bottom: 80px;
-    
-}
-
-.textoC h2{
+.carruselTitle{
     font-family: "Amatic SC";
-    font-size: 45px;
-    margin-left: 105px;
-    
 }
 
 .textDescripcionCarrusel{
+    margin-top: 2rem;
     line-height: 1.5em;
     font-size: 18px;
     color: rgb(10, 10, 10);
-    position: relative;
     font-family: "Comfortaa";
     line-height: 1.5em;
     letter-spacing: normal;
-    width: 400px;
-    margin: 0;
-    padding: 0 2rem;
-    margin-left: 105px;
-}
-
-.textDescripcionCarrusel p{
-    font-size: 18px;
 }
 
 .pePelotaDos{

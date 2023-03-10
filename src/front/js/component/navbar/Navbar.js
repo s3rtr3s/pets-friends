@@ -1,19 +1,19 @@
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../store/appContext";
+import { Context } from "../../store/appContext";
 import "./navbar.css";
 
 export const Navbar = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <nav className="navbar navbar-expand-lg bg-body-tertiary" id="navbarPet">
+    <nav className="navbar navbar-expand-lg bg-body-tertiary p-3 fs-5 fixed-top" id="navbarPet">
       <div
         className="collapse navbar-collapse justify-content-center"
         id="navbarNavDropdown"
       >
         <div className="inicioHome" id="inicioHome">
-          <a href="/#inicio" className="navbar-brand">
+          <a href="/#inicio" className="navbar-brand fs-4">
             Inicio
           </a>
           <button
