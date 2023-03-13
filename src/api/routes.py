@@ -380,10 +380,17 @@ def get_messages(chat_id):
 
 
 #WEBSOCKETS
-# @socketio.on('connect')
-# def handle_connect():
-#     print('Client connected')
+def register_events(socketio):
+    @socketio.on('connect')
+    def handle_connect():
+        print('Client connected')
 
-# @socketio.on('disconnect')
-# def handle_disconnect():
-#     print('Client disconnected')
+    @socketio.on('disconnect')
+    def handle_disconnect():
+        print('Client disconnected')
+    
+    @socketio.on('message')
+    def send_message(data):
+        print(str(data))
+
+

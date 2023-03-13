@@ -1,8 +1,16 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
+import { SocketContext } from "../../../../../socket";
 import { Context } from "../../../../../store/appContext";
 
-export const Chat = ({ handleOpenModal, chatId, chatName, chatSurname, chatAvatar }) => {
+export const Chat = ({
+  handleOpenModal,
+  chatId,
+  chatName,
+  chatSurname,
+  chatAvatar,
+}) => {
   const { store } = useContext(Context);
+  const socket = useContext(SocketContext);
   const [messages, setMessages] = useState();
   const [newMessage, setNewMessage] = useState({
     chat_id: chatId,
@@ -17,6 +25,10 @@ export const Chat = ({ handleOpenModal, chatId, chatName, chatSurname, chatAvata
     const data = await resp.json();
     setMessages(data.results);
   };
+
+  const send2Message = () => {
+    socket.emit("message", "Hola Pedro!")
+  }
 
   const sendMessage = async () => {
     const options = {
@@ -45,13 +57,16 @@ export const Chat = ({ handleOpenModal, chatId, chatName, chatSurname, chatAvata
 
   return (
     <div className="content">
+      <button onClick={send2Message}>click me!</button>
       <div className="dashboard-box container mt-4 mb-4 p-3 d-flex flex-column align-items-center bg-white col-4 gap-3">
         <div className="w-100 d-flex justify-content-between">
           <div className="col-10 d-flex align-items-center gap-3">
             <div className="avatar d-flex justify-content-center">
               <img className="rounded-circle h-100" src={chatAvatar} />
             </div>
-            <span className="fs-4 fw-bold ml-3">{chatName} {chatSurname}</span>
+            <span className="fs-4 fw-bold ml-3">
+              {chatName} {chatSurname}
+            </span>
           </div>
           <i
             className="fa-solid fa-xmark p-2 close-button"
@@ -62,31 +77,35 @@ export const Chat = ({ handleOpenModal, chatId, chatName, chatSurname, chatAvata
           ref={divRef}
           className="chat-box messages w-100 d-flex flex-column gap-3 p-3"
         >
-          {!messages || messages.length < 1?
-          <span className="bg-dark text-white rounded-pill p-3 mx-auto">Aun no hay ningun mensaje!</span>
-          : messages
-            .sort((a, b) => a.id - b.id)
-            .map((message) => {
-              if (message.client_id === store.clientInfo.id) {
-                return (
-                  <div
-                    key={message.id}
-                    className="message col-8 bg-white align-self-end"
-                  >
-                    {message.content}
-                  </div>
-                );
-              } else {
-                return (
-                  <div
-                    key={message.id}
-                    className="message col-8 bg-dark text-white align-self-start"
-                  >
-                    {message.content}
-                  </div>
-                );
-              }
-            })}
+          {!messages || messages.length < 1 ? (
+            <span className="bg-dark text-white rounded-pill p-3 mx-auto">
+              Aun no hay ningun mensaje!
+            </span>
+          ) : (
+            messages
+              .sort((a, b) => a.id - b.id)
+              .map((message) => {
+                if (message.client_id === store.clientInfo.id) {
+                  return (
+                    <div
+                      key={message.id}
+                      className="message col-8 bg-white align-self-end"
+                    >
+                      {message.content}
+                    </div>
+                  );
+                } else {
+                  return (
+                    <div
+                      key={message.id}
+                      className="message col-8 bg-dark text-white align-self-start"
+                    >
+                      {message.content}
+                    </div>
+                  );
+                }
+              })
+          )}
         </div>
         <div className="d-flex w-100">
           <textarea
