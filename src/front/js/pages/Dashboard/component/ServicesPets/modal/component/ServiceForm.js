@@ -103,7 +103,7 @@ export const ServiceForm = ({ handleOpenModal }) => {
         className="btn btn-dark rounded-pill px-3 text-white"
         onClick={handleClick}
       >
-        save
+        Guardar
       </a>
     </form>
   );

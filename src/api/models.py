@@ -111,9 +111,11 @@ class Chat(db.Model):
         return {'id': self.id,
                 'client_1_id': self.client_1_id,
                 'client_1_name': self.client_1.name,
+                'client_1_surname': self.client_1.surname,
                 'client_1_avatar': self.client_1.avatar,
                 'client_2_id': self.client_2_id,
                 'client_2_name': self.client_2.name,
+                'client_2_surname': self.client_2.surname,
                 'client_2_avatar': self.client_2.avatar,}
 
 

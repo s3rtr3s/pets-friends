@@ -258,7 +258,7 @@ export const UserForm = ({ handleOpenModal, getClientInfo }) => {
         className="btn btn-dark rounded-pill px-3 text-white"
         onClick={handleClick}
       >
-        Save
+        Guardar
       </a>
     </form>
   );

@@ -341,11 +341,17 @@ def get_chats_by_client(client_id):
 @api.route('/chats', methods=['POST'])
 def create_new_chat():
     request_body = request.get_json()
-    chat = Chat(client_1_id=request_body['client_1_id'],
-                client_2_id=request_body['client_2_id'])
-    db.session.add(chat)
-    db.session.commit()
-    return jsonify(request_body), 200
+    new_chat = Chat.query.filter((request_body['client_1_id'] == Chat.client_1_id) | 
+                                 (request_body['client_1_id'] == Chat.client_2_id) & 
+                                 (request_body['client_2_id'] == Chat.client_1_id) |
+                                 (request_body['client_2_id'] == Chat.client_2_id)).first()
+    if new_chat is None:
+        chat = Chat(client_1_id=request_body['client_1_id'],
+                    client_2_id=request_body['client_2_id'])
+        db.session.add(chat)
+        db.session.commit()
+        return jsonify(request_body), 200
+    return jsonify("already exist"), 200
 
 
 # MESSAGES
@@ -371,4 +377,13 @@ def get_messages(chat_id):
                      'total_records': len(results),
                      'results': results}
     return jsonify(response_body), 200
-    
+
+
+#WEBSOCKETS
+# @socketio.on('connect')
+# def handle_connect():
+#     print('Client connected')
+
+# @socketio.on('disconnect')
+# def handle_disconnect():
+#     print('Client disconnected')

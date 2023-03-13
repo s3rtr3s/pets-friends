@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState, useRef } from "react";
 import { Context } from "../../../../../store/appContext";
 
-export const Chat = ({ handleOpenModal, chatId, chatName, chatAvatar }) => {
+export const Chat = ({ handleOpenModal, chatId, chatName, chatSurname, chatAvatar }) => {
   const { store } = useContext(Context);
   const [messages, setMessages] = useState();
   const [newMessage, setNewMessage] = useState({
@@ -51,7 +51,7 @@ export const Chat = ({ handleOpenModal, chatId, chatName, chatAvatar }) => {
             <div className="avatar d-flex justify-content-center">
               <img className="rounded-circle h-100" src={chatAvatar} />
             </div>
-            <span className="fs-5 fw-bold">{chatName}</span>
+            <span className="fs-4 fw-bold ml-3">{chatName} {chatSurname}</span>
           </div>
           <i
             className="fa-solid fa-xmark p-2 close-button"
@@ -62,8 +62,10 @@ export const Chat = ({ handleOpenModal, chatId, chatName, chatAvatar }) => {
           ref={divRef}
           className="chat-box messages w-100 d-flex flex-column gap-3 p-3"
         >
-          {messages
-            ?.sort((a, b) => a.id - b.id)
+          {!messages || messages.length < 1?
+          <span className="bg-dark text-white rounded-pill p-3 mx-auto">Aun no hay ningun mensaje!</span>
+          : messages
+            .sort((a, b) => a.id - b.id)
             .map((message) => {
               if (message.client_id === store.clientInfo.id) {
                 return (

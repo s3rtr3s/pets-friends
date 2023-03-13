@@ -8,13 +8,15 @@ export const ChatList = () => {
   const [openModal, setOpenModal] = useState(false);
   const [chatId, setChatId] = useState();
   const [chatName, setChatName] = useState();
+  const [chatSurname, setChatSurname] = useState();
   const [chatAvatar, setChatAvatar] = useState();
   const { store } = useContext(Context);
   const [chatList, setChatList] = useState();
 
-  const handleOpenModal = (id, name, avatar) => {
+  const handleOpenModal = (id, name, surname, avatar) => {
     setChatId(id);
     setChatName(name);
+    setChatSurname(surname);
     setChatAvatar(avatar);
     setOpenModal(!openModal);
   };
@@ -40,12 +42,16 @@ export const ChatList = () => {
             chat.client_2_id === store.clientInfo.id
               ? chat.client_1_name
               : chat.client_2_name;
+          const client_surname =
+              chat.client_2_id === store.clientInfo.id
+                ? chat.client_1_surname
+                : chat.client_2_surname;
           const client_avatar =
             chat.client_2_id === store.clientInfo.id
               ? chat.client_1_avatar
               : chat.client_2_avatar;
           return (
-            <ChatCard handleOpenModal={handleOpenModal} key={chat.id} chat={chat} client_name={client_name} client_avatar={client_avatar} />
+            <ChatCard handleOpenModal={handleOpenModal} key={chat.id} chat={chat} client_name={client_name} client_surname={client_surname} client_avatar={client_avatar} />
           );
         })}
       </div>
@@ -53,6 +59,7 @@ export const ChatList = () => {
         <Chat
           chatId={chatId}
           chatName={chatName}
+          chatSurname={chatSurname}
           chatAvatar={chatAvatar}
           handleOpenModal={handleOpenModal}
         />

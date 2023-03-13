@@ -35,6 +35,7 @@
 }
 
 .chat-box {
+  height: 40vh;
   max-height: 40vh;
   overflow: auto;
 }
